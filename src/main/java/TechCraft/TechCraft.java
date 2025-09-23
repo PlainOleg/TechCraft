@@ -1,5 +1,6 @@
 package TechCraft;
 
+import TechCraft.item.ModCreativeModTabs;
 import TechCraft.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -27,6 +28,7 @@ public class TechCraft {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -37,10 +39,10 @@ public class TechCraft {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.Raw_Tin);
-            event.accept(ModItems.Tin_Ingot);
-        }
+        // if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            // event.accept(ModItems.Raw_Tin);
+            // event.accept(ModItems.Tin_Ingot);
+        // }
     }
 
     @SubscribeEvent

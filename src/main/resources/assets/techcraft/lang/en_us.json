@@ -1,4 +1,6 @@
 {
   "item.techcraft.raw_tin": "Raw Tin",
-  "item.techcraft.tin_ingot": "Tin ingot"
+  "item.techcraft.tin_ingot": "Tin ingot",
+
+  "creativetab.techcraft.items": "TechCraft"
 }

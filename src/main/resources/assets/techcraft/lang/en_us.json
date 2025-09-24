@@ -1,6 +1,11 @@
 {
   "item.techcraft.raw_tin": "Raw Tin",
-  "item.techcraft.tin_ingot": "Tin ingot",
+  "item.techcraft.tin_ingot": "Tin Ingot",
+
+  "block.techcraft.raw_tin_block": "Block Of Raw Tin",
+  "block.techcraft.tin_block": "Block Of Tin",
+  "block.techcraft.tin_ore": "Tin Ore",
+  "block.techcraft.deepslate_tin_ore": "Deepslate Tin Ore",
 
   "creativetab.techcraft.items": "TechCraft"
 }

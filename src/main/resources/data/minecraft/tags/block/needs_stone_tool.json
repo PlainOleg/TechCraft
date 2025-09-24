@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "techcraft:tin_ore",
+    "techcraft:deepslate_tin_ore",
+    "techcraft:raw_tin_block"
+  ]
+}

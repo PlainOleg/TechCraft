@@ -1,4 +1,4 @@
-package net.TechCraft;
+package TechCraft;
 
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;

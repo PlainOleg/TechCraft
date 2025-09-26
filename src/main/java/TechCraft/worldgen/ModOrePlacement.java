@@ -1,4 +1,4 @@
-package net.TechCraft.worldgen;
+package TechCraft.worldgen;
 
 import net.minecraft.world.level.levelgen.placement.*;
 

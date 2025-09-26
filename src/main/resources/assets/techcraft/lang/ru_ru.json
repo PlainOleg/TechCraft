@@ -1,9 +1,19 @@
 {
-  "item.techcraft.raw_tin": "Сырое Олово",
-  "item.techcraft.tin_ingot": "Слиток Олово",
+  "item.techcraft.raw_tin": "Сырое олово",
+  "item.techcraft.tin_ingot": "Слиток олово",
+  "item.techcraft.tin_plate": "Tin Plate",
 
-  "block.techcraft.raw_tin_block": "Блок Сырого Олова",
-  "block.techcraft.tin_block": "Блок Олова",
-  "block.techcraft.tin_ore": "Оловянная Руда",
-  "block.techcraft.deepslate_tin_ore": "Глубинная Оловянная Руда"
+  "item.techcraft.forge_hammer": "Молот кузнеца",
+  "item.techcraft.cutter": "Ножницы для работы с металом",
+  "item.techcraft.forge_book": "Книга Кузница",
+
+  "book.techcraft.forge_book.name": "Книга Кузница",
+  "book.techcraft.forge_book.landing": "Справочник по моду TechCraft, созданный как путиводитель в случае если у игрока возникает желание углубиться в механики мода либо же что-то вызывает вопросы.",
+
+  "block.techcraft.raw_tin_block": "Блок сырого олова",
+  "block.techcraft.tin_block": "Блок олова",
+  "block.techcraft.tin_ore": "Оловянная руда",
+  "block.techcraft.deepslate_tin_ore": "Оловяносный глубинный сланец",
+
+  "creativetab.techcraft.materials": "TechCraft: Материалы"
 }

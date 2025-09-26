@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "techcraft:tin_ingot"
+  },
+  "addition": {
+    "item": "techcraft:forge_hammer"
+  },
+  "template": {
+    "item": "techcraft:forge_book"
+  },
+  "result": {
+    "id": "techcraft:tin_plate",
+    "count": 2
+  }
+}

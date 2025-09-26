@@ -1,7 +1,7 @@
-package net.TechCraft.block;
+package TechCraft.block;
 
-import net.TechCraft.TechCraft;
-import net.TechCraft.item.ModItems;
+import TechCraft.TechCraft;
+import TechCraft.item.ModItems;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

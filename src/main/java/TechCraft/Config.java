@@ -1,4 +1,4 @@
-package net.TechCraft;
+package TechCraft;
 
 import java.util.List;
 

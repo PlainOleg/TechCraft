@@ -1,0 +1,17 @@
+{
+  "name": "Craft Instruments",
+  "icon": "techcraft:cutter",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Crafting tools are auxiliary items used in mod recipes. This category will showcase all crafting tools."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:cutter",
+      "title": "Cutter",
+      "text": "Cutter look so cute"
+    }
+  ]
+}

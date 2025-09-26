@@ -1,11 +1,20 @@
 {
   "item.techcraft.raw_tin": "Raw Tin",
   "item.techcraft.tin_ingot": "Tin Ingot",
+  "item.techcraft.tin_plate": "Tin Plate",
+
+  "item.techcraft.forge_hammer": "Forge Hammer",
+  "item.techcraft.cutter": "Cutter",
+  "item.techcraft.forge_book": "Forge Book",
+
+  "book.techcraft.forge_book.name": "Forge Book",
+  "book.techcraft.forge_book.landing": "A TechCraft mod guide, created as a handbook in case the player wants to dive deeper into the mod's mechanics or has any questions.",
 
   "block.techcraft.raw_tin_block": "Block Of Raw Tin",
   "block.techcraft.tin_block": "Block Of Tin",
   "block.techcraft.tin_ore": "Tin Ore",
   "block.techcraft.deepslate_tin_ore": "Deepslate Tin Ore",
 
+  "creativetab.techcraft.materials": "TechCraft: Materials",
   "creativetab.techcraft.items": "TechCraft"
 }

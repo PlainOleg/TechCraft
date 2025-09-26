@@ -1,9 +1,9 @@
-package net.TechCraft.datagen;
+package TechCraft.datagen;
 
-import net.TechCraft.TechCraft;
-import net.TechCraft.worldgen.ModBiomeModifiers;
-import net.TechCraft.worldgen.ModConfiguredFeatures;
-import net.TechCraft.worldgen.ModPlacedFeatures;
+import TechCraft.TechCraft;
+import TechCraft.worldgen.ModBiomeModifiers;
+import TechCraft.worldgen.ModConfiguredFeatures;
+import TechCraft.worldgen.ModPlacedFeatures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

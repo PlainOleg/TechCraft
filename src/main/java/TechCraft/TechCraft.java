@@ -1,8 +1,8 @@
-package net.TechCraft;
+package TechCraft;
 
-import net.TechCraft.block.ModBlocks;
-import net.TechCraft.item.ModCreativeModTabs;
-import net.TechCraft.item.ModItems;
+import TechCraft.block.ModBlocks;
+import TechCraft.item.ModCreativeModTabs;
+import TechCraft.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -53,7 +53,6 @@ public class TechCraft {
 
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept(ModBlocks.Tin_Block);
-
         }
 
     }

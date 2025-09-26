@@ -1,6 +1,6 @@
-package net.TechCraft.worldgen;
+package TechCraft.worldgen;
 
-import net.TechCraft.TechCraft;
+import TechCraft.TechCraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

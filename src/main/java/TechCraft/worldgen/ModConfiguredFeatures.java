@@ -1,7 +1,7 @@
-package net.TechCraft.worldgen;
+package TechCraft.worldgen;
 
-import net.TechCraft.TechCraft;
-import net.TechCraft.block.ModBlocks;
+import TechCraft.TechCraft;
+import TechCraft.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;

@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "techcraft:tin_plate"
+    "i": {
+      "item": "minecraft:iron_ingot"
     },
-    "+": {
-      "item": "techcraft:tin_ingot"
+    "/": {
+      "item": "minecraft:stick"
     }
   },
   "pattern": [
-    "# #",
-    " # ",
-    "+ +"
+    " i ",
+    " /i",
+    "/  "
   ],
   "result": {
     "count": 1,
-    "id": "techcraft:cutter"
+    "id": "techcraft:forge_hammer"
   }
 }

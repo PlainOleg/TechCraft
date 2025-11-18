@@ -1,17 +1,21 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "tin_ingot",
-  "ingredients": [
-    {
-      "item": "techcraft:tin_ingot"
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "techcraft:tin_plate"
     },
-    {
-      "item": "techcraft:forge_hammer"
+    "+": {
+      "item": "techcraft:tin_ingot"
     }
+  },
+  "pattern": [
+    "# #",
+    " # ",
+    "+ +"
   ],
   "result": {
     "count": 1,
-    "id": "techcraft:tin_plate"
+    "id": "techcraft:cutter"
   }
 }

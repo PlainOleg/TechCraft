@@ -58,7 +58,5 @@ public class TechCraft {
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
-    }
+    public void onServerStarting(ServerStartingEvent event) {}
 }

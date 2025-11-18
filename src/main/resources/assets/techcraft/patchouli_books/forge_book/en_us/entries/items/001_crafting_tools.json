@@ -1,5 +1,5 @@
 {
-  "name": "Craft Instruments",
+  "name": "Instruments",
   "icon": "techcraft:cutter",
   "category": "techcraft:items",
   "pages": [
@@ -10,8 +10,12 @@
     {
       "type": "patchouli:crafting",
       "recipe": "techcraft:cutter",
-      "title": "Cutter",
-      "text": "Cutter look so cute"
+      "title": "Cutter"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:forge_hammer",
+      "title": "Hammer"
     }
   ]
 }

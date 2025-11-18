@@ -17,6 +17,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
+// Подавляем предупреждения об устаревших методах на уровне всего класса
+@SuppressWarnings("deprecation")
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(TechCraft.MOD_ID);
@@ -26,6 +28,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> Tin_Ore;
     public static final DeferredBlock<Block> Deepslate_Tin_Ore;
 
+    // Объединяем два статических блока в один
     static {
         Raw_Tin_Block = registerBlock("raw_tin_block", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)));
         Tin_Block = registerBlock("tin_block", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.COPPER)));

@@ -1,0 +1,13 @@
+{
+  "name": "Молот",
+  "icon": "techcraft:forge_hammer",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:forge_hammer",
+      "title": "Молот",
+      "text": "Используется для обрабки метала"
+    }
+  ]
+}

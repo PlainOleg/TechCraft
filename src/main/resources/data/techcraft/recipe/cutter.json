@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tin_ingot",
+  "ingredients": [
+    {
+      "item": "techcraft:tin_ingot"
+    },
+    {
+      "item": "techcraft:forge_hammer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:tin_plate"
+  }
+}

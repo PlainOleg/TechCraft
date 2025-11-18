@@ -1,0 +1,13 @@
+{
+  "name": "Cutter",
+  "icon": "techcraft:cutter",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:cutter",
+      "title": "Cutter",
+      "text": "Cutter look so cute"
+    }
+  ]
+}

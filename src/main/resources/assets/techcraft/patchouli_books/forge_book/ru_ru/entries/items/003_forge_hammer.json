@@ -1,0 +1,13 @@
+{
+  "name": "Ножницы для работы с металом",
+  "icon": "techcraft:cutter",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:cutter",
+      "title": "Ножницы",
+      "text": "Используется для обрабки метала"
+    }
+  ]
+}

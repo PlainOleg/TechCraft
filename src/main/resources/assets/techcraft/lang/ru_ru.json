@@ -15,5 +15,14 @@
   "block.techcraft.tin_ore": "Оловянная руда",
   "block.techcraft.deepslate_tin_ore": "Оловяносный глубинный сланец",
 
+  "tooltip.techcraft.hold_shift": "§8Зажми §7Shift§8 для подробностей",
+
+  "tooltip.techcraft.hammer.area": "§7⛏ Добыча:",
+  "tooltip.techcraft.hammer.area.normal": "§7Обычный режим",
+  "tooltip.techcraft.hammer.area.sneak": "§7Присев",
+
+  "tooltip.techcraft.for_craft": "✂ Используется в крафте",
+  "tooltip.techcraft.damages_on_craft": "❤ Теряет прочность при крафте",
+
   "creativetab.techcraft.materials": "TechCraft: Материалы"
 }

@@ -15,6 +15,15 @@
   "block.techcraft.tin_ore": "Tin Ore",
   "block.techcraft.deepslate_tin_ore": "Deepslate Tin Ore",
 
+  "tooltip.techcraft.hold_shift": "§8Hold §7Shift§8 for details",
+
+  "tooltip.techcraft.hammer.area": "§7⛏ Mining:",
+  "tooltip.techcraft.hammer.area.normal": "§7Normal",
+  "tooltip.techcraft.hammer.area.sneak": "§7Sneaking",
+
+  "tooltip.techcraft.for_craft": "§7Used in crafting",
+  "tooltip.techcraft.damages_on_craft": "§cDamaged when used in crafting",
+
   "creativetab.techcraft.materials": "TechCraft: Materials",
   "creativetab.techcraft.items": "TechCraft"
 }

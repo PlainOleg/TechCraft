@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "iron_ingot",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "techcraft:forge_hammer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:iron_plate"
+  }
+}

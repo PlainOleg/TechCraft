@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "copper_plate",
+  "ingredients": [
+    {
+      "item": "techcraft:copper_plate"
+    },
+    {
+      "item": "techcraft:cutter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:copper_wire"
+  }
+}

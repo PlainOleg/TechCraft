@@ -13,15 +13,20 @@ import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class ModBiomeModifiers {
-    public static final ResourceKey<BiomeModifier> ADD_TIN_ORE = registerKey("add_tin_ore");
+    public static final ResourceKey<BiomeModifier> ADD_Tin_ORE = registerKey("add_tin_ore");
+    public static final ResourceKey<BiomeModifier> ADD_RAW_Tin_BLOCK = registerKey("add_raw_tin_block");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placeFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes =  context.lookup(Registries.BIOME);
 
-        context.register(ADD_TIN_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_Tin_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placeFeatures.getOrThrow(ModPlacedFeatures.TIN_ORE_PLACED_KEY)),
+                HolderSet.direct(placeFeatures.getOrThrow(ModPlacedFeatures.Tin_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ADD_RAW_Tin_BLOCK, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placeFeatures.getOrThrow(ModPlacedFeatures.RAW_Tin_BLOCK_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 

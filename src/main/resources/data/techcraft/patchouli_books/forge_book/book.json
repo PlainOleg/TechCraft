@@ -1,7 +1,7 @@
 {
   "name": "book.techcraft.forge_book.name",
   "landing_text": "book.techcraft.forge_book.landing",
-  "version": 0,
+  "version": 6,
   "creative_tab": "",
   "use_resource_pack": true
 }

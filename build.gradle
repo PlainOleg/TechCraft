@@ -190,3 +190,17 @@ idea {
         downloadJavadoc = true
     }
 }
+
+// Task to generate ore blocks from JSON files
+tasks.register('generateOres', Exec) {
+    description = 'Generate ore blocks and worldgen from JSON files'
+    group = 'generation'
+    
+    workingDir project.projectDir
+    commandLine 'python3', 'generate_ores.py'
+    
+    // Only run if the script exists
+    onlyIf {
+        file('generate_ores.py').exists()
+    }
+}

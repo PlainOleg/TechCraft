@@ -1,7 +1,7 @@
 package TechCraft.event;
 
 import TechCraft.TechCraft;
-import TechCraft.item.ModItems;
+import TechCraft.item.custom.DamageOnCraftUseItem;
 import TechCraft.item.custom.HammerItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -19,38 +19,62 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Класс обработки событий мода TechCraft.
+ * Содержит обработчики для инструментов, тултипов и других игровых событий.
+ */
 @EventBusSubscriber(modid = TechCraft.MOD_ID)
 public class ModEvents {
+    // Hammer
     private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
     @SubscribeEvent
     public static void onHammerUsage(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
+        if (player == null || player.level() == null) {
+            return;
+        }
+
         ItemStack mainHand = player.getMainHandItem();
+        if (mainHand == null || mainHand.isEmpty()) {
+            return;
+        }
 
         if (!(mainHand.getItem() instanceof HammerItem hammer) || !(player instanceof ServerPlayer sp)) {
             return;
         }
 
         BlockPos pos = event.getPos();
-        if (HARVESTED_BLOCKS.contains(pos)) return;
+        if (pos == null || HARVESTED_BLOCKS.contains(pos)) {
+            return;
+        }
 
-        for (BlockPos extraPos : HammerItem.getBlocksToBeDestroyed(pos, sp, mainHand)) {
-            if (HARVESTED_BLOCKS.contains(extraPos)) continue;
+        try {
+            for (BlockPos extraPos : HammerItem.getBlocksToBeDestroyed(pos, sp, mainHand)) {
+                if (extraPos == null || HARVESTED_BLOCKS.contains(extraPos)) {
+                    continue;
+                }
 
-            var state = event.getLevel().getBlockState(extraPos);
-            if (hammer.isCorrectToolForDrops(mainHand, state)) {
-                HARVESTED_BLOCKS.add(extraPos);
-                sp.gameMode.destroyBlock(extraPos);
-                HARVESTED_BLOCKS.remove(extraPos);
+                var state = event.getLevel().getBlockState(extraPos);
+                if (state != null && hammer.isCorrectToolForDrops(mainHand, state)) {
+                    HARVESTED_BLOCKS.add(extraPos);
+                    sp.gameMode.destroyBlock(extraPos);
+                    HARVESTED_BLOCKS.remove(extraPos);
+                }
             }
+        } catch (Exception e) {
+            TechCraft.LOGGER.error("Error during hammer usage at position {}: {}", pos, e.getMessage());
+        } finally {
+            HARVESTED_BLOCKS.clear();
         }
     }
+
+    // ToolTips
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         List<Component> lines = event.getToolTip();
 
-        // === Forge Hammer ===
+        // === Hammers ===
         if (stack.getItem() instanceof HammerItem hammer) {
             int size = hammer.getMiningSize();
 
@@ -86,23 +110,15 @@ public class ModEvents {
             }
         }
 
-        // === Cutter ===
-        else if (stack.is(ModItems.Cutter.get())) {
+        // === Damage On Craft Items ===
+        else if (stack.getItem() instanceof DamageOnCraftUseItem) {
             lines.add(Component.translatable("tooltip.techcraft.for_craft")
                     .withStyle(ChatFormatting.GRAY));
             lines.add(Component.translatable("tooltip.techcraft.damages_on_craft")
                     .withStyle(ChatFormatting.RED));
-
-            /*
-            if (Screen.hasShiftDown()) {
-
-            } else {
-                lines.add(Component.translatable("tooltip.techcraft.hold_shift")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-            }
-             */
         }
     }
 
-    // public static void onCraftEvent(PlayerEvent.ItemCraftedEvent event) {} -- подписка на евент после крафта
+    // After Craft
+    // public static void onCraftEvent(PlayerEvent.ItemCraftedEvent event) {}
 }

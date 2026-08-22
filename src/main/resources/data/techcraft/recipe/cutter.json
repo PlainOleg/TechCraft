@@ -3,10 +3,10 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "techcraft:tin_plate"
+      "item": "techcraft:steel_plate"
     },
     "+": {
-      "item": "techcraft:tin_ingot"
+      "item": "minecraft:iron_ingot"
     }
   },
   "pattern": [

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tin_plate",
+  "ingredients": [
+    {
+      "item": "techcraft:tin_plate"
+    },
+    {
+      "item": "techcraft:cutter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:tin_wire"
+  }
+}

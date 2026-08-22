@@ -1,19 +1,52 @@
 {
   "item.techcraft.raw_tin": "Сырое олово",
-  "item.techcraft.tin_ingot": "Слиток олово",
+  "item.techcraft.tin_raw": "Сырое олово",
+  "item.techcraft.tin_ingot": "Слиток олова",
+  "item.techcraft.steel_ingot": "Стальной слиток",
+
+  "item.techcraft.coal_dust": "Угольная пыль",
+  "item.techcraft.iron_dust": "Железная пыль",
+  "item.techcraft.steel_dust": "Стальная пыль",
+
   "item.techcraft.tin_plate": "Оловянная пластина",
+  "item.techcraft.gold_plate": "Золотая пластина",
+  "item.techcraft.copper_plate": "Медная пластина",
+  "item.techcraft.iron_plate": "Железная пластина",
+  "item.techcraft.steel_plate": "Стальная пластина",
+
+  "item.techcraft.tin_wire": "Оловянная проволока",
+  "item.techcraft.gold_wire": "Золотая проволока",
+  "item.techcraft.copper_wire": "Медная проволока",
+  "item.techcraft.iron_wire": "Железная проволока",
+  "item.techcraft.steel_wire": "Стальная проволока",
+
+  "item.techcraft.tin_coil": "Оловянная катушка",
+  "item.techcraft.gold_coil": "Золотая катушка",
+  "item.techcraft.copper_coil": "Медная катушка",
+  "item.techcraft.iron_coil": "Железная катушка",
+  "item.techcraft.steel_coil": "Стальная катушка",
 
   "item.techcraft.forge_hammer": "Молот кузнеца",
   "item.techcraft.cutter": "Ножницы для работы с металом",
   "item.techcraft.forge_book": "Книга Кузница",
+  "item.techcraft.capacity_upgrade_t1": "Модуль вместимости I",
+  "item.techcraft.capacity_upgrade_t2": "Модуль вместимости II",
+  "item.techcraft.capacity_upgrade_t3": "Модуль вместимости III",
+  "item.techcraft.temp_upgrade_t1": "Модуль температуры I",
+  "item.techcraft.temp_upgrade_t2": "Модуль температуры II",
+  "item.techcraft.temp_upgrade_t3": "Модуль температуры III",
+  "item.techcraft.efficiency_upgrade_t1": "Модуль эффективности I",
+  "item.techcraft.efficiency_upgrade_t2": "Модуль эффективности II",
+  "item.techcraft.efficiency_upgrade_t3": "Модуль эффективности III",
 
   "book.techcraft.forge_book.name": "Книга Кузница",
-  "book.techcraft.forge_book.landing": "Справочник по моду TechCraft, созданный как путиводитель в случае если у игрока возникает желание углубиться в механики мода либо же что-то вызывает вопросы.",
+  "book.techcraft.forge_book.landing": "Справочник по моду TechCraft, созданный как путеводитель в случае, если у игрока возникает желание углубиться в механики мода либо что-то вызывает вопросы.",
 
   "block.techcraft.raw_tin_block": "Блок сырого олова",
   "block.techcraft.tin_block": "Блок олова",
   "block.techcraft.tin_ore": "Оловянная руда",
-  "block.techcraft.deepslate_tin_ore": "Оловяносный глубинный сланец",
+  "block.techcraft.deepslate_tin_ore": "Оловянный глубинный сланец",
+  "block.techcraft.alloy_smelter": "Плавильная печь сплавов",
 
   "tooltip.techcraft.hold_shift": "§8Зажми §7Shift§8 для подробностей",
 

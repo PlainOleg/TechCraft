@@ -1,13 +1,18 @@
 {
-  "name": "Hammer",
+  "name": "Forge Hammer",
   "icon": "techcraft:forge_hammer",
   "category": "techcraft:items",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "techcraft:forge_hammer",
-      "title": "Hammer",
-      "text": "test"
+      "title": "Forge Hammer",
+      "text": "The Forge Hammer is a powerful tool that can break blocks in a 3x3 area. Perfect for mining large ore deposits quickly.$(br2)$(o)Mining Modes:$(br)• Normal: 3x3 area mining$(br)• Sneaking: 1x1 single block$(br2)$(o)Note: The Hammer takes damage when used in crafting and cannot be repaired."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:forge_hammer",
+      "title": "Crafting Forge Hammer"
     }
   ]
 }

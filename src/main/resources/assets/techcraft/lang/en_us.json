@@ -1,19 +1,52 @@
 {
   "item.techcraft.raw_tin": "Raw Tin",
+  "item.techcraft.tin_raw": "Raw Tin",
   "item.techcraft.tin_ingot": "Tin Ingot",
+  "item.techcraft.steel_ingot": "Steel Ingot",
+
+  "item.techcraft.coal_dust": "Coal Dust",
+  "item.techcraft.iron_dust": "Iron Dust",
+  "item.techcraft.steel_dust": "Steel Dust",
+
   "item.techcraft.tin_plate": "Tin Plate",
+  "item.techcraft.gold_plate": "Gold Plate",
+  "item.techcraft.copper_plate": "Copper Plate",
+  "item.techcraft.iron_plate": "Iron Plate",
+  "item.techcraft.steel_plate": "Steel Plate",
+
+  "item.techcraft.tin_wire": "Tin Wire",
+  "item.techcraft.gold_wire": "Gold Wire",
+  "item.techcraft.copper_wire": "Copper Wire",
+  "item.techcraft.iron_wire": "Iron Wire",
+  "item.techcraft.steel_wire": "Steel Wire",
+
+  "item.techcraft.tin_coil": "Tin Coil",
+  "item.techcraft.gold_coil": "Gold Coil",
+  "item.techcraft.copper_coil": "Copper Coil",
+  "item.techcraft.iron_coil": "Iron Coil",
+  "item.techcraft.steel_coil": "Steel Coil",
 
   "item.techcraft.forge_hammer": "Forge Hammer",
   "item.techcraft.cutter": "Cutter",
   "item.techcraft.forge_book": "Forge Book",
+  "item.techcraft.capacity_upgrade_t1": "Capacity Module I",
+  "item.techcraft.capacity_upgrade_t2": "Capacity Module II",
+  "item.techcraft.capacity_upgrade_t3": "Capacity Module III",
+  "item.techcraft.temp_upgrade_t1": "Temperature Module I",
+  "item.techcraft.temp_upgrade_t2": "Temperature Module II",
+  "item.techcraft.temp_upgrade_t3": "Temperature Module III",
+  "item.techcraft.efficiency_upgrade_t1": "Efficiency Module I",
+  "item.techcraft.efficiency_upgrade_t2": "Efficiency Module II",
+  "item.techcraft.efficiency_upgrade_t3": "Efficiency Module III",
 
   "book.techcraft.forge_book.name": "Forge Book",
   "book.techcraft.forge_book.landing": "A TechCraft mod guide, created as a handbook in case the player wants to dive deeper into the mod's mechanics or has any questions.",
 
-  "block.techcraft.raw_tin_block": "Block Of Raw Tin",
-  "block.techcraft.tin_block": "Block Of Tin",
+  "block.techcraft.raw_tin_block": "Block of Raw Tin",
+  "block.techcraft.tin_block": "Block of Tin",
   "block.techcraft.tin_ore": "Tin Ore",
   "block.techcraft.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.techcraft.alloy_smelter": "Alloy Smelter",
 
   "tooltip.techcraft.hold_shift": "§8Hold §7Shift§8 for details",
 

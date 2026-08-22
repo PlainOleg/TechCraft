@@ -17,7 +17,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_TIN_ORE_KEY = registerKey("tin_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_Tin_ORE_KEY = registerKey("tin_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RAW_Tin_BLOCK_KEY = registerKey("raw_tin_block");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -26,8 +27,13 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldTinOre = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.Tin_Ore.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.Deepslate_Tin_Ore.get().defaultBlockState()));
+        register(context, OVERWORLD_Tin_ORE_KEY, Feature.ORE, new OreConfiguration(overworldTinOre, 10));
 
-        register(context, OVERWORLD_TIN_ORE_KEY, Feature.ORE, new OreConfiguration(overworldTinOre, 10));
+        List<OreConfiguration.TargetBlockState> overworldRawTinBlock = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.Raw_Tin_Block.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.Raw_Tin_Block.get().defaultBlockState()));
+        register(context, OVERWORLD_RAW_Tin_BLOCK_KEY, Feature.ORE, new OreConfiguration(overworldRawTinBlock, 20));
+
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name){

@@ -1,5 +1,5 @@
 {
-  "name": "Items",
-  "description": "What items does TechCraft add?",
-  "icon": "techcraft:forge_book"
+  "name": "Tools",
+  "description": "Crafting tools and special items added by TechCraft.",
+  "icon": "techcraft:forge_hammer"
 }

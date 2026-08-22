@@ -38,17 +38,41 @@ public class ModCreativeModTabs {
     private static final List<Supplier<? extends ItemLike>> GENERAL_ITEMS = List.of(
             ModItems.Forge_Book,
             ModItems.Cutter,
-            ModItems.Forge_Hammer,
-            ModItems.Tin_Plate
+            ModItems.Forge_Hammer
     );
 
     private static final List<Supplier<? extends ItemLike>> MATERIAL_ITEMS = List.of(
             ModItems.Raw_Tin,
             ModItems.Tin_Ingot,
+            ModItems.Steel_Ingot,
+
+            ModItems.Coal_Dust,
+            ModItems.Iron_Dust,
+            ModItems.Steel_Dust,
+
+            ModItems.Tin_Plate,
+            ModItems.Copper_Plate,
+            ModItems.Iron_Plate,
+            ModItems.Gold_Plate,
+            ModItems.Steel_Plate,
+
+            ModItems.Copper_Wire,
+            ModItems.Tin_Wire,
+            ModItems.Iron_Wire,
+            ModItems.Gold_Wire,
+            ModItems.Steel_Wire,
+
+            ModItems.Copper_Coil,
+            ModItems.Tin_Coil,
+            ModItems.Iron_Coil,
+            ModItems.Gold_Coil,
+            ModItems.Steel_Coil,
+
             ModBlocks.Raw_Tin_Block,
             ModBlocks.Tin_Ore,
             ModBlocks.Deepslate_Tin_Ore,
-            ModBlocks.Tin_Block
+            ModBlocks.Tin_Block,
+            ModBlocks.ALLOY_SMELTER
     );
 
     private static void addGeneralItems(CreativeModeTab.ItemDisplayParameters params, CreativeModeTab.Output output) {

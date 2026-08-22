@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "steel_plate",
+  "ingredients": [
+    {
+      "item": "techcraft:steel_plate"
+    },
+    {
+      "item": "techcraft:cutter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:steel_wire"
+  }
+}

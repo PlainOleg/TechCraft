@@ -7,7 +7,7 @@
       "type": "patchouli:spotlight",
       "item": "techcraft:cutter",
       "title": "Cutter",
-      "text": "The Cutter is a specialized tool used to cut metal plates into wires. Simply combine a metal plate with the Cutter to create wire of the same material.$(br2)$(o)Note: The Cutter takes damage when used in crafting and cannot be repaired."
+      "text": "The Cutter is a specialized tool used for metalworking. $(br2)$(o)Note: The Cutter takes damage when used in crafting and cannot be repaired."
     },
     {
       "type": "patchouli:crafting",

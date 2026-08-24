@@ -56,18 +56,6 @@ public class ModCreativeModTabs {
             ModItems.Gold_Plate,
             ModItems.Steel_Plate,
 
-            ModItems.Copper_Wire,
-            ModItems.Tin_Wire,
-            ModItems.Iron_Wire,
-            ModItems.Gold_Wire,
-            ModItems.Steel_Wire,
-
-            ModItems.Copper_Coil,
-            ModItems.Tin_Coil,
-            ModItems.Iron_Coil,
-            ModItems.Gold_Coil,
-            ModItems.Steel_Coil,
-
             ModBlocks.Raw_Tin_Block,
             ModBlocks.Tin_Ore,
             ModBlocks.Deepslate_Tin_Ore,

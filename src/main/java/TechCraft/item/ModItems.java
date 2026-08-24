@@ -2,15 +2,13 @@ package TechCraft.item;
 
 import TechCraft.TechCraft;
 import TechCraft.block.AlloySmelterBlockEntity;
-import TechCraft.item.custom.CoilItem;
 import TechCraft.item.custom.DamageOnCraftUseItem;
 import TechCraft.item.custom.HammerItem;
 import TechCraft.item.custom.PlateItem;
-import TechCraft.item.custom.WireItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
-import  net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import javax.annotation.Nonnull;
@@ -27,7 +25,7 @@ public class ModItems {
     private static final float FORGE_HAMMER_ATTACK_DAMAGE_MODIFIER = -3.5f;
     private static final int FORGE_HAMMER_MINING_SIZE = 3;
 
-    public  static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TechCraft.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TechCraft.MOD_ID);
 
     /**
      * Регистрирует обычный предмет для указанного материала.
@@ -48,23 +46,6 @@ public class ModItems {
         return ITEMS.register(material.getName() + "_plate", () -> new PlateItem(new Item.Properties()));
     }
 
-    /**
-     * Регистрирует проволоку для указанного материала.
-     * @param material тип материала
-     * @return зарегистрированная проволока
-     */
-    private static DeferredItem<Item> registerWire(MaterialType material) {
-        return ITEMS.register(material.getName() + "_wire", () -> new WireItem(new Item.Properties()));
-    }
-
-    /**
-     * Регистрирует катушку для указанного материала.
-     * @param material тип материала
-     * @return зарегистрированная катушка
-     */
-    private static DeferredItem<Item> registerCoil(MaterialType material) {
-        return ITEMS.register(material.getName() + "_coil", () -> new CoilItem(new Item.Properties()));
-    }
 
     public static final DeferredItem<Item> Raw_Tin;
     public static final DeferredItem<Item> Tin_Ingot;
@@ -80,17 +61,6 @@ public class ModItems {
     public static final DeferredItem<Item> Copper_Plate;
     public static final DeferredItem<Item> Steel_Plate;
 
-    public static final DeferredItem<Item> Copper_Wire;
-    public static final DeferredItem<Item> Tin_Wire;
-    public static final DeferredItem<Item> Iron_Wire;
-    public static final DeferredItem<Item> Gold_Wire;
-    public static final DeferredItem<Item> Steel_Wire;
-
-    public static final DeferredItem<Item> Copper_Coil;
-    public static final DeferredItem<Item> Tin_Coil;
-    public static final DeferredItem<Item> Iron_Coil;
-    public static final DeferredItem<Item> Gold_Coil;
-    public static final DeferredItem<Item> Steel_Coil;
 
     public static final DeferredItem<Item> Forge_Book;
 
@@ -98,13 +68,10 @@ public class ModItems {
     public static final DeferredItem<Item> Cutter;
 
     // Smelter upgrades
-    public static final DeferredItem<SmelterUpgradeItem> Capacity_Upgrade_T1;
     public static final DeferredItem<SmelterUpgradeItem> Capacity_Upgrade_T2;
     public static final DeferredItem<SmelterUpgradeItem> Capacity_Upgrade_T3;
-    public static final DeferredItem<SmelterUpgradeItem> Temp_Upgrade_T1;
     public static final DeferredItem<SmelterUpgradeItem> Temp_Upgrade_T2;
     public static final DeferredItem<SmelterUpgradeItem> Temp_Upgrade_T3;
-    public static final DeferredItem<SmelterUpgradeItem> Efficiency_Upgrade_T1;
     public static final DeferredItem<SmelterUpgradeItem> Efficiency_Upgrade_T2;
     public static final DeferredItem<SmelterUpgradeItem> Efficiency_Upgrade_T3;
 
@@ -113,29 +80,19 @@ public class ModItems {
         Raw_Tin = registerMaterialItem(MaterialType.TIN, "raw");
         Tin_Ingot = registerMaterialItem(MaterialType.TIN, "ingot");
         Tin_Plate = registerPlate(MaterialType.TIN);
-        Tin_Wire = registerWire(MaterialType.TIN);
-        Tin_Coil = registerCoil(MaterialType.TIN);
 
         // Iron
         Iron_Plate = registerPlate(MaterialType.IRON);
-        Iron_Wire = registerWire(MaterialType.IRON);
-        Iron_Coil = registerCoil(MaterialType.IRON);
 
         // Gold
         Gold_Plate = registerPlate(MaterialType.GOLD);
-        Gold_Wire = registerWire(MaterialType.GOLD);
-        Gold_Coil = registerCoil(MaterialType.GOLD);
 
         // Copper
         Copper_Plate = registerPlate(MaterialType.COPPER);
-        Copper_Wire = registerWire(MaterialType.COPPER);
-        Copper_Coil = registerCoil(MaterialType.COPPER);
 
         // Steel
         Steel_Ingot = registerMaterialItem(MaterialType.STEEL, "ingot");
         Steel_Plate = registerPlate(MaterialType.STEEL);
-        Steel_Wire = registerWire(MaterialType.STEEL);
-        Steel_Coil = registerCoil(MaterialType.STEEL);
 
         // Dusts
         Coal_Dust = ITEMS.register("coal_dust", () -> new Item(new Item.Properties()));
@@ -163,26 +120,20 @@ public class ModItems {
         );
 
         // Smelter upgrades
-        Capacity_Upgrade_T1 = ITEMS.register("capacity_upgrade_t1", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.CAPACITY_BOOST, 1, new Item.Properties()));
-        Capacity_Upgrade_T2 = ITEMS.register("capacity_upgrade_t2", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.CAPACITY_BOOST, 2, new Item.Properties()));
-        Capacity_Upgrade_T3 = ITEMS.register("capacity_upgrade_t3", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.CAPACITY_BOOST, 3, new Item.Properties()));
-        
-        Temp_Upgrade_T1 = ITEMS.register("temp_upgrade_t1", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.TEMP_BOOST, 1, new Item.Properties()));
-        Temp_Upgrade_T2 = ITEMS.register("temp_upgrade_t2", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.TEMP_BOOST, 2, new Item.Properties()));
-        Temp_Upgrade_T3 = ITEMS.register("temp_upgrade_t3", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.TEMP_BOOST, 3, new Item.Properties()));
-        
-        Efficiency_Upgrade_T1 = ITEMS.register("efficiency_upgrade_t1", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 1, new Item.Properties()));
-        Efficiency_Upgrade_T2 = ITEMS.register("efficiency_upgrade_t2", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 2, new Item.Properties()));
-        Efficiency_Upgrade_T3 = ITEMS.register("efficiency_upgrade_t3", () -> 
-            new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 3, new Item.Properties()));
+        Capacity_Upgrade_T2 = ITEMS.register("capacity_upgrade_t2", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.CAPACITY_BOOST, 2, new Item.Properties()));
+        Capacity_Upgrade_T3 = ITEMS.register("capacity_upgrade_t3", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.CAPACITY_BOOST, 3, new Item.Properties()));
+
+        Temp_Upgrade_T2 = ITEMS.register("temp_upgrade_t2", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.TEMP_BOOST, 2, new Item.Properties()));
+        Temp_Upgrade_T3 = ITEMS.register("temp_upgrade_t3", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.TEMP_BOOST, 3, new Item.Properties()));
+
+        Efficiency_Upgrade_T2 = ITEMS.register("efficiency_upgrade_t2", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 2, new Item.Properties()));
+        Efficiency_Upgrade_T3 = ITEMS.register("efficiency_upgrade_t3", () ->
+                new SmelterUpgradeItem(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 3, new Item.Properties()));
     }
 
     /**

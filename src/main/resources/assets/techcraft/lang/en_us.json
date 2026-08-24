@@ -14,28 +14,14 @@
   "item.techcraft.iron_plate": "Iron Plate",
   "item.techcraft.steel_plate": "Steel Plate",
 
-  "item.techcraft.tin_wire": "Tin Wire",
-  "item.techcraft.gold_wire": "Gold Wire",
-  "item.techcraft.copper_wire": "Copper Wire",
-  "item.techcraft.iron_wire": "Iron Wire",
-  "item.techcraft.steel_wire": "Steel Wire",
-
-  "item.techcraft.tin_coil": "Tin Coil",
-  "item.techcraft.gold_coil": "Gold Coil",
-  "item.techcraft.copper_coil": "Copper Coil",
-  "item.techcraft.iron_coil": "Iron Coil",
-  "item.techcraft.steel_coil": "Steel Coil",
 
   "item.techcraft.forge_hammer": "Forge Hammer",
   "item.techcraft.cutter": "Cutter",
   "item.techcraft.forge_book": "Forge Book",
-  "item.techcraft.capacity_upgrade_t1": "Capacity Module I",
   "item.techcraft.capacity_upgrade_t2": "Capacity Module II",
   "item.techcraft.capacity_upgrade_t3": "Capacity Module III",
-  "item.techcraft.temp_upgrade_t1": "Temperature Module I",
   "item.techcraft.temp_upgrade_t2": "Temperature Module II",
   "item.techcraft.temp_upgrade_t3": "Temperature Module III",
-  "item.techcraft.efficiency_upgrade_t1": "Efficiency Module I",
   "item.techcraft.efficiency_upgrade_t2": "Efficiency Module II",
   "item.techcraft.efficiency_upgrade_t3": "Efficiency Module III",
 

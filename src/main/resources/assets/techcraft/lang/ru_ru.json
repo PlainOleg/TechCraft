@@ -14,28 +14,14 @@
   "item.techcraft.iron_plate": "Железная пластина",
   "item.techcraft.steel_plate": "Стальная пластина",
 
-  "item.techcraft.tin_wire": "Оловянная проволока",
-  "item.techcraft.gold_wire": "Золотая проволока",
-  "item.techcraft.copper_wire": "Медная проволока",
-  "item.techcraft.iron_wire": "Железная проволока",
-  "item.techcraft.steel_wire": "Стальная проволока",
-
-  "item.techcraft.tin_coil": "Оловянная катушка",
-  "item.techcraft.gold_coil": "Золотая катушка",
-  "item.techcraft.copper_coil": "Медная катушка",
-  "item.techcraft.iron_coil": "Железная катушка",
-  "item.techcraft.steel_coil": "Стальная катушка",
 
   "item.techcraft.forge_hammer": "Молот кузнеца",
   "item.techcraft.cutter": "Ножницы для работы с металом",
   "item.techcraft.forge_book": "Книга Кузница",
-  "item.techcraft.capacity_upgrade_t1": "Модуль вместимости I",
   "item.techcraft.capacity_upgrade_t2": "Модуль вместимости II",
   "item.techcraft.capacity_upgrade_t3": "Модуль вместимости III",
-  "item.techcraft.temp_upgrade_t1": "Модуль температуры I",
   "item.techcraft.temp_upgrade_t2": "Модуль температуры II",
   "item.techcraft.temp_upgrade_t3": "Модуль температуры III",
-  "item.techcraft.efficiency_upgrade_t1": "Модуль эффективности I",
   "item.techcraft.efficiency_upgrade_t2": "Модуль эффективности II",
   "item.techcraft.efficiency_upgrade_t3": "Модуль эффективности III",
 
@@ -46,7 +32,7 @@
   "block.techcraft.tin_block": "Блок олова",
   "block.techcraft.tin_ore": "Оловянная руда",
   "block.techcraft.deepslate_tin_ore": "Оловянный глубинный сланец",
-  "block.techcraft.alloy_smelter": "Плавильная печь сплавов",
+  "block.techcraft.alloy_smelter": "Плавильная печь",
 
   "tooltip.techcraft.hold_shift": "§8Зажми §7Shift§8 для подробностей",
 

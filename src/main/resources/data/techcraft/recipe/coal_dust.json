@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "coal_dust",
+  "ingredients": [
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "techcraft:forge_hammer"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:coal_dust"
+  }
+}

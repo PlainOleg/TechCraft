@@ -1,0 +1,36 @@
+{
+  "name": "Пластины",
+  "icon": "techcraft:tin_plate",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Пластины - это плоские металлические листы, используемые для создания различных компонентов. Можно создавать пластины из различных металлов:$(br)• Оловянная пластина$(br)• Железная пластина$(br)• Золотая пластина$(br)• Медная пластина$(br)• Стальная пластина"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_plate",
+      "title": "Оловянная пластина"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:iron_plate",
+      "title": "Железная пластина"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:gold_plate",
+      "title": "Золотая пластина"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:copper_plate",
+      "title": "Медная пластина"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_plate",
+      "title": "Стальная пластина"
+    }
+  ]
+}

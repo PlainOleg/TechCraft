@@ -1,0 +1,22 @@
+{
+  "name": "Блоки олова",
+  "icon": "techcraft:tin_block",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Блоки олова - это блоки для хранения олова. Их можно создать из слитков олова и переплавить обратно."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_block",
+      "title": "Блок олова",
+      "text": "Блок для хранения слитков олова."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_block",
+      "title": "Блок олова"
+    }
+  ]
+}

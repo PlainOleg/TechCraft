@@ -1,0 +1,18 @@
+{
+  "name": "Сырое олово",
+  "icon": "techcraft:tin_raw",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_raw",
+      "title": "Сырое олово",
+      "text": "Сырое олово - это базовый ресурс, который можно получить, добывая оловянную руду. Его можно переплавить в слитки олова или создать блок сырого олова для хранения."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:raw_tin_block",
+      "title": "Блок сырого олова"
+    }
+  ]
+}

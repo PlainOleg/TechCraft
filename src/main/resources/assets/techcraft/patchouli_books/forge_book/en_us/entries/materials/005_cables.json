@@ -1,0 +1,71 @@
+{
+  "name": "Cables",
+  "icon": "techcraft:copper_cable",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cables are conductive wires used to transfer energy between machines. Different materials have different conductivity and capacity:$(br)• Bronze Cable (Basic)$(br)• Copper Cable$(br)• Gold Cable$(br)• Iron Cable$(br)• Nickel Cable$(br)• Silver Cable$(br)• Steel Cable$(br)• Tin Cable$(br)• Prismite Cable$(br)• Quantum Cable (Advanced)"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_cable",
+      "title": "Bronze Cable",
+      "text": "Basic cable for low voltage energy transfer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_cable",
+      "title": "Copper Cable",
+      "text": "Standard cable for moderate energy transfer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:gold_cable",
+      "title": "Gold Cable",
+      "text": "High conductivity cable for efficient energy transfer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_cable",
+      "title": "Iron Cable",
+      "text": "Durable cable with moderate conductivity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_cable",
+      "title": "Nickel Cable",
+      "text": "Corrosion-resistant cable for harsh environments."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_cable",
+      "title": "Silver Cable",
+      "text": "Highly conductive cable with magical properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_cable",
+      "title": "Steel Cable",
+      "text": "Very durable cable for heavy-duty applications."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_cable",
+      "title": "Tin Cable",
+      "text": "Basic low-cost cable for simple setups."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_cable",
+      "title": "Prismite Cable",
+      "text": "Advanced cable with unique refractive properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_cable",
+      "title": "Quantum Cable",
+      "text": "End-game cable with quantum energy transfer capabilities."
+    }
+  ]
+}

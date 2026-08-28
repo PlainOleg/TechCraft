@@ -1,0 +1,41 @@
+{
+  "name": "Electronic Components",
+  "icon": "techcraft:circuit",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Electronic components are used to craft advanced machines and devices. These include:$(br)• Circuit$(br)• Resistor$(br)• Transistor$(br)• Magnet$(br)• Motor"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:circuit",
+      "title": "Circuit",
+      "text": "Basic electronic circuit used in most machine crafting."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:resistor",
+      "title": "Resistor",
+      "text": "Component that limits current flow in electronic circuits."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:transistor",
+      "title": "Transistor",
+      "text": "Semiconductor device used to amplify or switch electronic signals."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:magnet",
+      "title": "Magnet",
+      "text": "Powerful magnet used in motors and other machines."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:motor",
+      "title": "Motor",
+      "text": "Electric motor that converts electrical energy into mechanical motion."
+    }
+  ]
+}

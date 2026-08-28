@@ -1,0 +1,15 @@
+{
+  "name": "Introduction",
+  "icon": "techcraft:forge_book",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "TechCraft adds various materials to the game that you can use for crafting advanced items. This section covers all the materials you can find and craft."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Materials include:$(br)• Raw Tin$(br)• Ingots (Tin, Steel)$(br)• Plates (Tin, Iron, Gold, Copper, Steel)"
+    }
+  ]
+}

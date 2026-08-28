@@ -1,0 +1,63 @@
+{
+  "name": "Ingots",
+  "icon": "techcraft:tin_ingot",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Ingots are refined metal materials used in crafting plates and other items. TechCraft adds several types of ingots:$(br)• Tin Ingot$(br)• Steel Ingot$(br)• Bronze Ingot$(br)• Nickel Ingot$(br)• Silver Ingot$(br)• Prismite Ingot$(br)• Quantum Ingot"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_ingot",
+      "title": "Tin Ingot",
+      "text": "Obtained by smelting Raw Tin in a furnace or blast furnace."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_ingot",
+      "title": "Steel Ingot",
+      "text": "A durable metal alloy used for advanced crafting. Can be crafted from Coal Dust and Iron Dust."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_ingot",
+      "title": "Bronze Ingot",
+      "text": "An alloy of copper and tin, commonly used for basic electrical components."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_ingot",
+      "title": "Nickel Ingot",
+      "text": "A corrosion-resistant metal used in advanced alloys and cables."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_ingot",
+      "title": "Silver Ingot",
+      "text": "A conductive metal with magical properties, used in special crafting."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_ingot",
+      "title": "Prismite Ingot",
+      "text": "A rare crystalline metal with unique refractive properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_ingot",
+      "title": "Quantum Ingot",
+      "text": "An extremely advanced material with quantum properties, used in end-game technology."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_ingot",
+      "title": "Smelting Raw Tin"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_ingot_from_dusts",
+      "title": "Steel from Dusts"
+    }
+  ]
+}

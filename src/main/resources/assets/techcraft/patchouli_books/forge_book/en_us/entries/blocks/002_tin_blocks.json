@@ -1,0 +1,22 @@
+{
+  "name": "Tin Blocks",
+  "icon": "techcraft:tin_block",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Tin Blocks are storage blocks for Tin. They can be crafted from Tin Ingots and smelted back down."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_block",
+      "title": "Tin Block",
+      "text": "Storage block for Tin Ingots."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_block",
+      "title": "Tin Block"
+    }
+  ]
+}

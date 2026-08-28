@@ -1,0 +1,63 @@
+{
+  "name": "Слитки",
+  "icon": "techcraft:tin_ingot",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Слитки - это переработанные металлические материалы, используемые для создания пластин и других предметов. TechCraft добавляет несколько типов слитков:$(br)• Слиток олова$(br)• Слиток стали$(br)• Бронзовый слиток$(br)• Никелевый слиток$(br)• Серебряный слиток$(br)• Слиток призмита$(br)• Квантовый слиток"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_ingot",
+      "title": "Слиток олова",
+      "text": "Получается переплавкой сырого олова в печи или доменной печи."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_ingot",
+      "title": "Слиток стали",
+      "text": "Прочный металлический сплав, используемый для продвинутого крафта. Можно создать из угольной и железной пыли."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_ingot",
+      "title": "Бронзовый слиток",
+      "text": "Сплав меди и олова, обычно используется для базовых электронных компонентов."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_ingot",
+      "title": "Никелевый слиток",
+      "text": "Коррозионностойкий металл, используемый в продвинутых сплавах и кабелях."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_ingot",
+      "title": "Серебряный слиток",
+      "text": "Проводящий металл с магическими свойствами, используется в специальном крафте."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_ingot",
+      "title": "Слиток призмита",
+      "text": "Редкий кристаллический металл с уникальными преломляющими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_ingot",
+      "title": "Квантовый слиток",
+      "text": "Чрезвычайно продвинутый материал с квантовыми свойствами, используется в эндгейм технологиях."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_ingot",
+      "title": "Переплавка сырого олова"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_ingot_from_dusts",
+      "title": "Сталь из пыли"
+    }
+  ]
+}

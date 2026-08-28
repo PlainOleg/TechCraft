@@ -4,6 +4,9 @@
   "item.techcraft.tin_ingot": "Слиток олова",
   "item.techcraft.steel_ingot": "Стальной слиток",
 
+  "item.techcraft.raw_rubber": "Сырая резина",
+  "item.techcraft.rubber": "Резина",
+
   "item.techcraft.coal_dust": "Угольная пыль",
   "item.techcraft.iron_dust": "Железная пыль",
   "item.techcraft.steel_dust": "Стальная пыль",
@@ -14,10 +17,63 @@
   "item.techcraft.iron_plate": "Железная пластина",
   "item.techcraft.steel_plate": "Стальная пластина",
 
+  "item.techcraft.bronze_ingot": "Бронзовый слиток",
+  "item.techcraft.nickel_ingot": "Никелевый слиток",
+  "item.techcraft.silver_ingot": "Серебряный слиток",
+  "item.techcraft.prismite_ingot": "Слиток призмита",
+  "item.techcraft.quantum_ingot": "Квантовый слиток",
+
+  "item.techcraft.bronze_cable": "Бронзовый кабель",
+  "item.techcraft.copper_cable": "Медный кабель",
+  "item.techcraft.gold_cable": "Золотой кабель",
+  "item.techcraft.iron_cable": "Железный кабель",
+  "item.techcraft.nickel_cable": "Никелевый кабель",
+  "item.techcraft.silver_cable": "Серебряный кабель",
+  "item.techcraft.steel_cable": "Стальной кабель",
+  "item.techcraft.tin_cable": "Оловянный кабель",
+  "item.techcraft.prismite_cable": "Кабель призмита",
+  "item.techcraft.quantum_cable": "Квантовый кабель",
+
+  "item.techcraft.circuit": "Схема",
+  "item.techcraft.resistor": "Резистор",
+  "item.techcraft.transistor": "Транзистор",
+  "item.techcraft.magnet": "Магнит",
+  "item.techcraft.motor": "Мотор",
+
+  "item.techcraft.battery": "Батарея",
+  "item.techcraft.accumulator": "Аккумулятор",
+  "item.techcraft.quantum_battery": "Квантовая батарея",
+  "item.techcraft.energy_crystal": "Энергетический кристалл",
+
+  "item.techcraft.cut_ruby": "Ограненный рубин",
+  "item.techcraft.flawless_ruby": "Безупречный рубин",
+  "item.techcraft.perfect_ruby": "Совершенный рубин",
+  "item.techcraft.polished_ruby": "Полированный рубин",
+  "item.techcraft.ruby_shard": "Осколок рубина",
+
+  "item.techcraft.blue_plasma_core": "Синее плазменное ядро",
+  "item.techcraft.violet_plasma_core": "Фиолетовое плазменное ядро",
+  "item.techcraft.raw_blue_core": "Сырое синее ядро",
+  "item.techcraft.raw_violet_core": "Сырое фиолетовое ядро",
+
+  "item.techcraft.prismite_helmet": "Шлем призмита",
+  "item.techcraft.prismite_chestplate": "Нагрудник призмита",
+  "item.techcraft.prismite_leggings": "Поножи призмита",
+  "item.techcraft.prismite_boots": "Ботинки призмита",
+
+  "item.techcraft.quantum_helmet": "Квантовый шлем",
+  "item.techcraft.quantum_chestplate": "Квантовый нагрудник",
+  "item.techcraft.quantum_leggings": "Квантовые поножи",
+  "item.techcraft.quantum_boots": "Квантовые ботинки",
+
 
   "item.techcraft.forge_hammer": "Молот кузнеца",
   "item.techcraft.cutter": "Ножницы для работы с металом",
   "item.techcraft.forge_book": "Книга Кузница",
+  "item.techcraft.iron_drill": "Железная дрель",
+  "item.techcraft.diamond_drill": "Алмазная дрель",
+  "item.techcraft.netherite_drill": "Незеритовая дрель",
+  "item.techcraft.quantum_drill": "Квантовая дрель",
   "item.techcraft.capacity_upgrade_t2": "Модуль вместимости II",
   "item.techcraft.capacity_upgrade_t3": "Модуль вместимости III",
   "item.techcraft.temp_upgrade_t2": "Модуль температуры II",
@@ -28,17 +84,25 @@
   "book.techcraft.forge_book.name": "Книга Кузница",
   "book.techcraft.forge_book.landing": "Справочник по моду TechCraft, созданный как путеводитель в случае, если у игрока возникает желание углубиться в механики мода либо что-то вызывает вопросы.",
 
-  "block.techcraft.raw_tin_block": "Блок сырого олова",
   "block.techcraft.tin_block": "Блок олова",
   "block.techcraft.tin_ore": "Оловянная руда",
-  "block.techcraft.deepslate_tin_ore": "Оловянный глубинный сланец",
   "block.techcraft.alloy_smelter": "Плавильная печь",
+  "block.techcraft.bronze_block": "Блок бронзы",
+  "block.techcraft.prismite_block": "Блок призмита",
+  "block.techcraft.quantum_block": "Квантовый блок",
+  "block.techcraft.ruby_block": "Блок рубина",
+  "block.techcraft.silver_block": "Блок серебра",
+  "block.techcraft.steel_block": "Блок стали",
 
   "tooltip.techcraft.hold_shift": "§8Зажми §7Shift§8 для подробностей",
 
   "tooltip.techcraft.hammer.area": "§7⛏ Добыча:",
   "tooltip.techcraft.hammer.area.normal": "§7Обычный режим",
   "tooltip.techcraft.hammer.area.sneak": "§7Присев",
+
+  "tooltip.techcraft.drill.area": "§7⛏ Режимы добычи:",
+  "tooltip.techcraft.drill.energy": "Энергия: %s / %s",
+  "tooltip.techcraft.drill.cost": "Потребление: %s за блок",
 
   "tooltip.techcraft.for_craft": "✂ Используется в крафте",
   "tooltip.techcraft.damages_on_craft": "❤ Теряет прочность при крафте",

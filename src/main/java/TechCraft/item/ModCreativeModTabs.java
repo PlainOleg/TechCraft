@@ -20,7 +20,7 @@ public class ModCreativeModTabs {
     public static final Supplier<CreativeModeTab> TECHCRAFT_TAB = CREATIVE_MODE_TAB.register(
             "techcraft_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.Forge_Book.get()))
+                    .icon(() -> new ItemStack(ModItems.FORGE_BOOK.get()))
                     .title(Component.translatable("creativetab.techcraft.items"))
                     .displayItems(ModCreativeModTabs::addGeneralItems)
                     .build()
@@ -29,37 +29,97 @@ public class ModCreativeModTabs {
     public static final Supplier<CreativeModeTab> TECHCRAFT_MATERIALS_TAB = CREATIVE_MODE_TAB.register(
             "techcraft_materials",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.Tin_Ingot.get()))
+                    .icon(() -> new ItemStack(ModItems.TIN_INGOT.get()))
                     .title(Component.translatable("creativetab.techcraft.materials"))
                     .displayItems(ModCreativeModTabs::addMaterials)
                     .build()
     );
 
     private static final List<Supplier<? extends ItemLike>> GENERAL_ITEMS = List.of(
-            ModItems.Forge_Book,
-            ModItems.Cutter,
-            ModItems.Forge_Hammer
+            ModItems.FORGE_BOOK,
+            ModItems.CUTTER,
+            ModItems.FORGE_HAMMER,
+            ModItems.IRON_DRILL,
+            ModItems.DIAMOND_DRILL,
+            ModItems.NETHERITE_DRILL,
+            ModItems.QUANTUM_DRILL,
+
+            ModItems.PRISMITE_HELMET,
+            ModItems.PRISMITE_CHESTPLATE,
+            ModItems.PRISMITE_LEGGINGS,
+            ModItems.PRISMITE_BOOTS,
+
+            ModItems.QUANTUM_HELMET,
+            ModItems.QUANTUM_CHESTPLATE,
+            ModItems.QUANTUM_LEGGINGS,
+            ModItems.QUANTUM_BOOTS
     );
 
     private static final List<Supplier<? extends ItemLike>> MATERIAL_ITEMS = List.of(
-            ModItems.Raw_Tin,
-            ModItems.Tin_Ingot,
-            ModItems.Steel_Ingot,
+            ModItems.RAW_TIN,
+            ModItems.TIN_INGOT,
+            ModItems.STEEL_INGOT,
 
-            ModItems.Coal_Dust,
-            ModItems.Iron_Dust,
-            ModItems.Steel_Dust,
+            ModItems.COAL_DUST,
+            ModItems.IRON_DUST,
+            ModItems.STEEL_DUST,
 
-            ModItems.Tin_Plate,
-            ModItems.Copper_Plate,
-            ModItems.Iron_Plate,
-            ModItems.Gold_Plate,
-            ModItems.Steel_Plate,
+            ModItems.TIN_PLATE,
+            ModItems.COPPER_PLATE,
+            ModItems.IRON_PLATE,
+            ModItems.GOLD_PLATE,
+            ModItems.STEEL_PLATE,
 
-            ModBlocks.Raw_Tin_Block,
-            ModBlocks.Tin_Ore,
-            ModBlocks.Deepslate_Tin_Ore,
-            ModBlocks.Tin_Block,
+            ModItems.RAW_RUBBER,
+            ModItems.RUBBER,
+
+            ModItems.BRONZE_INGOT,
+            ModItems.NICKEL_INGOT,
+            ModItems.SILVER_INGOT,
+            ModItems.PRISMITE_INGOT,
+            ModItems.QUANTUM_INGOT,
+
+            ModItems.BRONZE_CABLE,
+            ModItems.COPPER_CABLE,
+            ModItems.GOLD_CABLE,
+            ModItems.IRON_CABLE,
+            ModItems.NICKEL_CABLE,
+            ModItems.SILVER_CABLE,
+            ModItems.STEEL_CABLE,
+            ModItems.TIN_CABLE,
+            ModItems.PRISMITE_CABLE,
+            ModItems.QUANTUM_CABLE,
+
+            ModItems.CIRCUIT,
+            ModItems.RESISTOR,
+            ModItems.TRANSISTOR,
+            ModItems.MAGNET,
+            ModItems.MOTOR,
+
+            ModItems.BATTERY,
+            ModItems.ACCUMULATOR,
+            ModItems.QUANTUM_BATTERY,
+            ModItems.ENERGY_CRYSTAL,
+
+            ModItems.CUT_RUBY,
+            ModItems.FLAWLESS_RUBY,
+            ModItems.PERFECT_RUBY,
+            ModItems.POLISHED_RUBY,
+            ModItems.RUBY_SHARD,
+
+            ModItems.BLUE_PLASMA_CORE,
+            ModItems.VIOLET_PLASMA_CORE,
+            ModItems.RAW_BLUE_CORE,
+            ModItems.RAW_VIOLET_CORE,
+
+            ModBlocks.TIN_ORE,
+            ModBlocks.TIN_BLOCK,
+            ModBlocks.BRONZE_BLOCK,
+            ModBlocks.PRISMITE_BLOCK,
+            ModBlocks.QUANTUM_BLOCK,
+            ModBlocks.RUBY_BLOCK,
+            ModBlocks.SILVER_BLOCK,
+            ModBlocks.STEEL_BLOCK,
             ModBlocks.ALLOY_SMELTER
     );
 

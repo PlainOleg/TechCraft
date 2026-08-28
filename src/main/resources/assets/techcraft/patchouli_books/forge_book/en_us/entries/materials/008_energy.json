@@ -1,0 +1,35 @@
+{
+  "name": "Energy Storage",
+  "icon": "techcraft:battery",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Energy storage items are used to power machines and tools. TechCraft adds several tiers of energy storage:$(br)• Battery$(br)• Accumulator$(br)• Quantum Battery$(br)• Energy Crystal"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:battery",
+      "title": "Battery",
+      "text": "Basic energy storage for small devices."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:accumulator",
+      "title": "Accumulator",
+      "text": "Medium-capacity energy storage for machines."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_battery",
+      "title": "Quantum Battery",
+      "text": "Advanced energy storage with massive capacity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:energy_crystal",
+      "title": "Energy Crystal",
+      "text": "Crystallized energy form used in high-tech applications."
+    }
+  ]
+}

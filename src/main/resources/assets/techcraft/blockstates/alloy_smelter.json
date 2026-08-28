@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "techcraft:block/alloy_smelter"
+    },
+    "facing=south": {
+      "model": "techcraft:block/alloy_smelter",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "techcraft:block/alloy_smelter",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "techcraft:block/alloy_smelter",
+      "y": 270
+    }
+  }
+}

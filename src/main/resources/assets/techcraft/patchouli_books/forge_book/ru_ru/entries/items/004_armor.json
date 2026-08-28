@@ -1,0 +1,59 @@
+{
+  "name": "Броня",
+  "icon": "techcraft:prismite_helmet",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "TechCraft добавляет продвинутые наборы брони с уникальными свойствами. Каждый набор обеспечивает разный уровень защиты и специальные способности:$(br)• Броня призмита$(br)• Квантовая броня"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_helmet",
+      "title": "Шлем призмита",
+      "text": "Шлем из призмита, обеспечивающий защиту уровня алмаза с уникальными преломляющими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_chestplate",
+      "title": "Нагрудник призмита",
+      "text": "Нагрудник из призмита, предлагающий отличную защиту."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_pants",
+      "title": "Поножи призмита",
+      "text": "Поножи из призмита, обеспечивающие хорошую защиту ног."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_boots",
+      "title": "Ботинки призмита",
+      "text": "Ботинки из призмита, предлагающие надежную защиту ног."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_helmet",
+      "title": "Квантовый шлем",
+      "text": "Эндгейм шлем с защитой уровня незерита и квантовыми свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_chestplate",
+      "title": "Квантовый нагрудник",
+      "text": "Эндгейм нагрудник с защитой уровня незерита."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_pants",
+      "title": "Квантовые поножи",
+      "text": "Эндгейм поножи с защитой уровня незерита."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_boots",
+      "title": "Квантовые ботинки",
+      "text": "Эндгейм ботинки с защитой уровня незерита."
+    }
+  ]
+}

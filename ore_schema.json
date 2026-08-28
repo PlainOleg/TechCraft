@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ore Definition",
+  "description": "Схема для определения руды в моде TechCraft",
+  "type": "object",
+  "required": ["name", "mining_level", "height_range", "vein_size", "drops"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Имя руды (без _ore суффикса). Например: 'tin', 'copper', 'silver'"
+    },
+    "mining_level": {
+      "type": "string",
+      "description": "Уровень кирки для добычи",
+      "enum": ["wooden", "stone", "iron", "diamond", "netherite"],
+      "default": "stone"
+    },
+    "height_range": {
+      "type": "object",
+      "description": "Диапазон высот генерации",
+      "properties": {
+        "min": {
+          "type": "integer",
+          "description": "Минимальная высота (Y)"
+        },
+        "max": {
+          "type": "integer",
+          "description": "Максимальная высота (Y)"
+        }
+      },
+      "required": ["min", "max"]
+    },
+    "vein_size": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Фиксированный размер жилы"
+        },
+        {
+          "type": "object",
+          "description": "Диапазон размера жилы",
+          "properties": {
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            }
+          },
+          "required": ["min", "max"]
+        }
+      ],
+      "default": 10
+    },
+    "count_per_chunk": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Фиксированное количество жил на чанк (обычная руда)"
+        },
+        {
+          "type": "object",
+          "description": "Редкая руда с шансом",
+          "properties": {
+            "rare": {
+              "type": "boolean",
+              "description": "Является ли руда редкой"
+            },
+            "chance": {
+              "type": "integer",
+              "description": "Шанс 1 из N (например, 10 = 1 шанс из 10)"
+            }
+          },
+          "required": ["rare", "chance"]
+        }
+      ],
+      "default": 16
+    },
+    "drops": {
+      "type": "object",
+      "description": "Что выпадает при добыче",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["block", "item"],
+          "description": "Выпадает сам блок или предмет"
+        },
+        "item": {
+          "type": "string",
+          "description": "ID предмета (если type=item)"
+        },
+        "amount": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "description": "Фиксированное количество"
+            },
+            {
+              "type": "object",
+              "description": "Диапазон количества",
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                }
+              },
+              "required": ["min", "max"]
+            }
+          ],
+          "default": 1
+        },
+        "fortune_bonus": {
+          "type": "boolean",
+          "description": "Применяется ли Fortune к количеству",
+          "default": true
+        }
+      },
+      "required": ["type"]
+    },
+    "experience": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Фиксированный опыт"
+        },
+        {
+          "type": "object",
+          "description": "Диапазон опыта",
+          "properties": {
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            }
+          },
+          "required": ["min", "max"]
+        }
+      ],
+      "default": 0
+    },
+    "properties": {
+      "type": "object",
+      "description": "Свойства блоков",
+      "properties": {
+        "stone": {
+          "type": "object",
+          "description": "Свойства каменной версии",
+          "properties": {
+            "hardness": {
+              "type": "number",
+              "default": 3.0
+            },
+            "resistance": {
+              "type": "number",
+              "default": 3.0
+            }
+          }
+        },
+        "deepslate": {
+          "type": "object",
+          "description": "Свойства deepslate версии",
+          "properties": {
+            "hardness": {
+              "type": "number",
+              "default": 4.5
+            },
+            "resistance": {
+              "type": "number",
+              "default": 3.0
+            }
+          }
+        }
+      }
+    },
+    "generate_deepslate": {
+      "type": "boolean",
+      "description": "Генерировать ли deepslate версию",
+      "default": true
+    },
+    "raw_block": {
+      "type": "object",
+      "description": "Настройки блока сырого металла (как raw copper block)",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Генерировать ли блок сырого металла",
+          "default": false
+        },
+        "vein_size": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "description": "Фиксированный размер жилы"
+            },
+            {
+              "type": "object",
+              "description": "Диапазон размера жилы",
+              "properties": {
+                "min": {
+                  "type": "integer"
+                },
+                "max": {
+                  "type": "integer"
+                }
+              },
+              "required": ["min", "max"]
+            }
+          ],
+          "default": 20
+        },
+        "count_per_chunk": {
+          "type": "integer",
+          "description": "Количество жил на чанк",
+          "default": 8
+        },
+        "properties": {
+          "type": "object",
+          "description": "Свойства блока сырого металла",
+          "properties": {
+            "hardness": {
+              "type": "number",
+              "default": 3.0
+            },
+            "resistance": {
+              "type": "number",
+              "default": 3.0
+            }
+          }
+        }
+      }
+    },
+    "storage_block": {
+      "type": "object",
+      "description": "Настройки блока хранения металла (как tin block)",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Генерировать ли блок хранения металла",
+          "default": false
+        },
+        "properties": {
+          "type": "object",
+          "description": "Свойства блока хранения",
+          "properties": {
+            "hardness": {
+              "type": "number",
+              "default": 3.0
+            },
+            "resistance": {
+              "type": "number",
+              "default": 3.0
+            }
+          }
+        }
+      }
+    }
+  }
+}

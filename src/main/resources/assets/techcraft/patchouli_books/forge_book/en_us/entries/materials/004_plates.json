@@ -1,0 +1,36 @@
+{
+  "name": "Plates",
+  "icon": "techcraft:tin_plate",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Plates are flat metal sheets used in crafting various components. You can craft plates from various metals:$(br)• Tin Plate$(br)• Iron Plate$(br)• Gold Plate$(br)• Copper Plate$(br)• Steel Plate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:tin_plate",
+      "title": "Tin Plate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:iron_plate",
+      "title": "Iron Plate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:gold_plate",
+      "title": "Gold Plate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:copper_plate",
+      "title": "Copper Plate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_plate",
+      "title": "Steel Plate"
+    }
+  ]
+}

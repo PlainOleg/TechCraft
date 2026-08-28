@@ -1,0 +1,71 @@
+{
+  "name": "Кабели",
+  "icon": "techcraft:copper_cable",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Кабели - это проводящие провода, используемые для передачи энергии между машинами. Разные материалы имеют разную проводимость и емкость:$(br)• Бронзовый кабель (Базовый)$(br)• Медный кабель$(br)• Золотой кабель$(br)• Железный кабель$(br)• Никелевый кабель$(br)• Серебряный кабель$(br)• Стальной кабель$(br)• Оловянный кабель$(br)• Кабель призмита$(br)• Квантовый кабель (Продвинутый)"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_cable",
+      "title": "Бронзовый кабель",
+      "text": "Базовый кабель для передачи энергии низкого напряжения."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_cable",
+      "title": "Медный кабель",
+      "text": "Стандартный кабель для передачи энергии среднего уровня."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:gold_cable",
+      "title": "Золотой кабель",
+      "text": "Кабель с высокой проводимостью для эффективной передачи энергии."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_cable",
+      "title": "Железный кабель",
+      "text": "Прочный кабель со средней проводимостью."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_cable",
+      "title": "Никелевый кабель",
+      "text": "Коррозионностойкий кабель для суровых условий."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_cable",
+      "title": "Серебряный кабель",
+      "text": "Высокопроводящий кабель с магическими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_cable",
+      "title": "Стальной кабель",
+      "text": "Очень прочный кабель для тяжелых условий эксплуатации."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_cable",
+      "title": "Оловянный кабель",
+      "text": "Базовый недорогой кабель для простых установок."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_cable",
+      "title": "Кабель призмита",
+      "text": "Продвинутый кабель с уникальными преломляющими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_cable",
+      "title": "Квантовый кабель",
+      "text": "Эндгейм кабель с возможностями квантовой передачи энергии."
+    }
+  ]
+}

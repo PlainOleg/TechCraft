@@ -4,6 +4,7 @@ import TechCraft.block.ModBlockEntities;
 import TechCraft.block.ModBlocks;
 import TechCraft.block.ModMenuTypes;
 import TechCraft.block.ModRecipeTypes;
+import TechCraft.item.ModArmorMaterials;
 import TechCraft.item.ModCreativeModTabs;
 import TechCraft.item.ModItems;
 import org.slf4j.Logger;
@@ -44,6 +45,7 @@ public class TechCraft {
         ModMenuTypes.register(modEventBus);
         ModRecipeTypes.register(modEventBus);
         ModCreativeModTabs.register(modEventBus);
+        ModArmorMaterials.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

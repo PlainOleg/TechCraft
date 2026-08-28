@@ -1,0 +1,41 @@
+{
+  "name": "Ruby Items",
+  "icon": "techcraft:cut_ruby",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Rubies are precious gemstones used in advanced crafting. They can be processed into various forms:$(br)• Cut Ruby$(br)• Flawless Ruby$(br)• Perfect Ruby$(br)• Polished Ruby$(br)• Ruby Shard"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:cut_ruby",
+      "title": "Cut Ruby",
+      "text": "Basic cut ruby used in crafting."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:flawless_ruby",
+      "title": "Flawless Ruby",
+      "text": "High-quality ruby without imperfections."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:perfect_ruby",
+      "title": "Perfect Ruby",
+      "text": "Exceptionally pure ruby with perfect clarity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:polished_ruby",
+      "title": "Polished Ruby",
+      "text": "Ruby polished to a brilliant shine."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:ruby_shard",
+      "title": "Ruby Shard",
+      "text": "Small fragment of ruby, used in crafting."
+    }
+  ]
+}

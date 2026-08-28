@@ -1,0 +1,31 @@
+{
+  "name": "Dusts",
+  "icon": "techcraft:coal_dust",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Dusts are powdered materials created by using the Forge Hammer on various items. They are used in crafting and can be combined to create Steel Ingots.$(br)$(br)Available dusts:$(br)• Coal Dust$(br)• Iron Dust$(br)• Steel Dust"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:coal_dust",
+      "title": "Coal Dust"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:iron_dust",
+      "title": "Iron Dust"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_dust",
+      "title": "Steel Dust"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:steel_ingot_from_dusts",
+      "title": "Steel from Dusts"
+    }
+  ]
+}

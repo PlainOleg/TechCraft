@@ -1,0 +1,35 @@
+{
+  "name": "Плазменные ядра",
+  "icon": "techcraft:blue_plasma_core",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Плазменные ядра - это продвинутые источники энергии, используемые в эндгейм технологиях. Они бывают разных типов и уровней чистоты:$(br)• Синее плазменное ядро$(br)• Фиолетовое плазменное ядро$(br)• Сырое синее ядро$(br)• Сырое фиолетовое ядро"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:blue_plasma_core",
+      "title": "Синее плазменное ядро",
+      "text": "Очищенное синее плазменное ядро, используемое в продвинутых машинах."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:violet_plasma_core",
+      "title": "Фиолетовое плазменное ядро",
+      "text": "Высокоэнергетическое фиолетовое плазменное ядро для эндгейм технологий."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_blue_core",
+      "title": "Сырое синее ядро",
+      "text": "Неочищенное синее плазменное ядро, требует переработки."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_violet_core",
+      "title": "Сырое фиолетовое ядро",
+      "text": "Неочищенное фиолетовое плазменное ядро, требует переработки."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Tin Ores",
+  "icon": "techcraft:tin_ore",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Tin Ore is the primary source of Tin in TechCraft. It can be found in the Overworld and mined with a stone pickaxe or better.$(br)$(br)Height Range: Y -16 to 112$(br)Vein Size: 10$(br)Veins per Chunk: 16"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_ore",
+      "title": "Tin Ore",
+      "text": "Found in stone layers. Drops 2 Raw Tin when mined. Fortune bonus applies."
+    }
+  ]
+}

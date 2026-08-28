@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/craft/alloy_smelter_side",
+    "down": "techcraft:block/craft/alloy_smelter_down",
+    "up": "techcraft:block/craft/alloy_smelter_up",
+    "north": "techcraft:block/craft/alloy_smelter_front",
+    "south": "techcraft:block/craft/alloy_smelter_side",
+    "east": "techcraft:block/craft/alloy_smelter_side",
+    "west": "techcraft:block/craft/alloy_smelter_side"
+  }
+}

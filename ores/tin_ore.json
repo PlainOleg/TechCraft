@@ -1,0 +1,44 @@
+{
+  "name": "tin",
+  "mining_level": "stone",
+  "height_range": {
+    "min": -16,
+    "max": 112
+  },
+  "vein_size": 10,
+  "count_per_chunk": 16,
+  "drops": {
+    "type": "item",
+    "item": "techcraft:raw_tin",
+    "amount": 2,
+    "fortune_bonus": true
+  },
+  "experience": 0,
+  "properties": {
+    "stone": {
+      "hardness": 3.0,
+      "resistance": 3.0
+    },
+    "deepslate": {
+      "hardness": 4.5,
+      "resistance": 3.0
+    }
+  },
+  "generate_deepslate": true,
+  "raw_block": {
+    "enabled": false,
+    "vein_size": 20,
+    "count_per_chunk": 8,
+    "properties": {
+      "hardness": 3.0,
+      "resistance": 3.0
+    }
+  },
+  "storage_block": {
+    "enabled": true,
+    "properties": {
+      "hardness": 3.0,
+      "resistance": 3.0
+    }
+  }
+}

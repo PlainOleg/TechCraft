@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "steel_ingot",
+  "ingredients": [
+    {
+      "item": "techcraft:coal_dust"
+    },
+    {
+      "item": "techcraft:iron_dust"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "techcraft:steel_dust"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Raw Tin",
+  "icon": "techcraft:tin_raw",
+  "category": "techcraft:materials",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_raw",
+      "title": "Raw Tin",
+      "text": "Raw Tin is the basic resource you can obtain by mining Tin Ore. It can be smelted into Tin Ingots or crafted into Raw Tin Blocks for storage."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "techcraft:raw_tin_block",
+      "title": "Raw Tin Block"
+    }
+  ]
+}

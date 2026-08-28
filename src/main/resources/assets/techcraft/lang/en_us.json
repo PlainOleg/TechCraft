@@ -4,6 +4,9 @@
   "item.techcraft.tin_ingot": "Tin Ingot",
   "item.techcraft.steel_ingot": "Steel Ingot",
 
+  "item.techcraft.raw_rubber": "Raw Rubber",
+  "item.techcraft.rubber": "Rubber",
+
   "item.techcraft.coal_dust": "Coal Dust",
   "item.techcraft.iron_dust": "Iron Dust",
   "item.techcraft.steel_dust": "Steel Dust",
@@ -14,10 +17,63 @@
   "item.techcraft.iron_plate": "Iron Plate",
   "item.techcraft.steel_plate": "Steel Plate",
 
+  "item.techcraft.bronze_ingot": "Bronze Ingot",
+  "item.techcraft.nickel_ingot": "Nickel Ingot",
+  "item.techcraft.silver_ingot": "Silver Ingot",
+  "item.techcraft.prismite_ingot": "Prismite Ingot",
+  "item.techcraft.quantum_ingot": "Quantum Ingot",
+
+  "item.techcraft.bronze_cable": "Bronze Cable",
+  "item.techcraft.copper_cable": "Copper Cable",
+  "item.techcraft.gold_cable": "Gold Cable",
+  "item.techcraft.iron_cable": "Iron Cable",
+  "item.techcraft.nickel_cable": "Nickel Cable",
+  "item.techcraft.silver_cable": "Silver Cable",
+  "item.techcraft.steel_cable": "Steel Cable",
+  "item.techcraft.tin_cable": "Tin Cable",
+  "item.techcraft.prismite_cable": "Prismite Cable",
+  "item.techcraft.quantum_cable": "Quantum Cable",
+
+  "item.techcraft.circuit": "Circuit",
+  "item.techcraft.resistor": "Resistor",
+  "item.techcraft.transistor": "Transistor",
+  "item.techcraft.magnet": "Magnet",
+  "item.techcraft.motor": "Motor",
+
+  "item.techcraft.battery": "Battery",
+  "item.techcraft.accumulator": "Accumulator",
+  "item.techcraft.quantum_battery": "Quantum Battery",
+  "item.techcraft.energy_crystal": "Energy Crystal",
+
+  "item.techcraft.cut_ruby": "Cut Ruby",
+  "item.techcraft.flawless_ruby": "Flawless Ruby",
+  "item.techcraft.perfect_ruby": "Perfect Ruby",
+  "item.techcraft.polished_ruby": "Polished Ruby",
+  "item.techcraft.ruby_shard": "Ruby Shard",
+
+  "item.techcraft.blue_plasma_core": "Blue Plasma Core",
+  "item.techcraft.violet_plasma_core": "Violet Plasma Core",
+  "item.techcraft.raw_blue_core": "Raw Blue Core",
+  "item.techcraft.raw_violet_core": "Raw Violet Core",
+
+  "item.techcraft.prismite_helmet": "Prismite Helmet",
+  "item.techcraft.prismite_chestplate": "Prismite Chestplate",
+  "item.techcraft.prismite_leggings": "Prismite Leggings",
+  "item.techcraft.prismite_boots": "Prismite Boots",
+
+  "item.techcraft.quantum_helmet": "Quantum Helmet",
+  "item.techcraft.quantum_chestplate": "Quantum Chestplate",
+  "item.techcraft.quantum_leggings": "Quantum Leggings",
+  "item.techcraft.quantum_boots": "Quantum Boots",
+
 
   "item.techcraft.forge_hammer": "Forge Hammer",
   "item.techcraft.cutter": "Cutter",
   "item.techcraft.forge_book": "Forge Book",
+  "item.techcraft.iron_drill": "Iron Drill",
+  "item.techcraft.diamond_drill": "Diamond Drill",
+  "item.techcraft.netherite_drill": "Netherite Drill",
+  "item.techcraft.quantum_drill": "Quantum Drill",
   "item.techcraft.capacity_upgrade_t2": "Capacity Module II",
   "item.techcraft.capacity_upgrade_t3": "Capacity Module III",
   "item.techcraft.temp_upgrade_t2": "Temperature Module II",
@@ -28,17 +84,25 @@
   "book.techcraft.forge_book.name": "Forge Book",
   "book.techcraft.forge_book.landing": "A TechCraft mod guide, created as a handbook in case the player wants to dive deeper into the mod's mechanics or has any questions.",
 
-  "block.techcraft.raw_tin_block": "Block of Raw Tin",
   "block.techcraft.tin_block": "Block of Tin",
   "block.techcraft.tin_ore": "Tin Ore",
-  "block.techcraft.deepslate_tin_ore": "Deepslate Tin Ore",
   "block.techcraft.alloy_smelter": "Alloy Smelter",
+  "block.techcraft.bronze_block": "Block of Bronze",
+  "block.techcraft.prismite_block": "Block of Prismite",
+  "block.techcraft.quantum_block": "Block of Quantum",
+  "block.techcraft.ruby_block": "Block of Ruby",
+  "block.techcraft.silver_block": "Block of Silver",
+  "block.techcraft.steel_block": "Block of Steel",
 
   "tooltip.techcraft.hold_shift": "§8Hold §7Shift§8 for details",
 
   "tooltip.techcraft.hammer.area": "§7⛏ Mining:",
   "tooltip.techcraft.hammer.area.normal": "§7Normal",
   "tooltip.techcraft.hammer.area.sneak": "§7Sneaking",
+
+  "tooltip.techcraft.drill.area": "§7⛏ Mining Modes:",
+  "tooltip.techcraft.drill.energy": "Energy: %s / %s",
+  "tooltip.techcraft.drill.cost": "Cost: %s per block",
 
   "tooltip.techcraft.for_craft": "§7Used in crafting",
   "tooltip.techcraft.damages_on_craft": "§cDamaged when used in crafting",

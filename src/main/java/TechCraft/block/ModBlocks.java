@@ -3,12 +3,10 @@ package TechCraft.block;
 import TechCraft.TechCraft;
 import TechCraft.item.ModItems;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -22,50 +20,51 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(TechCraft.MOD_ID);
 
-    public static final DeferredBlock<Block> Tin_Ore;
-    public static final DeferredBlock<Block> Deepslate_Tin_Ore;
-    public static final DeferredBlock<Block> Raw_Tin_Block;
-    public static final DeferredBlock<Block> Tin_Block;
+    public static final DeferredBlock<Block> TIN_ORE;
+    public static final DeferredBlock<Block> TIN_BLOCK;
     public static final DeferredBlock<Block> ALLOY_SMELTER;
+    public static final DeferredBlock<Block> BRONZE_BLOCK;
+    public static final DeferredBlock<Block> PRISMITE_BLOCK;
+    public static final DeferredBlock<Block> QUANTUM_BLOCK;
+    public static final DeferredBlock<Block> RUBY_BLOCK;
+    public static final DeferredBlock<Block> SILVER_BLOCK;
+    public static final DeferredBlock<Block> STEEL_BLOCK;
 
     static {
-        Tin_Ore = registerBlock("tin_ore", () -> new DropExperienceBlock(
+        TIN_ORE = registerBlock("tin_ore", () -> new DropExperienceBlock(
             ConstantInt.of(0),
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.STONE)
-                .instrument(NoteBlockInstrument.BASEDRUM)
-                .requiresCorrectToolForDrops()
-                .strength(3.0F, 3.0F)));
-        Deepslate_Tin_Ore = registerBlock("deepslate_tin_ore", () -> new DropExperienceBlock(
-            ConstantInt.of(0),
-            BlockBehaviour.Properties.ofLegacyCopy(ModBlocks.Tin_Ore.get())
-                .mapColor(MapColor.DEEPSLATE)
-                .strength(4.5F, 3.0F)
-                .sound(SoundType.DEEPSLATE)));
-        Raw_Tin_Block = registerBlock("raw_tin_block", () -> new Block(
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.METAL)
-                .instrument(NoteBlockInstrument.BASEDRUM)
-                .requiresCorrectToolForDrops()
-                .strength(3.0F, 3.0F)));
-        Tin_Block = registerBlock("tin_block", () -> new Block(
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.METAL)
-                .instrument(NoteBlockInstrument.BASEDRUM)
-                .requiresCorrectToolForDrops()
-                .strength(3.0F, 3.0F)));
-        ALLOY_SMELTER = registerBlock("alloy_smelter", () -> new AlloySmelterBlock(
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.METAL)
-                .instrument(NoteBlockInstrument.BASEDRUM)
-                .requiresCorrectToolForDrops()
-                .strength(3.5F, 4.0F)));
+            metalOreProperties(MapColor.STONE, 3.0F)
+        ));
+        TIN_BLOCK = registerBlock("tin_block", () -> new Block(metalProperties()));
+        ALLOY_SMELTER = registerBlock("alloy_smelter", () -> new AlloySmelterBlock(metalProperties().strength(3.5F, 3.5F)));
+        BRONZE_BLOCK = registerBlock("bronze_block", () -> new Block(metalProperties()));
+        PRISMITE_BLOCK = registerBlock("prismite_block", () -> new Block(metalProperties()));
+        QUANTUM_BLOCK = registerBlock("quantum_block", () -> new Block(metalProperties()));
+        RUBY_BLOCK = registerBlock("ruby_block", () -> new Block(metalProperties()));
+        SILVER_BLOCK = registerBlock("silver_block", () -> new Block(metalProperties()));
+        STEEL_BLOCK = registerBlock("steel_block", () -> new Block(metalProperties()));
+    }
+
+    private static BlockBehaviour.Properties metalProperties() {
+        return BlockBehaviour.Properties.of()
+            .mapColor(MapColor.METAL)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(3.0F, 3.0F);
+    }
+
+    private static BlockBehaviour.Properties metalOreProperties(MapColor color, float strength) {
+        return BlockBehaviour.Properties.of()
+            .mapColor(color)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(strength, strength);
     }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
+        DeferredBlock<T> registeredBlock = BLOCKS.register(name, block);
+        registerBlockItem(name, registeredBlock);
+        return registeredBlock;
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {

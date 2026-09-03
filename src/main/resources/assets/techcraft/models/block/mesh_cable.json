@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "techcraft:block/mesh_cable"
+    "particle": "techcraft:block/mesh_cable_side",
+    "north": "techcraft:block/mesh_cable_front",
+    "south": "techcraft:block/mesh_cable_side",
+    "east": "techcraft:block/mesh_cable_side",
+    "west": "techcraft:block/mesh_cable_side",
+    "up": "techcraft:block/mesh_cable_top",
+    "down": "techcraft:block/mesh_cable_side"
   }
 }

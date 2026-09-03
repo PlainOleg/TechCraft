@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
  */
 public class SolarPanelBankScreen extends AbstractContainerScreen<SolarPanelBankMenu> {
     private static final ResourceLocation TEXTURE = 
-        ResourceLocation.fromNamespaceAndPath(TechCraft.TechCraft.MOD_ID, "textures/gui/solar_panel_bank.png");
+        ResourceLocation.fromNamespaceAndPath(TechCraft.TechCraft.MOD_ID, "textures/gui/container/solar_panel_bank.png");
     
     private static final int IMAGE_WIDTH = 176;
     private static final int IMAGE_HEIGHT = 188;

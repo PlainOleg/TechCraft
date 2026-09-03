@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "techcraft:raw_refractory_brick"
+  },
+  "result": {
+    "id": "techcraft:refractory_brick",
+    "count": 1
+  }
+}

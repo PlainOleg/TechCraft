@@ -2,6 +2,7 @@ package TechCraft.item;
 
 import TechCraft.TechCraft;
 import TechCraft.block.ModBlocks;
+import TechCraft.solar.ModSolarBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -43,6 +44,19 @@ public class ModCreativeModTabs {
             ModItems.DIAMOND_DRILL,
             ModItems.NETHERITE_DRILL,
             ModItems.QUANTUM_DRILL,
+            ModItems.PRISMITE_AXE,
+            ModItems.PRISMITE_BOW,
+            ModItems.PRISMITE_HOE,
+            ModItems.PRISMITE_PICKAXE,
+            ModItems.PRISMITE_SHOWER,
+            ModItems.PRISMITE_SWORD,
+            ModItems.QUANTUM_AXE,
+            ModItems.QUANTUM_BOW,
+            ModItems.QUANTUM_HOE,
+            ModItems.QUANTUM_PICKAXE,
+            ModItems.QUANTUM_SHOWER,
+            ModItems.QUANTUM_SWORD,
+            ModItems.QUANTUM_TRUE_SWORD,
 
             ModItems.PRISMITE_HELMET,
             ModItems.PRISMITE_CHESTPLATE,
@@ -62,12 +76,18 @@ public class ModCreativeModTabs {
 
             ModItems.COAL_DUST,
             ModItems.IRON_DUST,
+            ModItems.NICKEL_DUST,
             ModItems.STEEL_DUST,
 
             ModItems.TIN_PLATE,
             ModItems.COPPER_PLATE,
             ModItems.IRON_PLATE,
             ModItems.GOLD_PLATE,
+            ModItems.BRONZE_PLATE,
+            ModItems.NICKEL_PLATE,
+            ModItems.SILVER_PLATE,
+            ModItems.PRISMITE_PLATE,
+            ModItems.QUANTUM_PLATE,
             ModItems.STEEL_PLATE,
 
             ModItems.RAW_RUBBER,
@@ -120,7 +140,20 @@ public class ModCreativeModTabs {
             ModBlocks.RUBY_BLOCK,
             ModBlocks.SILVER_BLOCK,
             ModBlocks.STEEL_BLOCK,
-            ModBlocks.ALLOY_SMELTER
+            ModBlocks.RAW_REFACTORY_BRICK,
+            ModBlocks.REFRACTORY_BRICK,
+            ModBlocks.ALLOY_SMELTER,
+
+            // Solar panels
+            ModSolarBlocks.COPPER_SOLAR_PANEL,
+            ModSolarBlocks.SILICON_SOLAR_PANEL,
+            ModSolarBlocks.REINFORCED_SOLAR_PANEL,
+            ModSolarBlocks.PRISMATIC_SOLAR_PANEL,
+            ModSolarBlocks.RESONANT_SOLAR_PANEL,
+            ModSolarBlocks.FLUX_SOLAR_PANEL,
+            ModSolarBlocks.STELLAR_SOLAR_PANEL,
+            ModSolarBlocks.HELIOS_SOLAR_PANEL,
+            ModSolarBlocks.SOLAR_PANEL_BANK
     );
 
     private static void addGeneralItems(CreativeModeTab.ItemDisplayParameters params, CreativeModeTab.Output output) {

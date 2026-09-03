@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/solar_panel_bank_front",
+    "north": "techcraft:block/solar_panel_bank_front",
+    "south": "techcraft:block/solar_panel_bank_side",
+    "east": "techcraft:block/solar_panel_bank_side",
+    "west": "techcraft:block/solar_panel_bank_side",
+    "up": "techcraft:block/solar_panel_bank_top",
+    "down": "techcraft:block/solar_panel_bank_side"
+  }
+}

@@ -9,7 +9,12 @@ public enum MaterialType {
     IRON("iron"),
     GOLD("gold"),
     COPPER("copper"),
-    STEEL("steel");
+    STEEL("steel"),
+    BRONZE("bronze"),
+    NICKEL("nickel"),
+    SILVER("silver"),
+    PRISMITE("prismite"),
+    QUANTUM("quantum");
 
     private final String name;
 

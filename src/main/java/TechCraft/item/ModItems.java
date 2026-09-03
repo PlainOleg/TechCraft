@@ -3,6 +3,7 @@ package TechCraft.item;
 import TechCraft.TechCraft;
 import TechCraft.block.AlloySmelterBlockEntity;
 import TechCraft.item.custom.DamageOnCraftUseItem;
+import TechCraft.item.custom.QuantumArmorItem;
 import TechCraft.item.custom.DrillItem;
 import TechCraft.item.custom.HammerItem;
 import TechCraft.item.custom.PlateItem;
@@ -32,11 +33,11 @@ public class ModItems {
     }
 
     private static DeferredItem<Item> registerSimpleItem(String name) {
-        return ITEMS.register(name, () -> new Item(new Item.Properties()));
+        return ITEMS.register(name, () -> new Item(new Item.Properties().stacksTo(1)));
     }
 
     private static DeferredItem<DrillItem> registerDrill(String name, Tier tier, int maxDamage, int radius, int speed) {
-        return ITEMS.register(name, () -> new DrillItem(tier, maxDamage, radius, speed, new Item.Properties()));
+        return ITEMS.register(name, () -> new DrillItem(tier, maxDamage, radius, speed, new Item.Properties().stacksTo(1)));
     }
 
     private static DeferredItem<SmelterUpgradeItem> registerUpgrade(AlloySmelterBlockEntity.UpgradeType type, int tier) {
@@ -54,6 +55,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> COAL_DUST;
     public static final DeferredItem<Item> IRON_DUST;
+    public static final DeferredItem<Item> NICKEL_DUST;
     public static final DeferredItem<Item> STEEL_DUST;
 
     public static final DeferredItem<Item> TIN_PLATE;
@@ -61,6 +63,11 @@ public class ModItems {
     public static final DeferredItem<Item> GOLD_PLATE;
     public static final DeferredItem<Item> COPPER_PLATE;
     public static final DeferredItem<Item> STEEL_PLATE;
+    public static final DeferredItem<Item> BRONZE_PLATE;
+    public static final DeferredItem<Item> NICKEL_PLATE;
+    public static final DeferredItem<Item> SILVER_PLATE;
+    public static final DeferredItem<Item> PRISMITE_PLATE;
+    public static final DeferredItem<Item> QUANTUM_PLATE;
 
     public static final DeferredItem<Item> BRONZE_INGOT;
     public static final DeferredItem<Item> NICKEL_INGOT;
@@ -117,6 +124,20 @@ public class ModItems {
     public static final DeferredItem<SmelterUpgradeItem> EFFICIENCY_UPGRADE_T2;
     public static final DeferredItem<SmelterUpgradeItem> EFFICIENCY_UPGRADE_T3;
 
+    public static final DeferredItem<Item> PRISMITE_AXE;
+    public static final DeferredItem<Item> PRISMITE_BOW;
+    public static final DeferredItem<Item> PRISMITE_HOE;
+    public static final DeferredItem<Item> PRISMITE_PICKAXE;
+    public static final DeferredItem<Item> PRISMITE_SHOWER;
+    public static final DeferredItem<Item> PRISMITE_SWORD;
+    public static final DeferredItem<Item> QUANTUM_AXE;
+    public static final DeferredItem<Item> QUANTUM_BOW;
+    public static final DeferredItem<Item> QUANTUM_HOE;
+    public static final DeferredItem<Item> QUANTUM_PICKAXE;
+    public static final DeferredItem<Item> QUANTUM_SHOWER;
+    public static final DeferredItem<Item> QUANTUM_SWORD;
+    public static final DeferredItem<Item> QUANTUM_TRUE_SWORD;
+
     public static final DeferredItem<Item> PRISMITE_HELMET;
     public static final DeferredItem<Item> PRISMITE_CHESTPLATE;
     public static final DeferredItem<Item> PRISMITE_LEGGINGS;
@@ -135,12 +156,18 @@ public class ModItems {
         IRON_PLATE = registerPlate(MaterialType.IRON);
         GOLD_PLATE = registerPlate(MaterialType.GOLD);
         COPPER_PLATE = registerPlate(MaterialType.COPPER);
+        BRONZE_PLATE = registerPlate(MaterialType.BRONZE);
+        NICKEL_PLATE = registerPlate(MaterialType.NICKEL);
+        SILVER_PLATE = registerPlate(MaterialType.SILVER);
+        PRISMITE_PLATE = registerPlate(MaterialType.PRISMITE);
+        QUANTUM_PLATE = registerPlate(MaterialType.QUANTUM);
 
         STEEL_INGOT = registerMaterialItem(MaterialType.STEEL, "ingot");
         STEEL_PLATE = registerPlate(MaterialType.STEEL);
 
         COAL_DUST = registerSimpleItem("coal_dust");
         IRON_DUST = registerSimpleItem("iron_dust");
+        NICKEL_DUST = registerSimpleItem("nickel_dust");
         STEEL_DUST = registerSimpleItem("steel_dust");
 
         RAW_RUBBER = registerSimpleItem("raw_rubber");
@@ -185,17 +212,34 @@ public class ModItems {
         RAW_BLUE_CORE = registerSimpleItem("raw_blue_core");
         RAW_VIOLET_CORE = registerSimpleItem("raw_violet_core");
 
+        ITEMS.register("raw_tin", () -> new Item(new Item.Properties()));
+
         FORGE_BOOK = ITEMS.register("forge_book", () -> new ForgeBook(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).setNoRepair()));
 
         FORGE_HAMMER = ITEMS.register("forge_hammer", () ->
             new HammerItem(Tiers.IRON, FORGE_HAMMER_MINING_SIZE, new Item.Properties()
+                .stacksTo(1)
                 .component(DataComponents.MAX_DAMAGE, FORGE_HAMMER_DURABILITY)
                 .attributes(DiggerItem.createAttributes(Tiers.IRON, FORGE_HAMMER_ATTACK_DAMAGE, FORGE_HAMMER_ATTACK_DAMAGE_MODIFIER))
             )
         );
 
+        PRISMITE_AXE = ITEMS.register("prismite_axe", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_BOW = ITEMS.register("prismite_bow", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_HOE = ITEMS.register("prismite_hoe", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_PICKAXE = ITEMS.register("prismite_pickaxe", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_SHOWER = ITEMS.register("prismite_shower", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_SWORD = ITEMS.register("prismite_sword", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_AXE = ITEMS.register("quantum_axe", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_BOW = ITEMS.register("quantum_bow", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_HOE = ITEMS.register("quantum_hoe", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_PICKAXE = ITEMS.register("quantum_pickaxe", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_SHOWER = ITEMS.register("quantum_shower", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_SWORD = ITEMS.register("quantum_sword", () -> new Item(new Item.Properties().stacksTo(1)));
+        QUANTUM_TRUE_SWORD = ITEMS.register("quantum_true_sword", () -> new Item(new Item.Properties().stacksTo(1)));
+
         CUTTER = ITEMS.register("cutter", () ->
-            new DamageOnCraftUseItem(new Item.Properties().component(DataComponents.MAX_DAMAGE, CUTTER_DURABILITY)) {
+            new DamageOnCraftUseItem(new Item.Properties().stacksTo(1).component(DataComponents.MAX_DAMAGE, CUTTER_DURABILITY)) {
                 @Override
                 public boolean isRepairable(@Nonnull ItemStack stack) {
                     return false;
@@ -215,15 +259,15 @@ public class ModItems {
         EFFICIENCY_UPGRADE_T2 = registerUpgrade(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 2);
         EFFICIENCY_UPGRADE_T3 = registerUpgrade(AlloySmelterBlockEntity.UpgradeType.EFFICIENCY, 3);
 
-        PRISMITE_HELMET = ITEMS.register("prismite_helmet", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.HELMET, new Item.Properties()));
-        PRISMITE_CHESTPLATE = ITEMS.register("prismite_chestplate", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-        PRISMITE_LEGGINGS = ITEMS.register("prismite_leggings", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-        PRISMITE_BOOTS = ITEMS.register("prismite_boots", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.BOOTS, new Item.Properties()));
+        PRISMITE_HELMET = ITEMS.register("prismite_helmet", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1)));
+        PRISMITE_CHESTPLATE = ITEMS.register("prismite_chestplate", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1)));
+        PRISMITE_LEGGINGS = ITEMS.register("prismite_leggings", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1)));
+        PRISMITE_BOOTS = ITEMS.register("prismite_boots", () -> new ArmorItem(ModArmorMaterials.PRISMITE, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1)));
 
-        QUANTUM_HELMET = ITEMS.register("quantum_helmet", () -> new ArmorItem(ModArmorMaterials.QUANTUM, ArmorItem.Type.HELMET, new Item.Properties().rarity(Rarity.EPIC)));
-        QUANTUM_CHESTPLATE = ITEMS.register("quantum_chestplate", () -> new ArmorItem(ModArmorMaterials.QUANTUM, ArmorItem.Type.CHESTPLATE, new Item.Properties().rarity(Rarity.EPIC)));
-        QUANTUM_LEGGINGS = ITEMS.register("quantum_leggings", () -> new ArmorItem(ModArmorMaterials.QUANTUM, ArmorItem.Type.LEGGINGS, new Item.Properties().rarity(Rarity.EPIC)));
-        QUANTUM_BOOTS = ITEMS.register("quantum_boots", () -> new ArmorItem(ModArmorMaterials.QUANTUM, ArmorItem.Type.BOOTS, new Item.Properties().rarity(Rarity.EPIC)));
+        QUANTUM_HELMET = ITEMS.register("quantum_helmet", () -> new QuantumArmorItem(ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+        QUANTUM_CHESTPLATE = ITEMS.register("quantum_chestplate", () -> new QuantumArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+        QUANTUM_LEGGINGS = ITEMS.register("quantum_leggings", () -> new QuantumArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+        QUANTUM_BOOTS = ITEMS.register("quantum_boots", () -> new QuantumArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     }
 
     public static void register(IEventBus bus) {

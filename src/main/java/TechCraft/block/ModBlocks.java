@@ -29,6 +29,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RUBY_BLOCK;
     public static final DeferredBlock<Block> SILVER_BLOCK;
     public static final DeferredBlock<Block> STEEL_BLOCK;
+    public static final DeferredBlock<Block> RAW_REFACTORY_BRICK;
+    public static final DeferredBlock<Block> REFRACTORY_BRICK;
 
     static {
         TIN_ORE = registerBlock("tin_ore", () -> new DropExperienceBlock(
@@ -43,6 +45,8 @@ public class ModBlocks {
         RUBY_BLOCK = registerBlock("ruby_block", () -> new Block(metalProperties()));
         SILVER_BLOCK = registerBlock("silver_block", () -> new Block(metalProperties()));
         STEEL_BLOCK = registerBlock("steel_block", () -> new Block(metalProperties()));
+        RAW_REFACTORY_BRICK = registerBlock("raw_refractory_brick", () -> new Block(refractoryProperties()));
+        REFRACTORY_BRICK = registerBlock("refractory_brick", () -> new Block(refractoryProperties().strength(2.5F, 6.0F)));
     }
 
     private static BlockBehaviour.Properties metalProperties() {
@@ -51,6 +55,14 @@ public class ModBlocks {
             .instrument(NoteBlockInstrument.BASEDRUM)
             .requiresCorrectToolForDrops()
             .strength(3.0F, 3.0F);
+    }
+
+    private static BlockBehaviour.Properties refractoryProperties() {
+        return BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_ORANGE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(1.8F, 4.5F);
     }
 
     private static BlockBehaviour.Properties metalOreProperties(MapColor color, float strength) {

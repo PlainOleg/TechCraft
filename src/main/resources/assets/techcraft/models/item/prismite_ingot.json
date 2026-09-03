@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/prismite_ingot"
+    "layer0": "techcraft:item/ingot/prismite_ingot"
   }
 }

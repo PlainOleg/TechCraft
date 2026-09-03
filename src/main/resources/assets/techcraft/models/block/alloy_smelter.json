@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "techcraft:block/craft/alloy_smelter_side",
-    "down": "techcraft:block/craft/alloy_smelter_down",
-    "up": "techcraft:block/craft/alloy_smelter_up",
-    "north": "techcraft:block/craft/alloy_smelter_front",
-    "south": "techcraft:block/craft/alloy_smelter_side",
-    "east": "techcraft:block/craft/alloy_smelter_side",
-    "west": "techcraft:block/craft/alloy_smelter_side"
+    "particle": "techcraft:block/alloy_smelter/side",
+    "down": "techcraft:block/alloy_smelter/down",
+    "up": "techcraft:block/alloy_smelter/up",
+    "north": "techcraft:block/alloy_smelter/front",
+    "south": "techcraft:block/alloy_smelter/side",
+    "east": "techcraft:block/alloy_smelter/side",
+    "west": "techcraft:block/alloy_smelter/side"
   }
 }

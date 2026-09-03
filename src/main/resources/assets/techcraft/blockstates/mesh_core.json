@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "techcraft:block/mesh_core"
+    }
+  }
+}

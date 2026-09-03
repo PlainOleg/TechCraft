@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/coal_dust"
+    "layer0": "techcraft:item/dust/coal_dust"
   }
 }

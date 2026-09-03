@@ -2,6 +2,8 @@ package TechCraft;
 
 import TechCraft.block.AlloySmelterScreen;
 import TechCraft.block.ModMenuTypes;
+import TechCraft.solar.ModSolarMenuTypes;
+import TechCraft.solar.SolarPanelBankScreen;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -29,5 +31,6 @@ public class TechCraftClient {
     @SubscribeEvent
     static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.ALLOY_SMELTER.get(), AlloySmelterScreen::new);
+        event.register(ModSolarMenuTypes.SOLAR_PANEL_BANK.get(), SolarPanelBankScreen::new);
     }
 }

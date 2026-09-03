@@ -7,6 +7,10 @@ import TechCraft.block.ModRecipeTypes;
 import TechCraft.item.ModArmorMaterials;
 import TechCraft.item.ModCreativeModTabs;
 import TechCraft.item.ModItems;
+import TechCraft.lumenmesh.LumenMesh;
+import TechCraft.solar.ModSolarBlockEntities;
+import TechCraft.solar.ModSolarBlocks;
+import TechCraft.solar.ModSolarMenuTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -19,6 +23,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 
 /**
  * Главный класс мода TechCraft.
@@ -47,7 +52,15 @@ public class TechCraft {
         ModCreativeModTabs.register(modEventBus);
         ModArmorMaterials.register(modEventBus);
 
+        // Register solar panel system
+        ModSolarBlocks.register(modEventBus);
+        ModSolarBlockEntities.register(modEventBus);
+        ModSolarMenuTypes.register(modEventBus);
+
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        // Инициализация системы Lumen Mesh
+        new LumenMesh(modEventBus, modContainer);
     }
 
     /**
@@ -55,7 +68,11 @@ public class TechCraft {
      * @param event событие инициализации
      */
     private void commonSetup(FMLCommonSetupEvent event) {
-
+        // Populate solar panel type registry after all registrations are complete
+        event.enqueueWork(() -> {
+            ModSolarBlocks.populateTypeRegistry();
+            LOGGER.info("Solar panel type registry populated");
+        });
     }
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/steel_cable"
+    "layer0": "techcraft:item/cable/steel_cable"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/flawless_ruby"
+    "layer0": "techcraft:item/ruby/flawless_ruby"
   }
 }

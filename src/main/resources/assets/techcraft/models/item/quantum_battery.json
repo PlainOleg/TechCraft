@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/quantum_battery"
+    "layer0": "techcraft:item/battery/quantum_battery"
   }
 }

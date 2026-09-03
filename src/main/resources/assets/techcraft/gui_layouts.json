@@ -1,0 +1,7336 @@
+{
+  "namespace": "lumen_mesh",
+  "screens": [
+    {
+      "id": "cable_junction",
+      "texture": "lumen_mesh:textures/gui/cable_junction.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "mesh_core",
+      "texture": "lumen_mesh:textures/gui/mesh_core.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "energy_bridge",
+      "texture": "lumen_mesh:textures/gui/energy_bridge.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "pulse_buffer",
+      "texture": "lumen_mesh:textures/gui/pulse_buffer.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "coherence_stabilizer",
+      "texture": "lumen_mesh:textures/gui/coherence_stabilizer.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "prism_drive",
+      "texture": "lumen_mesh:textures/gui/prism_drive.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 0,
+          "x": 22,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 1,
+          "x": 44,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 2,
+          "x": 66,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 3,
+          "x": 88,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 4,
+          "x": 110,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "machine_slot",
+          "id": "drive",
+          "index": 5,
+          "x": 132,
+          "y": 36,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "item_terminal",
+      "texture": "lumen_mesh:textures/gui/item_terminal.png",
+      "width": 224,
+      "height": 222,
+      "widgets": [
+        {
+          "type": "search_field",
+          "id": "search",
+          "x": 14,
+          "y": 23,
+          "w": 172,
+          "h": 12
+        },
+        {
+          "type": "sort_button",
+          "x": 190,
+          "y": 22,
+          "w": 20,
+          "h": 14
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 0,
+          "x": 28,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 1,
+          "x": 46,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 2,
+          "x": 64,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 3,
+          "x": 82,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 4,
+          "x": 100,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 5,
+          "x": 118,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 6,
+          "x": 136,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 7,
+          "x": 154,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 8,
+          "x": 172,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 9,
+          "x": 28,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 10,
+          "x": 46,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 11,
+          "x": 64,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 12,
+          "x": 82,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 13,
+          "x": 100,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 14,
+          "x": 118,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 15,
+          "x": 136,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 16,
+          "x": 154,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 17,
+          "x": 172,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 18,
+          "x": 28,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 19,
+          "x": 46,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 20,
+          "x": 64,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 21,
+          "x": 82,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 22,
+          "x": 100,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 23,
+          "x": 118,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 24,
+          "x": 136,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 25,
+          "x": 154,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 26,
+          "x": 172,
+          "y": 79,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 27,
+          "x": 28,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 28,
+          "x": 46,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 29,
+          "x": 64,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 30,
+          "x": 82,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 31,
+          "x": 100,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 32,
+          "x": 118,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 33,
+          "x": 136,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 34,
+          "x": 154,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 35,
+          "x": 172,
+          "y": 97,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 36,
+          "x": 28,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 37,
+          "x": 46,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 38,
+          "x": 64,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 39,
+          "x": 82,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 40,
+          "x": 100,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 41,
+          "x": 118,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 42,
+          "x": 136,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 43,
+          "x": 154,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 44,
+          "x": 172,
+          "y": 115,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 28,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 46,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 64,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 82,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 100,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 118,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 136,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 154,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 172,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 28,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 46,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 64,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 82,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 100,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 118,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 136,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 154,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 172,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 28,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 46,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 64,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 82,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 100,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 118,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 136,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 154,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 172,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 28,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 46,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 64,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 82,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 100,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 118,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 136,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 154,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 172,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "crafting_terminal",
+      "texture": "lumen_mesh:textures/gui/crafting_terminal.png",
+      "width": 224,
+      "height": 222,
+      "widgets": [
+        {
+          "type": "search_field",
+          "id": "search",
+          "x": 14,
+          "y": 23,
+          "w": 172,
+          "h": 12
+        },
+        {
+          "type": "sort_button",
+          "x": 190,
+          "y": 22,
+          "w": 20,
+          "h": 14
+        },
+        {
+          "type": "crafting_slot",
+          "index": 0,
+          "x": 14,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 1,
+          "x": 32,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 2,
+          "x": 50,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 3,
+          "x": 14,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 4,
+          "x": 32,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 5,
+          "x": 50,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 6,
+          "x": 14,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 7,
+          "x": 32,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_slot",
+          "index": 8,
+          "x": 50,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "crafting_result",
+          "x": 82,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 0,
+          "x": 110,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 1,
+          "x": 128,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 2,
+          "x": 146,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 3,
+          "x": 164,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 4,
+          "x": 182,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 5,
+          "x": 200,
+          "y": 48,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 6,
+          "x": 110,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 7,
+          "x": 128,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 8,
+          "x": 146,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 9,
+          "x": 164,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 10,
+          "x": 182,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 11,
+          "x": 200,
+          "y": 66,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 12,
+          "x": 110,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 13,
+          "x": 128,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 14,
+          "x": 146,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 15,
+          "x": 164,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 16,
+          "x": 182,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 17,
+          "x": 200,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 18,
+          "x": 110,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 19,
+          "x": 128,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 20,
+          "x": 146,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 21,
+          "x": 164,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 22,
+          "x": 182,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "virtual_item_slot",
+          "index": 23,
+          "x": 200,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 28,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 46,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 64,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 82,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 100,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 118,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 136,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 154,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 172,
+          "y": 139,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 28,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 46,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 64,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 82,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 100,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 118,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 136,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 154,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 172,
+          "y": 157,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 28,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 46,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 64,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 82,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 100,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 118,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 136,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 154,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 172,
+          "y": 175,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 28,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 46,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 64,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 82,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 100,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 118,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 136,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 154,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 172,
+          "y": 197,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "blueprint_encoder",
+      "texture": "lumen_mesh:textures/gui/blueprint_encoder.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "blueprint_input",
+          "x": 28,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "blueprint_output",
+          "x": 128,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 0,
+          "x": 57,
+          "y": 25,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 1,
+          "x": 75,
+          "y": 25,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 2,
+          "x": 93,
+          "y": 25,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 3,
+          "x": 57,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 4,
+          "x": 75,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 5,
+          "x": 93,
+          "y": 43,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 6,
+          "x": 57,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 7,
+          "x": 75,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_recipe_slot",
+          "index": 8,
+          "x": 93,
+          "y": 61,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "fabricator",
+      "texture": "lumen_mesh:textures/gui/fabricator.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "input_slot",
+          "x": 30,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "progress_bar",
+          "x": 56,
+          "y": 38,
+          "w": 62,
+          "h": 10
+        },
+        {
+          "type": "output_slot",
+          "x": 128,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "crafting_processor",
+      "texture": "lumen_mesh:textures/gui/crafting_processor.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "import_node",
+      "texture": "lumen_mesh:textures/gui/import_node.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "ghost_filter_slot",
+          "index": 0,
+          "x": 20,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 1,
+          "x": 44,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 2,
+          "x": 68,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 3,
+          "x": 92,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 4,
+          "x": 116,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "mode_button",
+          "id": "filter_mode",
+          "x": 142,
+          "y": 32,
+          "w": 14,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "export_node",
+      "texture": "lumen_mesh:textures/gui/export_node.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "ghost_filter_slot",
+          "index": 0,
+          "x": 20,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 1,
+          "x": 44,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 2,
+          "x": 68,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 3,
+          "x": 92,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 4,
+          "x": 116,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "mode_button",
+          "id": "filter_mode",
+          "x": 142,
+          "y": 32,
+          "w": 14,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "storage_link",
+      "texture": "lumen_mesh:textures/gui/storage_link.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "ghost_filter_slot",
+          "index": 0,
+          "x": 20,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 1,
+          "x": 44,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 2,
+          "x": 68,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 3,
+          "x": 92,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 4,
+          "x": 116,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "mode_button",
+          "id": "filter_mode",
+          "x": 142,
+          "y": 32,
+          "w": 14,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "machine_interface",
+      "texture": "lumen_mesh:textures/gui/machine_interface.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "pattern_slot",
+          "index": 0,
+          "x": 18,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "pattern_slot",
+          "index": 1,
+          "x": 40,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "pattern_slot",
+          "index": 2,
+          "x": 62,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "pattern_slot",
+          "index": 3,
+          "x": 84,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "pattern_slot",
+          "index": 4,
+          "x": 106,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "pattern_slot",
+          "index": 5,
+          "x": 128,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "level_keeper",
+      "texture": "lumen_mesh:textures/gui/level_keeper.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "ghost_filter_slot",
+          "index": 0,
+          "x": 20,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 1,
+          "x": 44,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 2,
+          "x": 68,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 3,
+          "x": 92,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "ghost_filter_slot",
+          "index": 4,
+          "x": 116,
+          "y": 32,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "mode_button",
+          "id": "filter_mode",
+          "x": 142,
+          "y": 32,
+          "w": 14,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "stock_monitor",
+      "texture": "lumen_mesh:textures/gui/stock_monitor.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "wireless_relay",
+      "texture": "lumen_mesh:textures/gui/wireless_relay.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 88,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 132,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "quantum_bridge",
+      "texture": "lumen_mesh:textures/gui/quantum_bridge.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "id": "security_console",
+      "texture": "lumen_mesh:textures/gui/security_console.png",
+      "width": 224,
+      "height": 222,
+      "widgets": [
+        {
+          "type": "status_bar",
+          "id": "energy",
+          "x": 70,
+          "y": 32,
+          "w": 136,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "bandwidth",
+          "x": 70,
+          "y": 41,
+          "w": 136,
+          "h": 6
+        },
+        {
+          "type": "status_bar",
+          "id": "coherence",
+          "x": 70,
+          "y": 50,
+          "w": 136,
+          "h": 6
+        },
+        {
+          "type": "button",
+          "id": "configure",
+          "x": 180,
+          "y": 62,
+          "w": 26,
+          "h": 12
+        },
+        {
+          "type": "permission_button",
+          "index": 0,
+          "x": 18,
+          "y": 106,
+          "w": 40,
+          "h": 14
+        },
+        {
+          "type": "permission_button",
+          "index": 1,
+          "x": 66,
+          "y": 106,
+          "w": 40,
+          "h": 14
+        },
+        {
+          "type": "permission_button",
+          "index": 2,
+          "x": 114,
+          "y": 106,
+          "w": 40,
+          "h": 14
+        },
+        {
+          "type": "permission_button",
+          "index": 3,
+          "x": 162,
+          "y": 106,
+          "w": 40,
+          "h": 14
+        }
+      ]
+    },
+    {
+      "id": "matter_condenser",
+      "texture": "lumen_mesh:textures/gui/matter_condenser.png",
+      "width": 176,
+      "height": 166,
+      "widgets": [
+        {
+          "type": "input_slot",
+          "x": 30,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "progress_bar",
+          "x": 56,
+          "y": 38,
+          "w": 62,
+          "h": 10
+        },
+        {
+          "type": "output_slot",
+          "x": 128,
+          "y": 34,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 9,
+          "x": 7,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 10,
+          "x": 25,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 11,
+          "x": 43,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 12,
+          "x": 61,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 13,
+          "x": 79,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 14,
+          "x": 97,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 15,
+          "x": 115,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 16,
+          "x": 133,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 17,
+          "x": 151,
+          "y": 84,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 18,
+          "x": 7,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 19,
+          "x": 25,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 20,
+          "x": 43,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 21,
+          "x": 61,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 22,
+          "x": 79,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 23,
+          "x": 97,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 24,
+          "x": 115,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 25,
+          "x": 133,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 26,
+          "x": 151,
+          "y": 102,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 27,
+          "x": 7,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 28,
+          "x": 25,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 29,
+          "x": 43,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 30,
+          "x": 61,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 31,
+          "x": 79,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 32,
+          "x": 97,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 33,
+          "x": 115,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 34,
+          "x": 133,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "player_slot",
+          "index": 35,
+          "x": 151,
+          "y": 120,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 0,
+          "x": 7,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 1,
+          "x": 25,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 2,
+          "x": 43,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 3,
+          "x": 61,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 4,
+          "x": 79,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 5,
+          "x": 97,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 6,
+          "x": 115,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 7,
+          "x": 133,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        },
+        {
+          "type": "hotbar_slot",
+          "index": 8,
+          "x": 151,
+          "y": 142,
+          "w": 18,
+          "h": 18
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/copper_plate"
+    "layer0": "techcraft:item/plate/copper_plate"
   }
 }

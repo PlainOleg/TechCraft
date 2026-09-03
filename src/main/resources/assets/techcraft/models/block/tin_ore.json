@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "techcraft:block/ore/tin"
+    "all": "techcraft:block/stack/tin"
   }
 }

@@ -129,8 +129,7 @@ public class EnergyBridgeBlockEntity extends BlockEntity implements LumenNetwork
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        // TODO: Создать меню для энергомоста
-        return null;
+        return new TechCraft.lumenmesh.menu.EnergyBridgeMenu(containerId, playerInventory, this);
     }
 
     @Override

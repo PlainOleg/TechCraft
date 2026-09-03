@@ -4,6 +4,9 @@ import TechCraft.block.AlloySmelterScreen;
 import TechCraft.block.ModMenuTypes;
 import TechCraft.solar.ModSolarMenuTypes;
 import TechCraft.solar.SolarPanelBankScreen;
+import TechCraft.lumenmesh.ModLumenMenuTypes;
+import TechCraft.lumenmesh.client.MeshCoreScreen;
+import TechCraft.lumenmesh.client.EnergyBridgeScreen;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,5 +35,7 @@ public class TechCraftClient {
     static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.ALLOY_SMELTER.get(), AlloySmelterScreen::new);
         event.register(ModSolarMenuTypes.SOLAR_PANEL_BANK.get(), SolarPanelBankScreen::new);
+        event.register(ModLumenMenuTypes.MESH_CORE.get(), MeshCoreScreen::new);
+        event.register(ModLumenMenuTypes.ENERGY_BRIDGE.get(), EnergyBridgeScreen::new);
     }
 }

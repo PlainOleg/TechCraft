@@ -109,8 +109,7 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        // TODO: Создать меню для ядра
-        return null;
+        return new TechCraft.lumenmesh.menu.MeshCoreMenu(containerId, playerInventory, this);
     }
 
     @Override

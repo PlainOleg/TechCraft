@@ -2,7 +2,9 @@ package TechCraft.lumenmesh.block.core;
 
 import TechCraft.lumenmesh.blockentity.LumenBlockEntities;
 import TechCraft.lumenmesh.network.LumenNetworkManager;
+import TechCraft.lumenmesh.network.LumenNetwork;
 import TechCraft.lumenmesh.network.LumenNetworkNode;
+import TechCraft.lumenmesh.block.LumenActiveState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -28,10 +30,11 @@ import java.util.UUID;
  */
 public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode, MenuProvider {
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(MeshCoreBlockEntity.class);
-    
-    private final UUID nodeId;
+
+    private UUID nodeId;
     private UUID networkId;
     private boolean enabled;
+    private boolean registered;
 
     public MeshCoreBlockEntity(BlockPos pos, BlockState state) {
         super(LumenBlockEntities.MESH_CORE.get(), pos, state);
@@ -43,6 +46,18 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
     @Override
     public UUID getNodeId() {
         return nodeId;
+    }
+
+    @Override
+    public UUID getNetworkId() {
+        return networkId;
+    }
+
+    @Nullable
+    public LumenNetwork getNetwork() {
+        if (level == null || networkId == null) return null;
+        LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
+        return manager == null ? null : manager.getNetwork(networkId);
     }
 
     @Override
@@ -74,6 +89,7 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
     @Override
     public void onNetworkChanged(@Nullable UUID networkId) {
         this.networkId = networkId;
+        LumenActiveState.set(this, getNetwork() != null && getNetwork().getEnergyStored() > 0);
         setChanged();
     }
 
@@ -81,10 +97,21 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
      * Вызывается при установке блока.
      */
     public void onPlaced() {
-        if (level != null && !level.isClientSide) {
+        registerNode();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        registerNode();
+    }
+
+    private void registerNode() {
+        if (!registered && level != null && !level.isClientSide) {
             LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
             if (manager != null) {
                 manager.registerNode(this);
+                registered = true;
             }
         }
     }
@@ -93,12 +120,29 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
      * Вызывается при удалении блока.
      */
     public void onRemoved() {
-        if (level != null && !level.isClientSide) {
+        if (registered && level != null && !level.isClientSide) {
             LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
             if (manager != null) {
                 manager.unregisterNode(nodeId);
             }
+            registered = false;
         }
+    }
+
+    @Override
+    public void setRemoved() {
+        onRemoved();
+        super.setRemoved();
+    }
+
+    @Override
+    public void onChunkUnloaded() {
+        if (registered && level != null && !level.isClientSide) {
+            LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
+            if (manager != null) manager.unloadNode(nodeId);
+            registered = false;
+        }
+        super.onChunkUnloaded();
     }
 
     @Override
@@ -125,11 +169,13 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        // nodeId загружается только для проверки, он final
+        if (tag.hasUUID("node_id")) {
+            nodeId = tag.getUUID("node_id");
+        }
         if (tag.hasUUID("network_id")) {
             networkId = tag.getUUID("network_id");
         }
-        enabled = tag.getBoolean("enabled");
+        enabled = !tag.contains("enabled") || tag.getBoolean("enabled");
     }
 
     /**
@@ -139,7 +185,7 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
         if (entity.level != null && !entity.level.isClientSide) {
             LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
             if (manager != null) {
-                manager.tick(level);
+                LumenActiveState.set(entity, entity.getNetwork() != null && entity.getNetwork().getEnergyStored() > 0);
             }
         }
     }

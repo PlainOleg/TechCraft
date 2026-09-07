@@ -24,3 +24,8 @@ runs
 run-data
 
 repo
+
+# Local OS and Python artifacts
+.DS_Store
+__pycache__/
+*.pyc

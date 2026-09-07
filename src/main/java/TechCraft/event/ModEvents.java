@@ -1,216 +1,42 @@
 package TechCraft.event;
 
 import TechCraft.TechCraft;
-import TechCraft.item.custom.DamageOnCraftUseItem;
-import TechCraft.item.custom.DrillItem;
-import TechCraft.item.custom.HammerItem;
-import TechCraft.util.NumberFormat;
-import net.neoforged.neoforge.event.level.BlockEvent;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
+import TechCraft.item.custom.QuantumArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 /**
- * Класс обработки событий мода TechCraft.
- * Содержит обработчики для инструментов, тултипов и других игровых событий.
+ * Server-side combat events. Client presentation lives in ClientTooltipEvents.
  */
 @EventBusSubscriber(modid = TechCraft.MOD_ID)
-public class ModEvents {
-    // Hammer & Drill
-    private static final Set<BlockPos> HARVESTED_BLOCKS = new HashSet<>();
-    
+public final class ModEvents {
+    private static final float QUANTUM_ARMOR_MAX_ABSORBABLE_DAMAGE = 1000.0F;
+
+    // Quantum Armor Damage Absorption
     @SubscribeEvent
-    public static void onDrillUsage(BlockEvent.BreakEvent event) {
-        Player player = event.getPlayer();
-        if (player == null || player.level() == null) {
+    public static void onLivingDamage(LivingDamageEvent.Pre event) {
+        if (event.getEntity().level().isClientSide()) {
             return;
         }
 
-        ItemStack mainHand = player.getMainHandItem();
-        if (mainHand == null || mainHand.isEmpty()) {
+        // Extremely large hits bypass the quantum shield entirely.
+        if (event.getOriginalDamage() >= QUANTUM_ARMOR_MAX_ABSORBABLE_DAMAGE) {
             return;
         }
 
-        if (!(mainHand.getItem() instanceof DrillItem drill) || !(player instanceof ServerPlayer sp)) {
+        float remainingDamage = event.getNewDamage();
+        if (remainingDamage <= 0.0F) {
             return;
         }
 
-        BlockPos pos = event.getPos();
-        if (pos == null || HARVESTED_BLOCKS.contains(pos)) {
-            return;
-        }
-
-        // Проверяем энергию
-        if (!drill.consumeEnergy(mainHand)) {
-            event.setCanceled(true); // Отменяем копание если нет энергии
-            return;
-        }
-
-        try {
-            for (BlockPos extraPos : DrillItem.getBlocksToBeDestroyed(pos, sp, mainHand)) {
-                if (extraPos == null || HARVESTED_BLOCKS.contains(extraPos)) {
-                    continue;
-                }
-
-                var state = event.getLevel().getBlockState(extraPos);
-                // Дрели могут копать любые блоки (включая землю), не проверяя isCorrectToolForDrops
-                if (state != null && state.getDestroySpeed(event.getLevel(), extraPos) >= 0) {
-                    HARVESTED_BLOCKS.add(extraPos);
-                    sp.gameMode.destroyBlock(extraPos);
-                    HARVESTED_BLOCKS.remove(extraPos);
-                }
+        for (ItemStack armorStack : event.getEntity().getArmorSlots()) {
+            if (armorStack.getItem() instanceof QuantumArmorItem quantumArmor) {
+                remainingDamage = quantumArmor.absorbDamage(armorStack, remainingDamage);
             }
-        } catch (Exception e) {
-            TechCraft.LOGGER.error("Error during drill usage at position {}: {}", pos, e.getMessage());
-        } finally {
-            HARVESTED_BLOCKS.clear();
         }
+
+        event.setNewDamage(remainingDamage);
     }
-
-    @SubscribeEvent
-    public static void onHammerUsage(BlockEvent.BreakEvent event) {
-        Player player = event.getPlayer();
-        if (player == null || player.level() == null) {
-            return;
-        }
-
-        ItemStack mainHand = player.getMainHandItem();
-        if (mainHand == null || mainHand.isEmpty()) {
-            return;
-        }
-
-        if (!(mainHand.getItem() instanceof HammerItem hammer) || !(player instanceof ServerPlayer sp)) {
-            return;
-        }
-
-        BlockPos pos = event.getPos();
-        if (pos == null || HARVESTED_BLOCKS.contains(pos)) {
-            return;
-        }
-
-        try {
-            for (BlockPos extraPos : HammerItem.getBlocksToBeDestroyed(pos, sp, mainHand)) {
-                if (extraPos == null || HARVESTED_BLOCKS.contains(extraPos)) {
-                    continue;
-                }
-
-                var state = event.getLevel().getBlockState(extraPos);
-                if (state != null && hammer.isCorrectToolForDrops(mainHand, state)) {
-                    HARVESTED_BLOCKS.add(extraPos);
-                    sp.gameMode.destroyBlock(extraPos);
-                    HARVESTED_BLOCKS.remove(extraPos);
-                }
-            }
-        } catch (Exception e) {
-            TechCraft.LOGGER.error("Error during hammer usage at position {}: {}", pos, e.getMessage());
-        } finally {
-            HARVESTED_BLOCKS.clear();
-        }
-    }
-
-    // ToolTips
-    @SubscribeEvent
-    public static void onItemTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-        List<Component> lines = event.getToolTip();
-
-        // === Hammers ===
-        if (stack.getItem() instanceof HammerItem hammer) {
-            int size = hammer.getMiningSize();
-
-            if (Screen.hasShiftDown()) {
-                if (size > 1) {
-                    lines.add(Component.translatable("tooltip.techcraft.hammer.area")
-                            .withStyle(ChatFormatting.GRAY));
-
-                    lines.add(Component.literal("  " + size + "×" + size + " ")
-                            .append(Component.translatable("tooltip.techcraft.hammer.area.normal"))
-                            .withStyle(ChatFormatting.AQUA));
-                    lines.add(Component.literal("  1×1 ")
-                            .append(Component.translatable("tooltip.techcraft.hammer.area.sneak"))
-                            .withStyle(ChatFormatting.YELLOW));
-
-                    lines.add(Component.translatable("tooltip.techcraft.for_craft")
-                            .withStyle(ChatFormatting.GRAY));
-                    lines.add(Component.translatable("tooltip.techcraft.damages_on_craft")
-                            .withStyle(ChatFormatting.RED));
-                }
-
-
-            } else {
-                lines.add(Component.translatable("tooltip.techcraft.hammer.area")
-                        .withStyle(ChatFormatting.GRAY));
-                lines.add(Component.translatable("tooltip.techcraft.hold_shift")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-
-                lines.add(Component.translatable("tooltip.techcraft.for_craft")
-                        .withStyle(ChatFormatting.GRAY));
-                lines.add(Component.translatable("tooltip.techcraft.damages_on_craft")
-                        .withStyle(ChatFormatting.RED));
-            }
-        }
-
-        // === Damage On Craft Items ===
-        else if (stack.getItem() instanceof DamageOnCraftUseItem) {
-            lines.add(Component.translatable("tooltip.techcraft.for_craft")
-                    .withStyle(ChatFormatting.GRAY));
-            lines.add(Component.translatable("tooltip.techcraft.damages_on_craft")
-                    .withStyle(ChatFormatting.RED));
-        }
-
-        // === Drills ===
-        else if (stack.getItem() instanceof DrillItem drill) {
-            int currentEnergy = drill.getEnergy(stack);
-            int maxEnergy = drill.getMaxEnergy();
-            int energyCost = drill.getEnergyCostPerBlock();
-            int size = drill.getMiningSize();
-
-            if (Screen.hasShiftDown()) {
-                // Энергия
-                lines.add(Component.literal("⚡ ")
-                        .append(Component.translatable("tooltip.techcraft.drill.energy", NumberFormat.format(currentEnergy), NumberFormat.format(maxEnergy)))
-                        .withStyle(ChatFormatting.GOLD));
-                
-                // Потребление
-                lines.add(Component.literal("⚡ ")
-                        .append(Component.translatable("tooltip.techcraft.drill.cost", NumberFormat.format(energyCost)))
-                        .withStyle(ChatFormatting.GOLD));
-
-                // Режимы добычи
-                if (size > 1) {
-                    lines.add(Component.translatable("tooltip.techcraft.drill.area")
-                            .withStyle(ChatFormatting.GRAY));
-
-                    lines.add(Component.literal("  " + size + "×" + size + " ")
-                            .append(Component.translatable("tooltip.techcraft.hammer.area.normal"))
-                            .withStyle(ChatFormatting.AQUA));
-                    lines.add(Component.literal("  1×1 ")
-                            .append(Component.translatable("tooltip.techcraft.hammer.area.sneak"))
-                            .withStyle(ChatFormatting.YELLOW));
-                }
-
-            } else {
-                // Краткая информация без Shift
-                lines.add(Component.literal("⚡ ")
-                        .append(Component.translatable("tooltip.techcraft.drill.energy", NumberFormat.format(currentEnergy), NumberFormat.format(maxEnergy)))
-                        .withStyle(ChatFormatting.GOLD));
-                
-                lines.add(Component.translatable("tooltip.techcraft.hold_shift")
-                        .withStyle(ChatFormatting.DARK_GRAY));
-            }
-        }
-    }
-
 }

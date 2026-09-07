@@ -14,6 +14,8 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 public class AlloySmelterMenu extends AbstractContainerMenu {
 
     private final AlloySmelterBlockEntity blockEntity;
+    private int currentTemperature;
+    private int maxTemperature;
 
     private static final int INPUT_START = 0;
     private static final int INPUT_COUNT = 3;
@@ -51,6 +53,29 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
                     blockEntity.setFuelBurnTime(value);
                 }
             });
+            this.addDataSlot(new DataSlot() {
+                @Override
+                public int get() {
+                    return Math.round(blockEntity.getCurrentTemperature());
+                }
+                @Override
+                public void set(int value) {
+                    currentTemperature = value;
+                }
+            });
+            this.addDataSlot(new DataSlot() {
+                @Override
+                public int get() {
+                    return blockEntity.getMaxTemperature();
+                }
+                @Override
+                public void set(int value) {
+                    maxTemperature = value;
+                }
+            });
+
+            currentTemperature = Math.round(blockEntity.getCurrentTemperature());
+            maxTemperature = blockEntity.getMaxTemperature();
             this.addDataSlot(new DataSlot() {
                 @Override
                 public int get() {
@@ -110,4 +135,6 @@ public class AlloySmelterMenu extends AbstractContainerMenu {
     }
 
     public AlloySmelterBlockEntity getBlockEntity() { return blockEntity; }
+    public int getCurrentTemperature() { return currentTemperature; }
+    public int getMaxTemperature() { return maxTemperature; }
 }

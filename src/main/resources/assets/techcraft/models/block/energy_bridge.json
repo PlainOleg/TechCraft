@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "techcraft:block/energy_bridge"
+    "particle": "techcraft:block/lumen_mesh/energy_bridge_side",
+    "north": "techcraft:block/lumen_mesh/energy_bridge_front",
+    "south": "techcraft:block/lumen_mesh/energy_bridge_side",
+    "east": "techcraft:block/lumen_mesh/energy_bridge_side",
+    "west": "techcraft:block/lumen_mesh/energy_bridge_side",
+    "up": "techcraft:block/lumen_mesh/energy_bridge_top",
+    "down": "techcraft:block/lumen_mesh/energy_bridge_side"
   }
 }

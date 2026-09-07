@@ -1,18 +1,23 @@
 {
-  "name": "Сырое олово",
-  "icon": "techcraft:tin_raw",
+  "name": "Сырые ресурсы",
+  "icon": "techcraft:raw_tin",
   "category": "techcraft:materials",
   "pages": [
     {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:tin_raw",
-      "title": "Сырое олово",
-      "text": "Сырое олово - это базовый ресурс, который можно получить, добывая оловянную руду. Его можно переплавить в слитки олова или создать блок сырого олова для хранения."
+      "type": "patchouli:text",
+      "text": "Сырые ресурсы - это основа TechCraft. Их можно найти в мире и переработать в более продвинутые материалы."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:raw_tin_block",
-      "title": "Блок сырого олова"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_tin",
+      "title": "Сырое олово",
+      "text": "Находится в залежах оловянной руды в обычном мире. Переплавьте его для получения слитков олова."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_rubber",
+      "title": "Сырой каучук",
+      "text": "Природный материал, используемый для создания кабелей и изоляции. Может быть переработан в каучук."
     }
   ]
 }

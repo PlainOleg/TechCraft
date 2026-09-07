@@ -1,6 +1,7 @@
 package TechCraft.lumenmesh.block.core;
 
 import TechCraft.lumenmesh.network.LumenNetworkManager;
+import TechCraft.lumenmesh.network.LumenNetworkSavedData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.Level;
 
@@ -20,15 +21,24 @@ public class LumenMeshIntegration {
         networkManager = new LumenNetworkManager();
     }
 
+    public static void start(MinecraftServer server) {
+        if (networkManager == null) init();
+        networkManager.loadFromSavedData(LumenNetworkSavedData.get(server));
+    }
+
+    public static void save(MinecraftServer server) {
+        if (networkManager != null) networkManager.saveToSavedData(LumenNetworkSavedData.get(server));
+    }
+
     /**
      * Получает менеджер сетей для уровня.
      */
     @Nullable
     public static LumenNetworkManager getNetworkManager(Level level) {
-        if (networkManager == null) {
+        if (level == null || level.isClientSide || networkManager == null) {
             return null;
         }
-        
+
         // В будущем здесь может быть логика для разных измерений
         return networkManager;
     }
@@ -47,6 +57,7 @@ public class LumenMeshIntegration {
     public static void shutdown() {
         if (networkManager != null) {
             networkManager.clear();
+            networkManager = null;
         }
     }
 }

@@ -1,9 +1,9 @@
 {
-  "namespace": "lumen_mesh",
+  "namespace": "techcraft",
   "screens": [
     {
       "id": "cable_junction",
-      "texture": "lumen_mesh:textures/gui/cable_junction.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/cable_junction.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -331,7 +331,7 @@
     },
     {
       "id": "mesh_core",
-      "texture": "lumen_mesh:textures/gui/mesh_core.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/mesh_core.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -659,7 +659,7 @@
     },
     {
       "id": "energy_bridge",
-      "texture": "lumen_mesh:textures/gui/energy_bridge.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/energy_bridge.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -987,7 +987,7 @@
     },
     {
       "id": "pulse_buffer",
-      "texture": "lumen_mesh:textures/gui/pulse_buffer.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/pulse_buffer.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -1315,7 +1315,7 @@
     },
     {
       "id": "coherence_stabilizer",
-      "texture": "lumen_mesh:textures/gui/coherence_stabilizer.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/coherence_stabilizer.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -1643,7 +1643,7 @@
     },
     {
       "id": "prism_drive",
-      "texture": "lumen_mesh:textures/gui/prism_drive.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/prism_drive.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -1651,15 +1651,6 @@
           "type": "machine_slot",
           "id": "drive",
           "index": 0,
-          "x": 22,
-          "y": 36,
-          "w": 18,
-          "h": 18
-        },
-        {
-          "type": "machine_slot",
-          "id": "drive",
-          "index": 1,
           "x": 44,
           "y": 36,
           "w": 18,
@@ -1668,7 +1659,7 @@
         {
           "type": "machine_slot",
           "id": "drive",
-          "index": 2,
+          "index": 1,
           "x": 66,
           "y": 36,
           "w": 18,
@@ -1677,7 +1668,7 @@
         {
           "type": "machine_slot",
           "id": "drive",
-          "index": 3,
+          "index": 2,
           "x": 88,
           "y": 36,
           "w": 18,
@@ -1686,17 +1677,8 @@
         {
           "type": "machine_slot",
           "id": "drive",
-          "index": 4,
+          "index": 3,
           "x": 110,
-          "y": 36,
-          "w": 18,
-          "h": 18
-        },
-        {
-          "type": "machine_slot",
-          "id": "drive",
-          "index": 5,
-          "x": 132,
           "y": 36,
           "w": 18,
           "h": 18
@@ -1993,9 +1975,9 @@
     },
     {
       "id": "item_terminal",
-      "texture": "lumen_mesh:textures/gui/item_terminal.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/item_terminal.png",
       "width": 224,
-      "height": 222,
+      "height": 235,
       "widgets": [
         {
           "type": "search_field",
@@ -2664,7 +2646,7 @@
     },
     {
       "id": "crafting_terminal",
-      "texture": "lumen_mesh:textures/gui/crafting_terminal.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/crafting_terminal.png",
       "width": 224,
       "height": 222,
       "widgets": [
@@ -3246,7 +3228,7 @@
     },
     {
       "id": "blueprint_encoder",
-      "texture": "lumen_mesh:textures/gui/blueprint_encoder.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/blueprint_encoder.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -3628,7 +3610,7 @@
     },
     {
       "id": "fabricator",
-      "texture": "lumen_mesh:textures/gui/fabricator.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/fabricator.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -3945,7 +3927,7 @@
     },
     {
       "id": "crafting_processor",
-      "texture": "lumen_mesh:textures/gui/crafting_processor.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/crafting_processor.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -4273,7 +4255,7 @@
     },
     {
       "id": "import_node",
-      "texture": "lumen_mesh:textures/gui/import_node.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/import_node.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -4617,7 +4599,7 @@
     },
     {
       "id": "export_node",
-      "texture": "lumen_mesh:textures/gui/export_node.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/export_node.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -4961,7 +4943,7 @@
     },
     {
       "id": "storage_link",
-      "texture": "lumen_mesh:textures/gui/storage_link.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/storage_link.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -5305,7 +5287,7 @@
     },
     {
       "id": "machine_interface",
-      "texture": "lumen_mesh:textures/gui/machine_interface.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/machine_interface.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -5649,7 +5631,7 @@
     },
     {
       "id": "level_keeper",
-      "texture": "lumen_mesh:textures/gui/level_keeper.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/level_keeper.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -5993,7 +5975,7 @@
     },
     {
       "id": "stock_monitor",
-      "texture": "lumen_mesh:textures/gui/stock_monitor.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/stock_monitor.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -6321,7 +6303,7 @@
     },
     {
       "id": "wireless_relay",
-      "texture": "lumen_mesh:textures/gui/wireless_relay.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/wireless_relay.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -6649,7 +6631,7 @@
     },
     {
       "id": "quantum_bridge",
-      "texture": "lumen_mesh:textures/gui/quantum_bridge.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/quantum_bridge.png",
       "width": 176,
       "height": 166,
       "widgets": [
@@ -6945,7 +6927,7 @@
     },
     {
       "id": "security_console",
-      "texture": "lumen_mesh:textures/gui/security_console.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/security_console.png",
       "width": 224,
       "height": 222,
       "widgets": [
@@ -7017,7 +6999,7 @@
     },
     {
       "id": "matter_condenser",
-      "texture": "lumen_mesh:textures/gui/matter_condenser.png",
+      "texture": "techcraft:textures/gui/container/lumen_mesh/matter_condenser.png",
       "width": 176,
       "height": 166,
       "widgets": [

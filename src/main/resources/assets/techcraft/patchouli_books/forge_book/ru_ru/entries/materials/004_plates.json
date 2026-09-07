@@ -5,32 +5,67 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Пластины - это плоские металлические листы, используемые для создания различных компонентов. Можно создавать пластины из различных металлов:$(br)• Оловянная пластина$(br)• Железная пластина$(br)• Золотая пластина$(br)• Медная пластина$(br)• Стальная пластина"
+      "text": "Пластины создаются из слитков с помощью Резака. Они необходимы для создания машин, кабелей и продвинутых предметов. Доступны из всех типов металлов, включая специальные материалы."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:tin_plate",
-      "title": "Оловянная пластина"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_plate",
+      "title": "Оловянная пластина",
+      "text": "Базовая пластина из слитков олова. Используется в раннем крафте."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:iron_plate",
-      "title": "Железная пластина"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_plate",
+      "title": "Железная пластина",
+      "text": "Стандартная пластина из железных слитков."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:gold_plate",
-      "title": "Золотая пластина"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:gold_plate",
+      "title": "Золотая пластина",
+      "text": "Проводящая пластина из золотых слитков."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:copper_plate",
-      "title": "Медная пластина"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_plate",
+      "title": "Медная пластина",
+      "text": "Проводящая пластина из медных слитков."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_plate",
-      "title": "Стальная пластина"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_plate",
+      "title": "Стальная пластина",
+      "text": "Прочная пластина из стальных слитков."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_plate",
+      "title": "Бронзовая пластина",
+      "text": "Сплавная пластина с хорошей проводимостью."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_plate",
+      "title": "Никелевая пластина",
+      "text": "Коррозионно-стойкая пластина."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_plate",
+      "title": "Серебряная пластина",
+      "text": "Магическая проводящая пластина."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_plate",
+      "title": "Призмитовая пластина",
+      "text": "Кристаллическая пластина с преломляющими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_plate",
+      "title": "Квантовая пластина",
+      "text": "Пластина конца игры с квантовыми свойствами."
     }
   ]
 }

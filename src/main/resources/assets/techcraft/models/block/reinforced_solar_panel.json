@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "techcraft:block/reinforced_solar_panel_side",
-    "top": "techcraft:block/reinforced_solar_panel_top",
-    "side": "techcraft:block/reinforced_solar_panel_side"
+    "bottom": "techcraft:block/solar/reinforced_solar_panel_side",
+    "top": "techcraft:block/solar/reinforced_solar_panel_top",
+    "side": "techcraft:block/solar/reinforced_solar_panel_side"
   },
   "elements": [
     {

@@ -5,11 +5,11 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "TechCraft adds various materials to the game that you can use for crafting advanced items. This section covers all the materials you can find and craft."
+      "text": "TechCraft adds a vast array of materials to the game that you can use for crafting advanced items and machines. This section covers all the materials you can find, mine, and craft."
     },
     {
       "type": "patchouli:text",
-      "text": "Materials include:$(br)• Raw Tin$(br)• Ingots (Tin, Steel)$(br)• Plates (Tin, Iron, Gold, Copper, Steel)"
+      "text": "Materials include:$(br)• Raw Resources (Tin, Rubber)$(br)• Ingots (Tin, Steel, Bronze, Nickel, Silver, Prismite, Quantum)$(br)• Plates (All metals + special materials)$(br)• Dusts (Coal, Iron, Nickel, Steel)$(br)• Cables (10 types from Bronze to Quantum)$(br)• Electronics (Circuits, Resistors, etc.)$(br)• Energy Storage (Batteries, Crystals)$(br)• Special Materials (Rubies, Plasma Cores)"
     }
   ]
 }

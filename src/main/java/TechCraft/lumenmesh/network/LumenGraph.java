@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class LumenGraph {
     private final Map<UUID, LumenNode> nodes;
-    private final Map<BlockPos, UUID> positionToNodeId;
+    private final Map<NodePosition, UUID> positionToNodeId;
     private final Map<ResourceKey<Level>, Set<UUID>> dimensionToNodes;
 
     public LumenGraph() {
@@ -26,11 +26,20 @@ public class LumenGraph {
      * Добавляет узел в граф.
      */
     public void addNode(LumenNode node) {
-        nodes.put(node.getNodeId(), node);
-        positionToNodeId.put(node.getPosition(), node.getNodeId());
+        LumenNode occupant = getNodeAt(node.getDimension(), node.getPosition());
+        if (occupant != null && !occupant.getNodeId().equals(node.getNodeId())) {
+            removeNode(occupant.getNodeId());
+        }
+        LumenNode previous = nodes.put(node.getNodeId(), node);
+        if (previous != null) {
+            positionToNodeId.remove(new NodePosition(previous.getDimension(), previous.getPosition()));
+            Set<UUID> oldDimension = dimensionToNodes.get(previous.getDimension());
+            if (oldDimension != null) oldDimension.remove(previous.getNodeId());
+        }
+        positionToNodeId.put(new NodePosition(node.getDimension(), node.getPosition()), node.getNodeId());
         dimensionToNodes
-            .computeIfAbsent(node.getDimension(), k -> new HashSet<>())
-            .add(node.getNodeId());
+                .computeIfAbsent(node.getDimension(), k -> new HashSet<>())
+                .add(node.getNodeId());
     }
 
     /**
@@ -39,7 +48,7 @@ public class LumenGraph {
     public void removeNode(UUID nodeId) {
         LumenNode node = nodes.remove(nodeId);
         if (node != null) {
-            positionToNodeId.remove(node.getPosition());
+            positionToNodeId.remove(new NodePosition(node.getDimension(), node.getPosition()));
             Set<UUID> dimNodes = dimensionToNodes.get(node.getDimension());
             if (dimNodes != null) {
                 dimNodes.remove(nodeId);
@@ -60,8 +69,8 @@ public class LumenGraph {
     /**
      * Получает узел по позиции.
      */
-    public LumenNode getNodeAt(BlockPos position) {
-        UUID nodeId = positionToNodeId.get(position);
+    public LumenNode getNodeAt(ResourceKey<Level> dimension, BlockPos position) {
+        UUID nodeId = positionToNodeId.get(new NodePosition(dimension, position));
         return nodeId != null ? nodes.get(nodeId) : null;
     }
 
@@ -69,30 +78,30 @@ public class LumenGraph {
      * Получает все узлы в измерении.
      */
     public Set<UUID> getNodesInDimension(ResourceKey<Level> dimension) {
-        return dimensionToNodes.getOrDefault(dimension, Set.of());
+        return Collections.unmodifiableSet(dimensionToNodes.getOrDefault(dimension, Set.of()));
     }
 
     /**
      * Получает все узлы.
      */
     public Collection<LumenNode> getAllNodes() {
-        return nodes.values();
+        return Collections.unmodifiableCollection(nodes.values());
     }
 
     /**
      * Находит соседние узлы для заданного узла.
      * Проверяет все стороны соединения и возвращает подключённые узлы.
      */
-    public List<UUID> getNeighbors(UUID nodeId, Level level) {
+    public List<UUID> getNeighbors(UUID nodeId) {
         LumenNode node = nodes.get(nodeId);
-        if (node == null) {
+        if (node == null || !node.isEnabled()) {
             return List.of();
         }
 
         List<UUID> neighbors = new ArrayList<>();
         for (Direction side : node.getConnectionSides()) {
             BlockPos neighborPos = node.getPosition().relative(side);
-            LumenNode neighbor = getNodeAt(neighborPos);
+            LumenNode neighbor = getNodeAt(node.getDimension(), neighborPos);
             if (neighbor != null && neighbor.isEnabled()) {
                 // Проверяем, может ли сосед соединиться с этой стороны
                 Direction oppositeSide = side.getOpposite();
@@ -108,9 +117,9 @@ public class LumenGraph {
      * Выполняет обход графа (BFS) от начального узла.
      * Возвращает все достижимые узлы.
      */
-    public Set<UUID> findConnectedComponent(UUID startNodeId, Level level) {
+    public Set<UUID> findConnectedComponent(UUID startNodeId) {
         Set<UUID> visited = new HashSet<>();
-        Queue<UUID> queue = new LinkedList<>();
+        Queue<UUID> queue = new ArrayDeque<>();
 
         if (!nodes.containsKey(startNodeId)) {
             return visited;
@@ -121,9 +130,8 @@ public class LumenGraph {
 
         while (!queue.isEmpty()) {
             UUID current = queue.poll();
-            for (UUID neighbor : getNeighbors(current, level)) {
-                if (!visited.contains(neighbor)) {
-                    visited.add(neighbor);
+            for (UUID neighbor : getNeighbors(current)) {
+                if (visited.add(neighbor)) {
                     queue.add(neighbor);
                 }
             }
@@ -136,13 +144,13 @@ public class LumenGraph {
      * Находит все компоненты связности в графе.
      * Используется при разделении сети.
      */
-    public List<Set<UUID>> findConnectedComponents(Level level) {
+    public List<Set<UUID>> findConnectedComponents() {
         List<Set<UUID>> components = new ArrayList<>();
         Set<UUID> unvisited = new HashSet<>(nodes.keySet());
 
         while (!unvisited.isEmpty()) {
             UUID start = unvisited.iterator().next();
-            Set<UUID> component = findConnectedComponent(start, level);
+            Set<UUID> component = findConnectedComponent(start);
             components.add(component);
             unvisited.removeAll(component);
         }
@@ -164,5 +172,8 @@ public class LumenGraph {
      */
     public int size() {
         return nodes.size();
+    }
+
+    private record NodePosition(ResourceKey<Level> dimension, BlockPos position) {
     }
 }

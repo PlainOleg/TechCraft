@@ -69,6 +69,10 @@ public class LumenNetwork {
         nodeIds.remove(nodeId);
     }
 
+    void clearNodes() {
+        nodeIds.clear();
+    }
+
     public long getEnergyStored() {
         return energyStored;
     }
@@ -82,8 +86,8 @@ public class LumenNetwork {
     }
 
     public void setEnergyCapacity(long energyCapacity) {
-        this.energyCapacity = energyCapacity;
-        this.energyStored = Math.min(energyStored, energyCapacity);
+        this.energyCapacity = Math.max(0, energyCapacity);
+        this.energyStored = Math.min(energyStored, this.energyCapacity);
     }
 
     public int getBaseBandwidth() {
@@ -91,7 +95,7 @@ public class LumenNetwork {
     }
 
     public void setBaseBandwidth(int baseBandwidth) {
-        this.baseBandwidth = baseBandwidth;
+        this.baseBandwidth = Math.max(0, baseBandwidth);
     }
 
     public int getUsedBandwidth() {
@@ -99,7 +103,7 @@ public class LumenNetwork {
     }
 
     public void setUsedBandwidth(int usedBandwidth) {
-        this.usedBandwidth = usedBandwidth;
+        this.usedBandwidth = Math.max(0, usedBandwidth);
     }
 
     public double getCoherence() {
@@ -131,7 +135,7 @@ public class LumenNetwork {
     }
 
     public Set<Permission> getPermissions(UUID playerId) {
-        return permissions.getOrDefault(playerId, Set.of());
+        return Collections.unmodifiableSet(permissions.getOrDefault(playerId, Set.of()));
     }
 
     public void setPermissions(UUID playerId, Set<Permission> permissions) {
@@ -155,7 +159,7 @@ public class LumenNetwork {
             tag.putUUID("owner_id", ownerId);
         }
         tag.putInt("security_mode", securityMode.ordinal());
-        
+
         CompoundTag nodesTag = new CompoundTag();
         int i = 0;
         for (UUID nodeId : nodeIds) {
@@ -163,20 +167,20 @@ public class LumenNetwork {
             i++;
         }
         tag.put("nodes", nodesTag);
-        
+
         tag.putLong("energy_stored", energyStored);
         tag.putLong("energy_capacity", energyCapacity);
         tag.putInt("base_bandwidth", baseBandwidth);
         tag.putInt("used_bandwidth", usedBandwidth);
         tag.putDouble("coherence", coherence);
         tag.putLong("storage_index_version", storageIndexVersion);
-        
+
         CompoundTag jobsTag = new CompoundTag();
         for (int j = 0; j < craftingJobs.size(); j++) {
             jobsTag.put("job_" + j, craftingJobs.get(j).save(registries));
         }
         tag.put("crafting_jobs", jobsTag);
-        
+
         // Сохранение разрешений
         CompoundTag permissionsTag = new CompoundTag();
         for (Map.Entry<UUID, Set<Permission>> entry : permissions.entrySet()) {
@@ -185,7 +189,7 @@ public class LumenNetwork {
             permissionsTag.putIntArray("perms_" + entry.getKey(), permOrdinals);
         }
         tag.put("permissions", permissionsTag);
-        
+
         return tag;
     }
 
@@ -195,29 +199,30 @@ public class LumenNetwork {
     public static LumenNetwork load(CompoundTag tag, HolderLookup.Provider registries) {
         UUID networkId = tag.getUUID("network_id");
         LumenNetwork network = new LumenNetwork(networkId);
-        
+
         if (tag.hasUUID("owner_id")) {
             network.setOwnerId(tag.getUUID("owner_id"));
         }
-        network.setSecurityMode(SecurityMode.values()[tag.getInt("security_mode")]);
-        
+        SecurityMode[] modes = SecurityMode.values();
+        network.setSecurityMode(modes[Math.clamp(tag.getInt("security_mode"), 0, modes.length - 1)]);
+
         CompoundTag nodesTag = tag.getCompound("nodes");
         for (String key : nodesTag.getAllKeys()) {
             network.addNode(nodesTag.getUUID(key));
         }
-        
-        network.setEnergyStored(tag.getLong("energy_stored"));
+
         network.setEnergyCapacity(tag.getLong("energy_capacity"));
+        network.setEnergyStored(tag.getLong("energy_stored"));
         network.setBaseBandwidth(tag.getInt("base_bandwidth"));
         network.setUsedBandwidth(tag.getInt("used_bandwidth"));
         network.setCoherence(tag.getDouble("coherence"));
         network.storageIndexVersion = tag.getLong("storage_index_version");
-        
+
         CompoundTag jobsTag = tag.getCompound("crafting_jobs");
         for (String key : jobsTag.getAllKeys()) {
             network.addCraftingJob(CraftingJob.load(jobsTag.getCompound(key), registries));
         }
-        
+
         CompoundTag permissionsTag = tag.getCompound("permissions");
         for (String key : permissionsTag.getAllKeys()) {
             if (key.startsWith("perms_")) {
@@ -225,12 +230,12 @@ public class LumenNetwork {
                 int[] permOrdinals = permissionsTag.getIntArray(key);
                 Set<Permission> perms = new HashSet<>();
                 for (int ordinal : permOrdinals) {
-                    perms.add(Permission.values()[ordinal]);
+                    if (ordinal >= 0 && ordinal < Permission.values().length) perms.add(Permission.values()[ordinal]);
                 }
                 network.setPermissions(playerId, perms);
             }
         }
-        
+
         return network;
     }
 
@@ -273,12 +278,16 @@ public class LumenNetwork {
         }
 
         private CraftingJob(UUID recipeId, long targetAmount) {
-            this.jobId = UUID.randomUUID();
+            this(UUID.randomUUID(), recipeId, targetAmount, System.currentTimeMillis());
+        }
+
+        private CraftingJob(UUID jobId, UUID recipeId, long targetAmount, long startTime) {
+            this.jobId = jobId;
             this.state = JobState.PLANNING;
             this.recipeId = recipeId;
             this.targetAmount = targetAmount;
             this.craftedAmount = 0;
-            this.startTime = System.currentTimeMillis();
+            this.startTime = startTime;
         }
 
         public UUID getJobId() {
@@ -330,11 +339,13 @@ public class LumenNetwork {
 
         public static CraftingJob load(CompoundTag tag, HolderLookup.Provider registries) {
             CraftingJob job = new CraftingJob(
-                tag.getUUID("recipe_id"),
-                tag.getLong("target_amount")
+                    tag.getUUID("job_id"),
+                    tag.getUUID("recipe_id"),
+                    tag.getLong("target_amount"),
+                    tag.getLong("start_time")
             );
-            // jobId загружается отдельно, так как он final
-            job.state = JobState.values()[tag.getInt("state")];
+            JobState[] states = JobState.values();
+            job.state = states[Math.clamp(tag.getInt("state"), 0, states.length - 1)];
             job.craftedAmount = tag.getLong("crafted_amount");
             return job;
         }

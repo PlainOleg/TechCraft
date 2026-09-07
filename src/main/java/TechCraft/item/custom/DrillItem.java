@@ -1,23 +1,15 @@
 package TechCraft.item.custom;
 
-import TechCraft.TechCraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +20,6 @@ import java.util.List;
 public class DrillItem extends DiggerItem {
 
     private static final String ENERGY_KEY = "Energy";
-    private static final float RAYTRACE_DISTANCE = 6f;
 
     private final int maxEnergy;
     private final int miningSize;
@@ -36,11 +27,12 @@ public class DrillItem extends DiggerItem {
 
     /**
      * Создает новую дрель с указанными параметрами.
-     * @param tier уровень материала инструмента
-     * @param maxEnergy максимальная вместимость энергии
-     * @param miningSize размер области разрушения (3 для 3x3)
+     *
+     * @param tier               уровень материала инструмента
+     * @param maxEnergy          максимальная вместимость энергии
+     * @param miningSize         размер области разрушения (3 для 3x3)
      * @param energyCostPerBlock стоимость энергии за блок
-     * @param properties свойства предмета
+     * @param properties         свойства предмета
      */
     public DrillItem(Tier tier, int maxEnergy, int miningSize, int energyCostPerBlock, Properties properties) {
         super(tier, net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE, properties.stacksTo(1));
@@ -88,14 +80,14 @@ public class DrillItem extends DiggerItem {
 
         // Для мягких блоков (земля, песок, гравий) возвращаем высокую скорость
         if (state.is(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL) ||
-            state.is(net.minecraft.tags.BlockTags.DIRT) ||
-            state.is(net.minecraft.tags.BlockTags.SAND)) {
+                state.is(net.minecraft.tags.BlockTags.DIRT) ||
+                state.is(net.minecraft.tags.BlockTags.SAND)) {
             return getTier().getSpeed();
         }
 
         // Для обычного камня и руд (но не бедрок и не обсидиан)
         if (state.is(net.minecraft.tags.BlockTags.STONE_ORE_REPLACEABLES) ||
-            state.is(net.minecraft.tags.BlockTags.BASE_STONE_OVERWORLD)) {
+                state.is(net.minecraft.tags.BlockTags.BASE_STONE_OVERWORLD)) {
             // Проверяем что это не бедрок и не обсидиан
             float hardness = state.getDestroySpeed(null, null);
             if (hardness < 50f) { // Бедрок имеет прочность -1 (не копается), обсидиан ~50
@@ -123,7 +115,7 @@ public class DrillItem extends DiggerItem {
     public int getBarColor(ItemStack stack) {
         int currentEnergy = getEnergy(stack);
         float ratio = currentEnergy / (float) maxEnergy;
-        
+
         // Цвет меняется от красного (низкая энергия) к зеленому (высокая энергия)
         // Как в IC2Classic
         if (ratio > 0.5f) {
@@ -154,7 +146,7 @@ public class DrillItem extends DiggerItem {
             return maxEnergy; // Если NBT нет - считаем что полная энергия (новый предмет)
         }
         CompoundTag tag = customData.copyTag();
-        return tag.getInt(ENERGY_KEY);
+        return tag.contains(ENERGY_KEY) ? Math.clamp(tag.getInt(ENERGY_KEY), 0, maxEnergy) : maxEnergy;
     }
 
     /**
@@ -163,7 +155,7 @@ public class DrillItem extends DiggerItem {
     public void setEnergy(ItemStack stack, int energy) {
         CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
         CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
-        tag.putInt(ENERGY_KEY, Math.min(energy, maxEnergy));
+        tag.putInt(ENERGY_KEY, Math.clamp(energy, 0, maxEnergy));
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
 
@@ -176,6 +168,7 @@ public class DrillItem extends DiggerItem {
 
     /**
      * Потребляет энергию при копании.
+     *
      * @return true если энергии хватило, false если нет
      */
     public boolean consumeEnergy(ItemStack stack) {
@@ -191,7 +184,7 @@ public class DrillItem extends DiggerItem {
      * Добавляет энергию в дрель.
      */
     public void addEnergy(ItemStack stack, int amount) {
-        setEnergy(stack, getEnergy(stack) + amount);
+        if (amount > 0) setEnergy(stack, (int) Math.min(maxEnergy, (long) getEnergy(stack) + amount));
     }
 
 
@@ -211,91 +204,15 @@ public class DrillItem extends DiggerItem {
 
     /**
      * Получает список блоков для разрушения дрелью.
+     *
      * @param initialBlockPos начальная позиция блока
-     * @param player игрок использующий дрель
-     * @param drillStack стак с дрелью
+     * @param player          игрок использующий дрель
+     * @param drillStack      стак с дрелью
      * @return список позиций соседних блоков
      */
     public static List<BlockPos> getBlocksToBeDestroyed(BlockPos initialBlockPos, ServerPlayer player, ItemStack drillStack) {
-        if (initialBlockPos == null || player == null || drillStack == null || drillStack.isEmpty()) {
-            TechCraft.LOGGER.debug("Invalid parameters for drill block calculation");
-            return List.of();
-        }
-
-        if (!(drillStack.getItem() instanceof DrillItem drill)) {
-            return List.of();
-        }
-
-        // Проверяем энергию
-        int currentEnergy = drill.getEnergy(drillStack);
-
-        // Если энергии недостаточно даже для центрального блока
-        if (currentEnergy < drill.energyCostPerBlock) {
-            return List.of();
-        }
-
-        // Если игрок приседает — всегда 1x1
-        int size = player.isShiftKeyDown() ? 1 : drill.getMiningSize();
-        if (size <= 1) {
-            return List.of(); // центральный блок ломает ванилла
-        }
-
-        List<BlockPos> positions = new ArrayList<>();
-
-        try {
-            // Определяем сторону, в которую смотрит игрок
-            BlockHitResult result = player.level().clip(new ClipContext(
-                    player.getEyePosition(1f),
-                    player.getEyePosition(1f).add(player.getViewVector(1f).scale(RAYTRACE_DISTANCE)),
-                    ClipContext.Block.COLLIDER,
-                    ClipContext.Fluid.NONE,
-                    player
-            ));
-
-            if (result.getType() == HitResult.Type.MISS) {
-                TechCraft.LOGGER.debug("Raytrace missed for drill at position {}", initialBlockPos);
-                return positions;
-            }
-
-            Direction dir = result.getDirection();
-            int offset = size / 2;
-
-            // Для 5x5 смещаем область вверх на 1 блок, для 7x7 - на 2 блока
-            BlockPos centerPos = initialBlockPos;
-            if (size == 5 && dir.getAxis() != Direction.Axis.Y) {
-                centerPos = initialBlockPos.above(1);
-            } else if (size == 7 && dir.getAxis() != Direction.Axis.Y) {
-                centerPos = initialBlockPos.above(2);
-            }
-
-            // Генерируем координаты от -offset до (size - offset - 1)
-            if (dir.getAxis() == Direction.Axis.Y) { // вверх/вниз → X и Z
-                for (int x = -offset; x < size - offset; x++) {
-                    for (int z = -offset; z < size - offset; z++) {
-                        positions.add(centerPos.offset(x, 0, z));
-                    }
-                }
-            }
-            else if (dir.getAxis() == Direction.Axis.Z) { // север/юг → X и Y
-                for (int x = -offset; x < size - offset; x++) {
-                    for (int y = -offset; y < size - offset; y++) {
-                        positions.add(centerPos.offset(x, y, 0));
-                    }
-                }
-            }
-            else if (dir.getAxis() == Direction.Axis.X) { // восток/запад → Z и Y
-                for (int z = -offset; z < size - offset; z++) {
-                    for (int y = -offset; y < size - offset; y++) {
-                        positions.add(centerPos.offset(0, y, z));
-                    }
-                }
-            }
-
-            TechCraft.LOGGER.debug("Drill calculated {} blocks to destroy at {}", positions.size(), initialBlockPos);
-        } catch (Exception e) {
-            TechCraft.LOGGER.error("Error calculating drill blocks at position {}: {}", initialBlockPos, e.getMessage());
-        }
-
-        return positions;
+        if (initialBlockPos == null || player == null || drillStack == null
+                || !(drillStack.getItem() instanceof DrillItem tool)) return List.of();
+        return MiningArea.aroundHit(initialBlockPos, player, tool.getMiningSize(), true);
     }
 }

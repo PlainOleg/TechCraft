@@ -1,7 +1,12 @@
 {
   "variants": {
-    "": {
-      "model": "techcraft:block/mesh_core"
-    }
+    "facing=north,active=false": { "model": "techcraft:block/mesh_core" },
+    "facing=east,active=false": { "model": "techcraft:block/mesh_core", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/mesh_core", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/mesh_core", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/mesh_core_active" },
+    "facing=east,active=true": { "model": "techcraft:block/mesh_core_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/mesh_core_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/mesh_core_active", "y": 270 }
   }
 }

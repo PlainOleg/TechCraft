@@ -56,8 +56,8 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_ingot_from_dusts",
-      "title": "Steel from Dusts"
+      "recipe": "techcraft:steel_dust_from_dusts",
+      "title": "Steel Dust"
     }
   ]
 }

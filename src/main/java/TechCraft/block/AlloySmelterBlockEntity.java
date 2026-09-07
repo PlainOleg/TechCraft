@@ -32,6 +32,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         EFFICIENCY("efficiency");
 
         private final String name;
+
         UpgradeType(String name) {
             this.name = name;
         }
@@ -44,7 +45,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     // Базовые характеристики
     private static final int BASE_CAPACITY = 8000; // mB
     private static final int HEATING_RATE = 2; // °C per tick
-    private static final int COOLING_RATE = 1; // °C per tick
+    private static final float COOLING_RATE = 0.1f; // °C per tick
 
     // Слоты: 0-2 = Входные предметы, 3 = Топливо
     private static final int INPUT_SLOTS_COUNT = 3;
@@ -78,6 +79,9 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     // Метод применения улучшения с защитой от понижения тира
     public boolean applyUpgrade(UpgradeType type, int tier) {
+        if (tier < 1 || tier > 3) {
+            return false;
+        }
         switch (type) {
             case CAPACITY_BOOST:
                 if (tier <= capacityTier) return false;
@@ -114,14 +118,37 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         buf.writeBlockPos(this.getBlockPos());
     }
 
-    public IItemHandler getItemHandler() { return itemHandler; }
-    public IFluidHandler getFluidHandler() { return fluidHandler; }
-    public float getCurrentTemperature() { return currentTemperature; }
-    public int getTargetTemperature() { return targetTemperature; }
-    public int getFuelBurnTime() { return fuelBurnTime; }
-    public void setFuelBurnTime(int fuelBurnTime) { this.fuelBurnTime = fuelBurnTime; }
-    public int getMaxFuelBurnTime() { return maxFuelBurnTime; }
-    public void setMaxFuelBurnTime(int maxFuelBurnTime) { this.maxFuelBurnTime = maxFuelBurnTime; }
+    public IItemHandler getItemHandler() {
+        return itemHandler;
+    }
+
+    public IFluidHandler getFluidHandler() {
+        return fluidHandler;
+    }
+
+    public float getCurrentTemperature() {
+        return currentTemperature;
+    }
+
+    public int getTargetTemperature() {
+        return targetTemperature;
+    }
+
+    public int getFuelBurnTime() {
+        return fuelBurnTime;
+    }
+
+    public void setFuelBurnTime(int fuelBurnTime) {
+        this.fuelBurnTime = fuelBurnTime;
+    }
+
+    public int getMaxFuelBurnTime() {
+        return maxFuelBurnTime;
+    }
+
+    public void setMaxFuelBurnTime(int maxFuelBurnTime) {
+        this.maxFuelBurnTime = maxFuelBurnTime;
+    }
 
     public int getMaxTemperature() {
         // Зависимость максимальной температуры от тира нагрева
@@ -140,16 +167,18 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         entity.tick();
     }
 
-    public static void clientTick(Level level, BlockPos pos, BlockState state, AlloySmelterBlockEntity entity) {
-        entity.tick();
-    }
-
     private void tick() {
-        if (level == null) return;
-
+        int previousBurnTime = fuelBurnTime;
+        float previousTemperature = currentTemperature;
         handleFuel();
         handleTemperature();
         handleMeltingAndAlloying();
+
+        // Keep active progress durable without dirtying the chunk on every server tick.
+        if ((fuelBurnTime != previousBurnTime || currentTemperature != previousTemperature)
+                && level != null && level.getGameTime() % 20 == 0) {
+            setChanged();
+        }
     }
 
     private void handleFuel() {
@@ -161,15 +190,15 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
                 // Определение категории топлива и целевой температуры
                 if (fuelStack.is(Items.LAVA_BUCKET)) {
                     targetTemperature = 1600;
-                    fuelBurnTime = maxFuelBurnTime = (int)(2000 * getEfficiencyMultiplier());
+                    fuelBurnTime = maxFuelBurnTime = (int) (2000 * getEfficiencyMultiplier());
                     itemHandler.setStackInSlot(FUEL_SLOT, new ItemStack(Items.BUCKET));
                 } else if (fuelStack.is(Items.COAL) || fuelStack.is(Items.CHARCOAL) || fuelStack.is(Items.COAL_BLOCK)) {
                     targetTemperature = 800;
-                    fuelBurnTime = maxFuelBurnTime = (int)(800 * getEfficiencyMultiplier());
+                    fuelBurnTime = maxFuelBurnTime = (int) (800 * getEfficiencyMultiplier());
                     fuelStack.shrink(1);
                 } else if (fuelStack.is(ItemTags.PLANKS) || fuelStack.is(ItemTags.LOGS) || fuelStack.is(Items.STICK)) {
                     targetTemperature = 200;
-                    fuelBurnTime = maxFuelBurnTime = (int)(300 * getEfficiencyMultiplier());
+                    fuelBurnTime = maxFuelBurnTime = (int) (300 * getEfficiencyMultiplier());
                     fuelStack.shrink(1);
                 } else {
                     targetTemperature = 0;
@@ -196,7 +225,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         if (currentTemperature < realTarget) {
             currentTemperature = Math.min(realTarget, currentTemperature + HEATING_RATE);
         } else if (currentTemperature > realTarget) {
-            currentTemperature = Math.max(realTarget, currentTemperature - 0.1f); // Остывание в 10 раз медленнее
+            currentTemperature = Math.max(realTarget, currentTemperature - COOLING_RATE);
         }
     }
 
@@ -237,6 +266,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         tag.putFloat("temperature", currentTemperature);
         tag.putInt("target_temp", targetTemperature);
         tag.putInt("fuel_burn", fuelBurnTime);
+        tag.putInt("max_fuel_burn", maxFuelBurnTime);
         tag.putInt("cap_tier", capacityTier);
         tag.putInt("heat_tier", heatTier);
         tag.putInt("eff_tier", efficiencyTier);
@@ -250,28 +280,46 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         currentTemperature = tag.getFloat("temperature");
         targetTemperature = tag.getInt("target_temp");
         fuelBurnTime = tag.getInt("fuel_burn");
-        capacityTier = tag.getInt("cap_tier");
-        heatTier = tag.getInt("heat_tier");
-        efficiencyTier = tag.getInt("eff_tier");
+        maxFuelBurnTime = tag.getInt("max_fuel_burn");
+        capacityTier = tag.contains("cap_tier") ? Math.clamp(tag.getInt("cap_tier"), 1, 3) : 1;
+        heatTier = tag.contains("heat_tier") ? Math.clamp(tag.getInt("heat_tier"), 1, 3) : 1;
+        efficiencyTier = tag.contains("eff_tier") ? Math.clamp(tag.getInt("eff_tier"), 1, 3) : 1;
     }
 
     private class AlloyFluidHandler implements IFluidHandler {
         private final FluidStack[] tanks = new FluidStack[1];
 
-        public AlloyFluidHandler() { tanks[0] = FluidStack.EMPTY; }
+        public AlloyFluidHandler() {
+            tanks[0] = FluidStack.EMPTY;
+        }
 
-        @Override public int getTanks() { return 1; }
-        @Override public FluidStack getFluidInTank(int tank) { return tanks[0]; }
-        @Override public int getTankCapacity(int tank) { return getCurrentCapacity(); }
-        @Override public boolean isFluidValid(int tank, FluidStack stack) { return true; }
+        @Override
+        public int getTanks() {
+            return 1;
+        }
+
+        @Override
+        public FluidStack getFluidInTank(int tank) {
+            return tank == 0 ? tanks[0] : FluidStack.EMPTY;
+        }
+
+        @Override
+        public int getTankCapacity(int tank) {
+            return tank == 0 ? getCurrentCapacity() : 0;
+        }
+
+        @Override
+        public boolean isFluidValid(int tank, FluidStack stack) {
+            return tank == 0;
+        }
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
             if (resource.isEmpty()) return 0;
             if (tanks[0].isEmpty() || FluidStack.isSameFluidSameComponents(tanks[0], resource)) {
-                int space = getCurrentCapacity() - tanks[0].getAmount();
+                int space = Math.max(0, getCurrentCapacity() - tanks[0].getAmount());
                 int filled = Math.min(space, resource.getAmount());
-                if (action.execute()) {
+                if (action.execute() && filled > 0) {
                     if (tanks[0].isEmpty()) {
                         tanks[0] = resource.copy();
                         tanks[0].setAmount(filled);
@@ -286,12 +334,17 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         }
 
         @Override
-        public FluidStack drain(FluidStack resource, FluidAction action) { return FluidStack.EMPTY; }
+        public FluidStack drain(FluidStack resource, FluidAction action) {
+            if (resource.isEmpty() || !FluidStack.isSameFluidSameComponents(tanks[0], resource))
+                return FluidStack.EMPTY;
+            return drain(resource.getAmount(), action);
+        }
+
         @Override
         public FluidStack drain(int maxDrain, FluidAction action) {
-            if (tanks[0].isEmpty()) return FluidStack.EMPTY;
+            if (maxDrain <= 0 || tanks[0].isEmpty()) return FluidStack.EMPTY;
             int drained = Math.min(maxDrain, tanks[0].getAmount());
-            FluidStack result = new FluidStack(tanks[0].getFluidHolder(), drained);
+            FluidStack result = tanks[0].copyWithAmount(drained);
             if (action.execute()) {
                 tanks[0].shrink(drained);
                 setChanged();
@@ -306,6 +359,7 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         }
 
         public void deserializeNBT(HolderLookup.Provider registries, CompoundTag tag) {
+            tanks[0] = FluidStack.EMPTY;
             if (tag.contains("tank_0")) {
                 tanks[0] = FluidStack.parse(registries, tag.getCompound("tank_0")).orElse(FluidStack.EMPTY);
             }

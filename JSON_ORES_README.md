@@ -6,7 +6,7 @@
 
 **Источником правды являются JSON файлы в папке `ores/`**
 
-Все изменения в блоках и генерации мира должны вноситься через JSON конфигурации. Java файлы в `src/main/java/` генерируются автоматически и не должны редактироваться вручную.
+JSON в `ores/` описывает руды, поддержанные генератором. Текущие классы в `src/main/java/` содержат также ручные регистрации машин и других руд: заменять их целиком результатом генерации нельзя. Генератор создаёт заготовки в `build/generated/ores/`; нужные регистрации переносите после сравнения с исходниками.
 
 ### Структура генерации
 
@@ -17,7 +17,7 @@ ores/ (JSON конфигурации - ИСТОЧНИК ПРАВДЫ)
 
 generate_ores.py (Генератор)
 
-src/main/java/TechCraft/ (ГЕНЕРИРУЕТСЯ)
+build/generated/ores/src/main/java/TechCraft/ (ЗАГОТОВКИ)
   ├── block/
   │   └── ModBlocks.java
   └── worldgen/
@@ -25,7 +25,7 @@ src/main/java/TechCraft/ (ГЕНЕРИРУЕТСЯ)
       ├── ModPlacedFeatures.java
       └── ModBiomeModifiers.java
 
-src/main/resources/data/techcraft/loot_table/blocks/ (ГЕНЕРИРУЕТСЯ)
+build/generated/ores/src/main/resources/data/techcraft/loot_table/blocks/
   ├── tin_ore.json
   ├── deepslate_tin_ore.json
   └── raw_tin_block.json
@@ -35,8 +35,8 @@ src/main/resources/data/techcraft/loot_table/blocks/ (ГЕНЕРИРУЕТСЯ)
 
 1. Создаете JSON файл в папке `ores/` с описанием руды
 2. Запускаете генератор: `./gradlew generateOres` или `python3 generate_ores.py`
-3. Скрипт автоматически генерирует Java код в `src/main/java/`
-4. Скрипт автоматически генерирует loot tables в `src/main/resources/`
+3. Скрипт создаёт Java-заготовки и loot tables внутри `build/generated/ores/`
+4. Проверяете результат и переносите нужные изменения в исходники, сохраняя существующие регистрации
 
 ## Структура JSON файла
 
@@ -248,9 +248,9 @@ python3 generate_ores.py
 ./generate_ores.py
 ```
 
-### 3. Скопируйте сгенерированные файлы
+### 3. Сравните и перенесите нужные изменения
 
-Генератор создаст файлы в папке `generated/`:
+Генератор создаст файлы в папке `build/generated/ores/`. Для другой папки используйте `--output-dir`. Не заменяйте перечисленные исходники целиком: переносите только нужные регистрации.
 
 - `ModBlocks.java` → скопируйте в `src/main/java/TechCraft/block/`
 - `ModConfiguredFeatures.java` → скопируйте в `src/main/java/TechCraft/worldgen/`

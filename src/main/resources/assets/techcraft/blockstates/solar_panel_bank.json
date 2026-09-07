@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "techcraft:block/solar_panel_bank"
+    },
+    "facing=south": {
+      "model": "techcraft:block/solar_panel_bank",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "techcraft:block/solar_panel_bank",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "techcraft:block/solar_panel_bank",
+      "y": 270
     }
   }
 }

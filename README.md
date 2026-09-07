@@ -1,25 +1,49 @@
+# TechCraft
 
-Installation information
-=======
+Технологический мод для Minecraft 1.21.1 / NeoForge 21.1.209: материалы, инструменты, квантовая броня, солнечные панели и цифровая сеть Lumen Mesh.
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+## Сборка и проверки
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+Нужны JDK 21 и Python 3. При первой сборке Gradle загружает зависимости и ресурсы Minecraft.
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+```sh
+./gradlew build
+./gradlew regressionTest
+./gradlew test
+./gradlew verifyResources
+```
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+`build` включает все три проверки. `regressionTest` проверяет граф, сохранение энергии и геометрию без запуска мира; `test` запускает JUnit в окружении NeoForge для проверки предметов, хранилищ и жидкостей. После загрузки зависимостей доступен режим `--offline`.
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+Готовый мод: `build/libs/techcraft-0.0.1.jar`. Для разработки используйте `./gradlew runClient` или `./gradlew runServer`. Обычные игровые запуски используют `run/`; тестовое окружение NeoForge — отдельную папку `build/minecraft-junit/`.
+
+## Структура
+
+| Папка | Ответственность |
+| --- | --- |
+| `src/main/java/TechCraft/block` | Регистрация блоков, плавильня и её интерфейс |
+| `src/main/java/TechCraft/item` | Регистрация предметов и поведение инструментов/брони |
+| `src/main/java/TechCraft/event` | События добычи, боя, полёта; клиентские подсказки отдельно |
+| `src/main/java/TechCraft/solar` | Солнечная генерация, накопитель панелей и зарядка |
+| `src/main/java/TechCraft/lumenmesh/network` | Топология, принадлежность узлов, состояние и сохранение сетей |
+| `src/main/java/TechCraft/lumenmesh/storage` | Хранение предметов, агрегация и операции над сетью |
+| `src/main/java/TechCraft/lumenmesh/block` | Игровые устройства и их жизненный цикл |
+| `src/main/java/TechCraft/lumenmesh/menu`, `client` | Серверные контейнеры и клиентские экраны |
+| `src/main/java/TechCraft/worldgen`, `datagen` | Генерация мира и данных |
+| `src/main/resources` | Рецепты, модели, текстуры, локализация и книга |
+| `src/regression/java`, `src/test/java` | Регрессионные и интеграционные проверки |
+| `tools/` | Валидация ресурсов и вспомогательные генераторы |
+
+Менеджер Lumen Mesh работает на серверном потоке. Выгрузка чанка освобождает живой объект устройства, сохраняя топологию; разрушение блока удаляет узел. Внешние инвентари и интерфейсы обращаются к хранилищу через `NetworkStorageService`.
+
+## Генерация руд
+
+```sh
+./gradlew generateOres
+# или:
+python3 generate_ores.py --output-dir build/generated/ores
+```
+
+Результат сохраняется в `build/generated/ores/` и не подключается автоматически к сборке. Сравните заготовки с исходниками и перенесите необходимые регистрации. В `ores/` сейчас описана только часть зарегистрированных руд; полная замена `ModBlocks.java` результатом генерации удалит ручные регистрации.
+
+Подробности: [JSON_ORES_README.md](JSON_ORES_README.md). Результат аудита и ограничения: [docs/PROJECT_AUDIT.md](docs/PROJECT_AUDIT.md).

@@ -19,6 +19,10 @@ public interface LumenNetworkNode {
      */
     UUID getNodeId();
 
+    /** Last known network, persisted by block entities between world loads. */
+    @Nullable
+    default UUID getNetworkId() { return null; }
+
     /**
      * @return позиция блока в мире
      */

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "techcraft:block/mesh_core_side",
-    "north": "techcraft:block/mesh_core_front",
-    "south": "techcraft:block/mesh_core_side",
-    "east": "techcraft:block/mesh_core_side",
-    "west": "techcraft:block/mesh_core_side",
-    "up": "techcraft:block/mesh_core_top",
-    "down": "techcraft:block/mesh_core_side"
+    "particle": "techcraft:block/lumen_mesh/mesh_core_side",
+    "north": "techcraft:block/lumen_mesh/mesh_core_front",
+    "south": "techcraft:block/lumen_mesh/mesh_core_side",
+    "east": "techcraft:block/lumen_mesh/mesh_core_side",
+    "west": "techcraft:block/lumen_mesh/mesh_core_side",
+    "up": "techcraft:block/lumen_mesh/mesh_core_top",
+    "down": "techcraft:block/lumen_mesh/mesh_core_side"
   }
 }

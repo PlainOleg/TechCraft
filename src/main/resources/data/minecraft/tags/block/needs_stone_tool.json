@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "techcraft:tin_ore"
+    "techcraft:tin_ore",
+    "techcraft:nickel_ore"
   ]
 }

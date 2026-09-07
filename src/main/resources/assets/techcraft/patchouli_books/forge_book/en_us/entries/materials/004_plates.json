@@ -5,32 +5,67 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Plates are flat metal sheets used in crafting various components. You can craft plates from various metals:$(br)• Tin Plate$(br)• Iron Plate$(br)• Gold Plate$(br)• Copper Plate$(br)• Steel Plate"
+      "text": "Plates are crafted from ingots using a Cutter. They are essential for crafting machines, cables, and advanced items. Available in all metal types including special materials."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:tin_plate",
-      "title": "Tin Plate"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:tin_plate",
+      "title": "Tin Plate",
+      "text": "Basic plate made from Tin Ingots. Used in early-game crafting."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:iron_plate",
-      "title": "Iron Plate"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_plate",
+      "title": "Iron Plate",
+      "text": "Standard plate made from Iron Ingots."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:gold_plate",
-      "title": "Gold Plate"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:gold_plate",
+      "title": "Gold Plate",
+      "text": "Conductive plate made from Gold Ingots."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:copper_plate",
-      "title": "Copper Plate"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_plate",
+      "title": "Copper Plate",
+      "text": "Conductive plate made from Copper Ingots."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_plate",
-      "title": "Steel Plate"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_plate",
+      "title": "Steel Plate",
+      "text": "Durable plate made from Steel Ingots."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_plate",
+      "title": "Bronze Plate",
+      "text": "Alloy plate with good conductivity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_plate",
+      "title": "Nickel Plate",
+      "text": "Corrosion-resistant plate."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_plate",
+      "title": "Silver Plate",
+      "text": "Magical conductive plate."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_plate",
+      "title": "Prismite Plate",
+      "text": "Crystalline plate with refractive properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_plate",
+      "title": "Quantum Plate",
+      "text": "End-game plate with quantum properties."
     }
   ]
 }

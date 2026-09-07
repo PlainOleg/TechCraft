@@ -100,7 +100,9 @@ public class AlloySmelterBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.ALLOY_SMELTER.get(),
-                level.isClientSide ? AlloySmelterBlockEntity::clientTick : AlloySmelterBlockEntity::serverTick);
+        if (level.isClientSide) {
+            return null;
+        }
+        return createTickerHelper(type, ModBlockEntities.ALLOY_SMELTER.get(), AlloySmelterBlockEntity::serverTick);
     }
 }

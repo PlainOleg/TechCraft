@@ -7,6 +7,9 @@ import TechCraft.solar.SolarPanelBankScreen;
 import TechCraft.lumenmesh.ModLumenMenuTypes;
 import TechCraft.lumenmesh.client.MeshCoreScreen;
 import TechCraft.lumenmesh.client.EnergyBridgeScreen;
+import TechCraft.lumenmesh.client.PrismDriveScreen;
+import TechCraft.lumenmesh.client.ItemTerminalScreen;
+import TechCraft.lumenmesh.client.StorageLinkScreen;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,16 +22,10 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(value = TechCraft.MOD_ID, dist = Dist.CLIENT)
-@EventBusSubscriber(modid = TechCraft.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = TechCraft.MOD_ID, value = Dist.CLIENT)
 public class TechCraftClient {
     public TechCraftClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-    }
-
-    @SubscribeEvent
-    static void onClientSetup(FMLClientSetupEvent event) {
-        TechCraft.LOGGER.info("HELLO FROM CLIENT SETUP");
-        TechCraft.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 
     @SubscribeEvent
@@ -37,5 +34,8 @@ public class TechCraftClient {
         event.register(ModSolarMenuTypes.SOLAR_PANEL_BANK.get(), SolarPanelBankScreen::new);
         event.register(ModLumenMenuTypes.MESH_CORE.get(), MeshCoreScreen::new);
         event.register(ModLumenMenuTypes.ENERGY_BRIDGE.get(), EnergyBridgeScreen::new);
+        event.register(ModLumenMenuTypes.PRISM_DRIVE.get(), PrismDriveScreen::new);
+        event.register(ModLumenMenuTypes.ITEM_TERMINAL.get(), ItemTerminalScreen::new);
+        event.register(ModLumenMenuTypes.STORAGE_LINK.get(), StorageLinkScreen::new);
     }
 }

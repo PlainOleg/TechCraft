@@ -1,13 +1,10 @@
 package TechCraft.lumenmesh.network;
 
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
+import TechCraft.util.NonNegativeMath;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.DimensionDataStorage;
 import org.slf4j.Logger;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Менеджер сетей Lumen Mesh.
@@ -16,20 +13,23 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class LumenNetworkManager {
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(LumenNetworkManager.class);
-    
+
     private static final int REBUILD_DELAY_TICKS = 5;
-    
+
     private final Map<UUID, LumenNetwork> networks;
     private final LumenGraph graph;
     private final Map<UUID, LumenNetworkNode> nodeImplementations;
     private final Set<UUID> pendingRebuildNodes;
     private int rebuildTimer;
+    private long lastTickTime = Long.MIN_VALUE;
+    private LumenNetworkSavedData savedData;
+    private int saveTimer;
 
     public LumenNetworkManager() {
-        this.networks = new ConcurrentHashMap<>();
+        this.networks = new HashMap<>();
         this.graph = new LumenGraph();
-        this.nodeImplementations = new ConcurrentHashMap<>();
-        this.pendingRebuildNodes = ConcurrentHashMap.newKeySet();
+        this.nodeImplementations = new HashMap<>();
+        this.pendingRebuildNodes = new HashSet<>();
         this.rebuildTimer = 0;
     }
 
@@ -38,23 +38,34 @@ public class LumenNetworkManager {
      */
     public void registerNode(LumenNetworkNode node) {
         UUID nodeId = node.getNodeId();
+        LumenNode occupant = graph.getNodeAt(node.getDimension(), node.getNodePosition());
+        if (occupant != null && !occupant.getNodeId().equals(nodeId)) unregisterNode(occupant.getNodeId());
         nodeImplementations.put(nodeId, node);
-        
+        LumenNode persisted = graph.getNode(nodeId);
         LumenNode graphNode = new LumenNode(
-            nodeId,
-            node.getNodePosition(),
-            node.getDimension(),
-            node.getConnectionSides(),
-            node.getNodeType()
+                nodeId,
+                node.getNodePosition(),
+                node.getDimension(),
+                node.getConnectionSides(),
+                node.getNodeType()
         );
+        graphNode.setNetworkId(persisted != null ? persisted.getNetworkId() : node.getNetworkId());
+        graphNode.setEnabled(node.isEnabled());
         graph.addNode(graphNode);
-        
+        node.onNetworkChanged(graphNode.getNetworkId());
+
         scheduleRebuild(nodeId);
     }
 
     /**
      * Удаляет узел из системы.
      */
+    public void unloadNode(UUID nodeId) {
+        // Chunk unload is not block destruction. Keep the persisted topology and
+        // buffers, but release the live block entity so storage cannot use it.
+        nodeImplementations.remove(nodeId);
+    }
+
     public void unregisterNode(UUID nodeId) {
         LumenNode graphNode = graph.getNode(nodeId);
         if (graphNode != null) {
@@ -66,7 +77,7 @@ public class LumenNetworkManager {
                 }
             }
         }
-        
+
         graph.removeNode(nodeId);
         nodeImplementations.remove(nodeId);
         scheduleRebuild(nodeId);
@@ -77,12 +88,16 @@ public class LumenNetworkManager {
      */
     public void addToNetwork(UUID nodeId, UUID networkId) {
         LumenNode graphNode = graph.getNode(nodeId);
-        if (graphNode != null) {
+        if (graphNode != null && networks.containsKey(networkId)) {
+            LumenNetwork old = getNetwork(graphNode.getNetworkId());
+            if (old != null) old.removeNode(nodeId);
             graphNode.setNetworkId(networkId);
             LumenNetwork network = networks.get(networkId);
             if (network != null) {
                 network.addNode(nodeId);
             }
+            LumenNetworkNode impl = nodeImplementations.get(nodeId);
+            if (impl != null) impl.onNetworkChanged(networkId);
         }
     }
 
@@ -102,7 +117,7 @@ public class LumenNetworkManager {
      * Получает сеть по ID.
      */
     public LumenNetwork getNetwork(UUID networkId) {
-        return networks.get(networkId);
+        return networkId == null ? null : networks.get(networkId);
     }
 
     /**
@@ -123,12 +138,23 @@ public class LumenNetworkManager {
         return Collections.unmodifiableCollection(networks.values());
     }
 
+    public <T extends LumenNetworkNode> List<T> getNodes(UUID networkId, Class<T> type) {
+        LumenNetwork network = networks.get(networkId);
+        if (network == null) return List.of();
+        List<T> result = new ArrayList<>();
+        for (UUID nodeId : network.getNodeIds()) {
+            LumenNetworkNode node = nodeImplementations.get(nodeId);
+            if (type.isInstance(node)) result.add(type.cast(node));
+        }
+        return result;
+    }
+
     /**
      * Запланировать перестройку графа для узла.
      */
     public void scheduleRebuild(UUID nodeId) {
         pendingRebuildNodes.add(nodeId);
-        rebuildTimer = REBUILD_DELAY_TICKS;
+        if (rebuildTimer == 0) rebuildTimer = REBUILD_DELAY_TICKS;
     }
 
     /**
@@ -136,10 +162,24 @@ public class LumenNetworkManager {
      * Вызывается каждый тик сервера.
      */
     public void tick(Level level) {
+        tick(level.getGameTime());
+    }
+
+    public void tick(long gameTime) {
+        if (lastTickTime == gameTime) {
+            return;
+        }
+        lastTickTime = gameTime;
+
+        if (savedData != null && ++saveTimer >= 20) {
+            saveTimer = 0;
+            saveToSavedData(savedData);
+        }
+
         if (rebuildTimer > 0) {
             rebuildTimer--;
             if (rebuildTimer == 0 && !pendingRebuildNodes.isEmpty()) {
-                rebuildNetworks(level);
+                rebuildNetworks();
                 pendingRebuildNodes.clear();
             }
         }
@@ -149,84 +189,52 @@ public class LumenNetworkManager {
      * Перестраивает сети на основе текущего состояния графа.
      * Объединяет и разделяет сети при необходимости.
      */
-    private void rebuildNetworks(Level level) {
-        LOGGER.debug("Перестройка сетей Lumen Mesh...");
-        
-        // Находим все компоненты связности
-        List<Set<UUID>> components = graph.findConnectedComponents(level);
-        
-        // Обновляем принадлежность узлов к сетям
-        for (Set<UUID> component : components) {
-            if (component.isEmpty()) continue;
-            
-            // Определяем, к какой сети принадлежит компонент
-            UUID targetNetworkId = determineTargetNetwork(component);
-            
-            if (targetNetworkId == null) {
-                // Создаём новую сеть для изолированного компонента
-                UUID ownerId = determineOwner(component);
-                targetNetworkId = createNetwork(ownerId);
-            }
-            
-            // Обновляем узлы
-            for (UUID nodeId : component) {
-                LumenNode node = graph.getNode(nodeId);
-                if (node != null) {
-                    UUID oldNetworkId = node.getNetworkId();
-                    if (!Objects.equals(oldNetworkId, targetNetworkId)) {
-                        node.setNetworkId(targetNetworkId);
-                        
-                        // Обновляем сети
-                        if (oldNetworkId != null) {
-                            LumenNetwork oldNetwork = networks.get(oldNetworkId);
-                            if (oldNetwork != null) {
-                                oldNetwork.removeNode(nodeId);
-                                // Удаляем пустые сети
-                                if (oldNetwork.getNodeIds().isEmpty()) {
-                                    networks.remove(oldNetworkId);
-                                }
-                            }
-                        }
-                        
-                        LumenNetwork newNetwork = networks.get(targetNetworkId);
-                        if (newNetwork != null) {
-                            newNetwork.addNode(nodeId);
-                        }
-                        
-                        // Уведомляем реализацию узла
-                        LumenNetworkNode impl = nodeImplementations.get(nodeId);
-                        if (impl != null) {
-                            impl.onNetworkChanged(targetNetworkId);
-                        }
-                    }
-                }
-            }
-        }
-        
-        LOGGER.debug("Перестройка завершена. Всего сетей: {}", networks.size());
-    }
+    private void rebuildNetworks() {
+        List<Set<UUID>> components = graph.findConnectedComponents();
+        components.sort(Comparator.comparing(component -> Collections.min(component)));
 
-    /**
-     * Определяет целевую сеть для компонента.
-     * Если узлы уже принадлежат к одной сети, возвращает её ID.
-     * Если принадлежат к разным сетям, выбирает детерминированно.
-     */
-    private UUID determineTargetNetwork(Set<UUID> component) {
-        UUID firstNetworkId = null;
-        
-        for (UUID nodeId : component) {
-            LumenNode node = graph.getNode(nodeId);
-            if (node != null && node.getNetworkId() != null) {
-                if (firstNetworkId == null) {
-                    firstNetworkId = node.getNetworkId();
-                } else if (!firstNetworkId.equals(node.getNetworkId())) {
-                    // Обнаружено объединение сетей
-                    return mergeNetworks(firstNetworkId, node.getNetworkId());
+        // Assign each old network to exactly one component before changing any
+        // membership. Splitting and merging in the same rebuild must not move
+        // nodes from an already processed component or discard a third buffer.
+        Map<UUID, Integer> retainedBy = new HashMap<>();
+        List<UUID> owners = new ArrayList<>();
+        for (int index = 0; index < components.size(); index++) {
+            owners.add(determineOwner(components.get(index)));
+            for (UUID nodeId : components.get(index)) {
+                UUID networkId = graph.getNode(nodeId).getNetworkId();
+                if (networkId != null && networks.containsKey(networkId)) {
+                    retainedBy.putIfAbsent(networkId, index);
                 }
             }
         }
-        
-        return firstNetworkId;
+        Map<Integer, SortedSet<UUID>> candidates = new HashMap<>();
+        retainedBy.forEach((networkId, index) ->
+                candidates.computeIfAbsent(index, ignored -> new TreeSet<>()).add(networkId));
+        networks.values().forEach(LumenNetwork::clearNodes);
+
+        for (int index = 0; index < components.size(); index++) {
+            SortedSet<UUID> existing = candidates.getOrDefault(index, Collections.emptySortedSet());
+            UUID target = existing.isEmpty() ? createNetwork(owners.get(index)) : existing.first();
+            for (UUID other : existing) {
+                if (!other.equals(target)) target = mergeNetworks(target, other);
+            }
+            LumenNetwork network = networks.get(target);
+            for (UUID nodeId : components.get(index)) {
+                graph.getNode(nodeId).setNetworkId(target);
+                network.addNode(nodeId);
+            }
+        }
+
+        networks.entrySet().removeIf(entry -> entry.getValue().getNodeIds().isEmpty());
+        // Notify after the complete topology is consistent.
+        for (LumenNode node : graph.getAllNodes()) {
+            LumenNetworkNode impl = nodeImplementations.get(node.getNodeId());
+            if (impl != null && !Objects.equals(impl.getNetworkId(), node.getNetworkId())) {
+                impl.onNetworkChanged(node.getNetworkId());
+            }
+        }
+        LOGGER.debug("Перестройка завершена. Всего сетей: {}", networks.size());
+        if (savedData != null) saveToSavedData(savedData);
     }
 
     /**
@@ -236,25 +244,25 @@ public class LumenNetworkManager {
     private UUID mergeNetworks(UUID networkId1, UUID networkId2) {
         LumenNetwork network1 = networks.get(networkId1);
         LumenNetwork network2 = networks.get(networkId2);
-        
+
         if (network1 == null || network2 == null) {
             return network1 != null ? networkId1 : networkId2;
         }
-        
+
         // Детерминированный выбор основной сети (по UUID)
         UUID primaryId = networkId1.compareTo(networkId2) < 0 ? networkId1 : networkId2;
         UUID secondaryId = primaryId.equals(networkId1) ? networkId2 : networkId1;
-        
+
         LumenNetwork primary = networks.get(primaryId);
         LumenNetwork secondary = networks.get(secondaryId);
-        
+
         // Проверяем владельцев
         if (!Objects.equals(primary.getOwnerId(), secondary.getOwnerId())) {
             LOGGER.warn("Попытка объединения сетей разных владельцев: {} и {}", primaryId, secondaryId);
             // В реальной реализации здесь должна быть логика проверки прав
             // Пока объединяем, но логируем предупреждение
         }
-        
+
         // Переносим узлы
         for (UUID nodeId : secondary.getNodeIds()) {
             primary.addNode(nodeId);
@@ -263,24 +271,24 @@ public class LumenNetworkManager {
                 node.setNetworkId(primaryId);
             }
         }
-        
+
         // Переносим энергию
-        long totalEnergy = primary.getEnergyStored() + secondary.getEnergyStored();
-        long totalCapacity = primary.getEnergyCapacity() + secondary.getEnergyCapacity();
+        long totalEnergy = NonNegativeMath.add(primary.getEnergyStored(), secondary.getEnergyStored());
+        long totalCapacity = NonNegativeMath.add(primary.getEnergyCapacity(), secondary.getEnergyCapacity());
         primary.setEnergyCapacity(totalCapacity);
         primary.setEnergyStored(totalEnergy);
-        
+
         // Переносим задания автокрафта
         for (LumenNetwork.CraftingJob job : secondary.getCraftingJobs()) {
             primary.addCraftingJob(job);
         }
-        
+
         // Объединяем пропускную способность
-        primary.setBaseBandwidth(primary.getBaseBandwidth() + secondary.getBaseBandwidth());
-        
+        primary.setBaseBandwidth((int) Math.min(Integer.MAX_VALUE, (long) primary.getBaseBandwidth() + secondary.getBaseBandwidth()));
+
         // Удаляем вторичную сеть
         networks.remove(secondaryId);
-        
+
         LOGGER.debug("Сети объединены: {} + {} -> {}", secondaryId, primaryId, primaryId);
         return primaryId;
     }
@@ -306,17 +314,25 @@ public class LumenNetworkManager {
      * Загружает данные сетей из сохранения мира.
      */
     public void loadFromSavedData(LumenNetworkSavedData savedData) {
+        this.savedData = savedData;
         networks.clear();
         graph.clear();
-        
+        pendingRebuildNodes.clear();
+        rebuildTimer = 0;
+        lastTickTime = Long.MIN_VALUE;
+        saveTimer = 0;
+
         for (LumenNetwork network : savedData.getNetworks()) {
             networks.put(network.getNetworkId(), network);
         }
-        
+
         for (LumenNode node : savedData.getNodes()) {
             graph.addNode(node);
         }
-        
+
+        // Block entities may have loaded before ServerStartingEvent.
+        for (LumenNetworkNode node : List.copyOf(nodeImplementations.values())) registerNode(node);
+        for (LumenNode node : graph.getAllNodes()) scheduleRebuild(node.getNodeId());
         LOGGER.debug("Загружено {} сетей и {} узлов", networks.size(), graph.size());
     }
 
@@ -337,5 +353,8 @@ public class LumenNetworkManager {
         nodeImplementations.clear();
         pendingRebuildNodes.clear();
         rebuildTimer = 0;
+        lastTickTime = Long.MIN_VALUE;
+        savedData = null;
+        saveTimer = 0;
     }
 }

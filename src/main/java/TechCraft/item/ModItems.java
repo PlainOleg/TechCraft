@@ -49,6 +49,17 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_TIN;
     public static final DeferredItem<Item> TIN_INGOT;
     public static final DeferredItem<Item> STEEL_INGOT;
+    public static final DeferredItem<Item> RAW_URANIUM;
+    public static final DeferredItem<Item> ENRICHED_URANIUM;
+    public static final DeferredItem<Item> ENRICHED_URANIUM_INGOT;
+    public static final DeferredItem<Item> RAW_COBALT;
+    public static final DeferredItem<Item> COBALT_INGOT;
+    public static final DeferredItem<Item> RAW_TITANIUM;
+    public static final DeferredItem<Item> TITANIUM_INGOT;
+    public static final DeferredItem<Item> AETHERIUM_INGOT;
+    public static final DeferredItem<Item> SOLARITE_INGOT;
+    public static final DeferredItem<Item> RAW_ORICHALCUM;
+    public static final DeferredItem<Item> ORICHALCUM_INGOT;
 
     public static final DeferredItem<Item> RAW_RUBBER;
     public static final DeferredItem<Item> RUBBER;
@@ -108,6 +119,8 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_BLUE_CORE;
     public static final DeferredItem<Item> RAW_VIOLET_CORE;
 
+    public static final DeferredItem<Item> REFINED_PHASE_QUARTZ;
+
     public static final DeferredItem<Item> FORGE_BOOK;
     public static final DeferredItem<HammerItem> FORGE_HAMMER;
     public static final DeferredItem<Item> CUTTER;
@@ -152,6 +165,17 @@ public class ModItems {
         RAW_TIN = registerMaterialItem(MaterialType.TIN, "raw");
         TIN_INGOT = registerMaterialItem(MaterialType.TIN, "ingot");
         TIN_PLATE = registerPlate(MaterialType.TIN);
+        RAW_URANIUM = ITEMS.register("raw_uranium", () -> new Item(new Item.Properties()));
+        ENRICHED_URANIUM = ITEMS.register("enriched_uranium", () -> new Item(new Item.Properties()));
+        ENRICHED_URANIUM_INGOT = ITEMS.register("enriched_uranium_ingot", () -> new Item(new Item.Properties()));
+        RAW_COBALT = ITEMS.register("raw_cobalt", () -> new Item(new Item.Properties()));
+        COBALT_INGOT = ITEMS.register("cobalt_ingot", () -> new Item(new Item.Properties()));
+        RAW_TITANIUM = ITEMS.register("raw_titanium", () -> new Item(new Item.Properties()));
+        TITANIUM_INGOT = ITEMS.register("titanium_ingot", () -> new Item(new Item.Properties()));
+        AETHERIUM_INGOT = ITEMS.register("aetherium_ingot", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+        SOLARITE_INGOT = ITEMS.register("solarite_ingot", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+        RAW_ORICHALCUM = ITEMS.register("raw_orichalcum", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+        ORICHALCUM_INGOT = ITEMS.register("orichalcum_ingot", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
         IRON_PLATE = registerPlate(MaterialType.IRON);
         GOLD_PLATE = registerPlate(MaterialType.GOLD);
@@ -211,6 +235,8 @@ public class ModItems {
         VIOLET_PLASMA_CORE = registerSimpleItem("violet_plasma_core");
         RAW_BLUE_CORE = registerSimpleItem("raw_blue_core");
         RAW_VIOLET_CORE = registerSimpleItem("raw_violet_core");
+
+        REFINED_PHASE_QUARTZ = registerSimpleItem("refined_phase_quartz");
 
         ITEMS.register("raw_tin", () -> new Item(new Item.Properties()));
 

@@ -8,6 +8,9 @@ import TechCraft.item.ModArmorMaterials;
 import TechCraft.item.ModCreativeModTabs;
 import TechCraft.item.ModItems;
 import TechCraft.lumenmesh.LumenMesh;
+import TechCraft.lumenmesh.ModLumenMenuTypes;
+import TechCraft.lumenmesh.LumenCapabilities;
+import TechCraft.lumenmesh.item.LumenItems;
 import TechCraft.solar.ModSolarBlockEntities;
 import TechCraft.solar.ModSolarBlocks;
 import TechCraft.solar.ModSolarMenuTypes;
@@ -45,6 +48,8 @@ public class TechCraft {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        // Ensure Lumen Mesh items are registered before creative tabs use them
+        LumenItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -56,6 +61,10 @@ public class TechCraft {
         ModSolarBlocks.register(modEventBus);
         ModSolarBlockEntities.register(modEventBus);
         ModSolarMenuTypes.register(modEventBus);
+
+        // Register LumenMesh menu types
+        ModLumenMenuTypes.register(modEventBus);
+        modEventBus.addListener(LumenCapabilities::register);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 

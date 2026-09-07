@@ -5,27 +5,31 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Dusts are powdered materials created by using the Forge Hammer on various items. They are used in crafting and can be combined to create Steel Ingots.$(br)$(br)Available dusts:$(br)• Coal Dust$(br)• Iron Dust$(br)• Steel Dust"
+      "text": "Dusts are powdered materials created by using the Forge Hammer on various items. They are used in crafting and can be combined to create Steel Ingots.$(br)$(br)Available dusts:$(br)• Coal Dust$(br)• Iron Dust$(br)• Nickel Dust$(br)• Steel Dust"
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:coal_dust",
-      "title": "Coal Dust"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:coal_dust",
+      "title": "Coal Dust",
+      "text": "Created by crushing coal. Used in steel production."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:iron_dust",
-      "title": "Iron Dust"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_dust",
+      "title": "Iron Dust",
+      "text": "Created by crushing iron items. Used in steel production."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_dust",
-      "title": "Steel Dust"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_dust",
+      "title": "Nickel Dust",
+      "text": "Created by crushing nickel items. Used in advanced alloys."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_ingot_from_dusts",
-      "title": "Steel from Dusts"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_dust",
+      "title": "Steel Dust",
+      "text": "Created by crushing steel items. Can be smelted back into Steel Ingots."
     }
   ]
 }

@@ -14,6 +14,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 
 /**
@@ -36,9 +38,6 @@ public class LumenMesh {
         // Регистрация блок-ентити
         LumenBlockEntities.register(modEventBus);
         
-        // Регистрация предметов
-        LumenItems.register(modEventBus);
-
         LOGGER.info("Lumen Mesh инициализирован");
     }
 
@@ -51,7 +50,19 @@ public class LumenMesh {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+        LumenMeshIntegration.start(event.getServer());
         LOGGER.info("Сервер запускается, загрузка данных сетей Lumen Mesh");
+    }
+
+    @SubscribeEvent
+    public void onServerTick(ServerTickEvent.Post event) {
+        var manager = LumenMeshIntegration.getNetworkManager(event.getServer());
+        if (manager != null) manager.tick(event.getServer().overworld());
+    }
+
+    @SubscribeEvent
+    public void onServerStopping(ServerStoppingEvent event) {
+        LumenMeshIntegration.save(event.getServer());
     }
 
     @SubscribeEvent

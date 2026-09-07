@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "techcraft:item/violet_plasma_core"
+    "layer0": "techcraft:item/plasma/violet_plasma_core"
   }
 }

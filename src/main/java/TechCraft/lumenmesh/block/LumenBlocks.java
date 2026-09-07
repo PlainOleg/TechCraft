@@ -4,8 +4,11 @@ import TechCraft.TechCraft;
 import TechCraft.lumenmesh.block.cable.MeshCableBlock;
 import TechCraft.lumenmesh.block.core.MeshCoreBlock;
 import TechCraft.lumenmesh.block.energy.EnergyBridgeBlock;
+import TechCraft.lumenmesh.block.storage.PrismDriveBlock;
+import TechCraft.lumenmesh.block.storage.StorageLinkBlock;
+import TechCraft.lumenmesh.block.terminal.ItemTerminalBlock;
+import TechCraft.lumenmesh.item.LumenBlockItem;
 import TechCraft.lumenmesh.item.LumenItems;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -70,34 +73,34 @@ public class LumenBlocks {
         // Ядро и энергия
         MESH_CORE = registerBlock("mesh_core", () -> new MeshCoreBlock(machineProperties()));
         ENERGY_BRIDGE = registerBlock("energy_bridge", () -> new EnergyBridgeBlock(machineProperties()));
-        PULSE_BUFFER = registerBlock("pulse_buffer", () -> new Block(machineProperties()));
-        COHERENCE_STABILIZER = registerBlock("coherence_stabilizer", () -> new Block(machineProperties()));
+        PULSE_BUFFER = registerBlock("pulse_buffer", () -> new LumenFacingBlock(machineProperties()));
+        COHERENCE_STABILIZER = registerBlock("coherence_stabilizer", () -> new LumenFacingBlock(machineProperties()));
 
         // Хранение и терминалы
-        PRISM_DRIVE = registerBlock("prism_drive", () -> new Block(machineProperties()));
-        ITEM_TERMINAL = registerBlock("item_terminal", () -> new Block(machineProperties()));
-        CRAFTING_TERMINAL = registerBlock("crafting_terminal", () -> new Block(machineProperties()));
+        PRISM_DRIVE = registerBlock("prism_drive", () -> new PrismDriveBlock(machineProperties()));
+        ITEM_TERMINAL = registerBlock("item_terminal", () -> new ItemTerminalBlock(machineProperties()));
+        CRAFTING_TERMINAL = registerBlock("crafting_terminal", () -> new LumenFacingBlock(machineProperties()));
 
         // Автокрафт
-        BLUEPRINT_ENCODER = registerBlock("blueprint_encoder", () -> new Block(machineProperties()));
-        FABRICATOR = registerBlock("fabricator", () -> new Block(machineProperties()));
-        CRAFTING_PROCESSOR = registerBlock("crafting_processor", () -> new Block(machineProperties()));
+        BLUEPRINT_ENCODER = registerBlock("blueprint_encoder", () -> new LumenFacingBlock(machineProperties()));
+        FABRICATOR = registerBlock("fabricator", () -> new LumenFacingBlock(machineProperties()));
+        CRAFTING_PROCESSOR = registerBlock("crafting_processor", () -> new LumenFacingBlock(machineProperties()));
 
         // Логистика
-        IMPORT_NODE = registerBlock("import_node", () -> new Block(machineProperties()));
-        EXPORT_NODE = registerBlock("export_node", () -> new Block(machineProperties()));
-        STORAGE_LINK = registerBlock("storage_link", () -> new Block(machineProperties()));
-        MACHINE_INTERFACE = registerBlock("machine_interface", () -> new Block(machineProperties()));
-        LEVEL_KEEPER = registerBlock("level_keeper", () -> new Block(machineProperties()));
-        STOCK_MONITOR = registerBlock("stock_monitor", () -> new Block(machineProperties()));
+        IMPORT_NODE = registerBlock("import_node", () -> new LumenFacingBlock(machineProperties()));
+        EXPORT_NODE = registerBlock("export_node", () -> new LumenFacingBlock(machineProperties()));
+        STORAGE_LINK = registerBlock("storage_link", () -> new StorageLinkBlock(machineProperties()));
+        MACHINE_INTERFACE = registerBlock("machine_interface", () -> new LumenFacingBlock(machineProperties()));
+        LEVEL_KEEPER = registerBlock("level_keeper", () -> new LumenFacingBlock(machineProperties()));
+        STOCK_MONITOR = registerBlock("stock_monitor", () -> new LumenFacingBlock(machineProperties()));
 
         // Удалённый доступ
-        WIRELESS_RELAY = registerBlock("wireless_relay", () -> new Block(machineProperties()));
-        QUANTUM_BRIDGE = registerBlock("quantum_bridge", () -> new Block(machineProperties()));
-        SECURITY_CONSOLE = registerBlock("security_console", () -> new Block(machineProperties()));
+        WIRELESS_RELAY = registerBlock("wireless_relay", () -> new LumenFacingBlock(machineProperties()));
+        QUANTUM_BRIDGE = registerBlock("quantum_bridge", () -> new LumenFacingBlock(machineProperties()));
+        SECURITY_CONSOLE = registerBlock("security_console", () -> new LumenFacingBlock(machineProperties()));
 
         // Утилита
-        MATTER_CONDENSER = registerBlock("matter_condenser", () -> new Block(machineProperties()));
+        MATTER_CONDENSER = registerBlock("matter_condenser", () -> new LumenFacingBlock(machineProperties()));
     }
 
     private static BlockBehaviour.Properties machineProperties() {
@@ -110,8 +113,7 @@ public class LumenBlocks {
     private static BlockBehaviour.Properties cableProperties() {
         return BlockBehaviour.Properties.of()
             .mapColor(MapColor.COLOR_LIGHT_BLUE)
-            .strength(0.5F, 0.5F)
-            .noCollission();
+            .strength(0.5F, 0.5F);
     }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -121,7 +123,7 @@ public class LumenBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        LumenItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        LumenItems.ITEMS.register(name, () -> new LumenBlockItem(name, block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

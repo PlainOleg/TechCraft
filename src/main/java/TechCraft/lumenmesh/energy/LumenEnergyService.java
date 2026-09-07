@@ -9,7 +9,7 @@ import org.slf4j.Logger;
  */
 public class LumenEnergyService {
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(LumenEnergyService.class);
-    
+
     /**
      * Базовые стоимости операций в импульсах энергии.
      */
@@ -25,12 +25,13 @@ public class LumenEnergyService {
 
     /**
      * Проверяет, достаточно ли энергии для операции.
+     *
      * @param network сеть
-     * @param cost стоимость операции
+     * @param cost    стоимость операции
      * @return true, если энергии достаточно
      */
     public static boolean hasEnergy(LumenNetwork network, int cost) {
-        if (network == null) {
+        if (network == null || cost < 0) {
             return false;
         }
         return network.getEnergyStored() >= cost;
@@ -38,63 +39,67 @@ public class LumenEnergyService {
 
     /**
      * Пытается потребить энергию для операции.
+     *
      * @param network сеть
-     * @param cost стоимость операции
+     * @param cost    стоимость операции
      * @return true, если энергия была потреблена
      */
     public static boolean consumeEnergy(LumenNetwork network, int cost) {
         if (!hasEnergy(network, cost)) {
             return false;
         }
-        
+
         network.setEnergyStored(network.getEnergyStored() - cost);
         return true;
     }
 
     /**
      * Добавляет энергию в сеть.
+     *
      * @param network сеть
-     * @param amount количество энергии
+     * @param amount  количество энергии
      * @return количество фактически добавленной энергии (с учётом ёмкости)
      */
     public static long addEnergy(LumenNetwork network, long amount) {
         if (network == null || amount <= 0) {
             return 0;
         }
-        
+
         long space = network.getEnergyCapacity() - network.getEnergyStored();
         long added = Math.min(amount, space);
-        
+
         if (added > 0) {
             network.setEnergyStored(network.getEnergyStored() + added);
         }
-        
+
         return added;
     }
 
     /**
      * Извлекает энергию из сети.
+     *
      * @param network сеть
-     * @param amount количество энергии
+     * @param amount  количество энергии
      * @return количество фактически извлечённой энергии
      */
     public static long extractEnergy(LumenNetwork network, long amount) {
         if (network == null || amount <= 0) {
             return 0;
         }
-        
+
         long available = network.getEnergyStored();
         long extracted = Math.min(amount, available);
-        
+
         if (extracted > 0) {
             network.setEnergyStored(network.getEnergyStored() - extracted);
         }
-        
+
         return extracted;
     }
 
     /**
      * Получает процент заполнения энергетического буфера.
+     *
      * @param network сеть
      * @return значение от 0.0 до 1.0
      */
@@ -107,7 +112,8 @@ public class LumenEnergyService {
 
     /**
      * Проверяет, находится ли сеть в критическом состоянии по энергии.
-     * @param network сеть
+     *
+     * @param network   сеть
      * @param threshold порог в долях (например, 0.1 = 10%)
      * @return true, если энергия ниже порога
      */

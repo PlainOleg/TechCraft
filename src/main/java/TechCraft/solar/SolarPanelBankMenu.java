@@ -3,53 +3,54 @@ package TechCraft.solar;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Menu for Solar Panel Bank.
- * Handles 8 panel slots, 1 charge slot, and player inventory.
+ * Handles 36 panel slots, 6 charging slots, and player inventory.
  * Implements safe extraction logic to prevent energy loss.
  */
 public class SolarPanelBankMenu extends AbstractContainerMenu {
-    private static final int PANEL_SLOT_COUNT = 8;
-    private static final int CHARGE_SLOT = 8;
-    private static final int TOTAL_SLOTS = 9;
-    
+    private static final int PANEL_SLOT_COUNT = SolarPanelBankBlockEntity.PANEL_SLOT_COUNT;
+    private static final int CHARGE_SLOT_START = SolarPanelBankBlockEntity.CHARGE_SLOT_START;
+    private static final int CHARGE_SLOT_COUNT = SolarPanelBankBlockEntity.CHARGE_SLOT_COUNT;
+    private static final int MACHINE_SLOT_COUNT = PANEL_SLOT_COUNT + CHARGE_SLOT_COUNT;
+    private static final int PLAYER_INVENTORY_START = MACHINE_SLOT_COUNT;
+    private static final int PLAYER_HOTBAR_START = PLAYER_INVENTORY_START + 27;
+
     public final SolarPanelBankBlockEntity blockEntity;
-    private final ContainerLevelAccess levelAccess;
+    private long energyStored;
+    private long maxEnergyCapacity;
+    private long currentGeneration;
+    private long peakGeneration;
+    private int panelCount;
+    private boolean skyVisible;
 
     public SolarPanelBankMenu(int containerId, Inventory playerInventory, SolarPanelBankBlockEntity blockEntity) {
         super(ModSolarMenuTypes.SOLAR_PANEL_BANK.get(), containerId);
         this.blockEntity = blockEntity;
-        this.levelAccess = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
         IItemHandler handler = blockEntity.getItemHandler();
 
-        // Panel slots (0-7) - 2 rows of 4
-        addPanelSlot(handler, 0, 17, 28);
-        addPanelSlot(handler, 1, 40, 28);
-        addPanelSlot(handler, 2, 63, 28);
-        addPanelSlot(handler, 3, 86, 28);
-        addPanelSlot(handler, 4, 17, 51);
-        addPanelSlot(handler, 5, 40, 51);
-        addPanelSlot(handler, 6, 63, 51);
-        addPanelSlot(handler, 7, 86, 51);
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 9; column++) {
+                int slot = row * 9 + column;
+                addPanelSlot(handler, slot, 16 + column * 18, 14 + row * 18);
+            }
+        }
 
-        // Charge slot (8)
-        addSlot(new EnergyChargeSlot(handler, CHARGE_SLOT, 123, 40));
+        for (int slot = 0; slot < CHARGE_SLOT_COUNT; slot++) {
+            addSlot(new EnergyChargeSlot(handler, CHARGE_SLOT_START + slot, 43 + slot * 18, 136));
+        }
 
-        // Player inventory (9-35)
-        addPlayerInventorySlots(playerInventory, 8, 106);
-
-        // Player hotbar (36-44)
-        addPlayerHotbarSlots(playerInventory, 8, 164);
+        addPlayerInventorySlots(playerInventory, 16, 161);
+        addPlayerHotbarSlots(playerInventory, 16, 219);
+        addDataSlots(createData());
     }
 
     public SolarPanelBankMenu(int containerId, Inventory playerInventory, RegistryFriendlyByteBuf data) {
@@ -79,8 +80,59 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
         }
     }
 
+    private ContainerData createData() {
+        return new ContainerData() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> (int) blockEntity.getEnergyStored();
+                    case 1 -> (int) (blockEntity.getEnergyStored() >>> 32);
+                    case 2 -> (int) blockEntity.getMaxEnergyCapacity();
+                    case 3 -> (int) (blockEntity.getMaxEnergyCapacity() >>> 32);
+                    case 4 -> (int) blockEntity.getCurrentGeneration();
+                    case 5 -> (int) (blockEntity.getCurrentGeneration() >>> 32);
+                    case 6 -> (int) blockEntity.getPeakGeneration();
+                    case 7 -> (int) (blockEntity.getPeakGeneration() >>> 32);
+                    case 8 -> blockEntity.getTotalPanelCount();
+                    case 9 -> blockEntity.isSkyVisible() ? 1 : 0;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> energyStored = withLow(energyStored, value);
+                    case 1 -> energyStored = withHigh(energyStored, value);
+                    case 2 -> maxEnergyCapacity = withLow(maxEnergyCapacity, value);
+                    case 3 -> maxEnergyCapacity = withHigh(maxEnergyCapacity, value);
+                    case 4 -> currentGeneration = withLow(currentGeneration, value);
+                    case 5 -> currentGeneration = withHigh(currentGeneration, value);
+                    case 6 -> peakGeneration = withLow(peakGeneration, value);
+                    case 7 -> peakGeneration = withHigh(peakGeneration, value);
+                    case 8 -> panelCount = value;
+                    case 9 -> skyVisible = value != 0;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 10;
+            }
+        };
+    }
+
+    private static long withLow(long current, int low) {
+        return current & 0xFFFFFFFF00000000L | Integer.toUnsignedLong(low);
+    }
+
+    private static long withHigh(long current, int high) {
+        return current & 0xFFFFFFFFL | (long) high << 32;
+    }
+
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
+        if (index < 0 || index >= slots.size()) return ItemStack.EMPTY;
         ItemStack clickedStack = ItemStack.EMPTY;
         Slot clickedSlot = slots.get(index);
 
@@ -88,15 +140,8 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
             ItemStack originalStack = clickedSlot.getItem();
             clickedStack = originalStack.copy();
 
-            // Panel slots (0-7)
-            if (index < PANEL_SLOT_COUNT) {
-                if (!moveItemStackTo(originalStack, PANEL_SLOT_COUNT, slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-            // Charge slot (8)
-            else if (index == CHARGE_SLOT) {
-                if (!moveItemStackTo(originalStack, PANEL_SLOT_COUNT, slots.size(), true)) {
+            if (index < MACHINE_SLOT_COUNT) {
+                if (!moveItemStackTo(originalStack, PLAYER_INVENTORY_START, slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
             }
@@ -109,18 +154,16 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
                     }
                 }
                 // Then try charge slot
-                else if (isEnergyItem(originalStack)) {
-                    if (!moveItemStackTo(originalStack, CHARGE_SLOT, CHARGE_SLOT + 1, false)) {
+                else if (SolarPanelBankBlockEntity.isChargeable(originalStack)) {
+                    if (!moveItemStackTo(originalStack, CHARGE_SLOT_START, MACHINE_SLOT_COUNT, false)) {
                         return ItemStack.EMPTY;
                     }
-                }
-                // Finally, move between player inventory and hotbar
-                if (index < 36) {
-                    if (!moveItemStackTo(originalStack, 36, slots.size(), false)) {
+                } else if (index < PLAYER_HOTBAR_START) {
+                    if (!moveItemStackTo(originalStack, PLAYER_HOTBAR_START, slots.size(), false)) {
                         return ItemStack.EMPTY;
                     }
                 } else {
-                    if (!moveItemStackTo(originalStack, 9, 36, false)) {
+                    if (!moveItemStackTo(originalStack, PLAYER_INVENTORY_START, PLAYER_HOTBAR_START, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
@@ -142,15 +185,9 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
      * This is a simplified check - in a full implementation, this would check
      * against the energy API.
      */
-    private boolean isEnergyItem(ItemStack stack) {
-        // For now, only allow specific battery items
-        // In production, check against energy capability
-        return stack.getItem() == Items.REDSTONE || stack.getItem() == Items.GLOWSTONE_DUST;
-    }
-
     @Override
     public boolean stillValid(Player player) {
-        return blockEntity != null && blockEntity.getBlockPos().distSqr(player.blockPosition()) <= 64;
+        return TechCraft.util.MenuAccess.stillValid(player, blockEntity);
     }
 
     /**
@@ -158,11 +195,8 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
      * Only accepts solar panel block items.
      */
     public static class SolarPanelStackSlot extends SlotItemHandler {
-        private final IItemHandler handler;
-
         public SolarPanelStackSlot(IItemHandler handler, int slot, int x, int y) {
             super(handler, slot, x, y);
-            this.handler = handler;
         }
 
         @Override
@@ -189,11 +223,8 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
      * Only accepts items that can store energy.
      */
     public static class EnergyChargeSlot extends SlotItemHandler {
-        private final IItemHandler handler;
-
         public EnergyChargeSlot(IItemHandler handler, int slot, int x, int y) {
             super(handler, slot, x, y);
-            this.handler = handler;
         }
 
         @Override
@@ -201,14 +232,36 @@ public class SolarPanelBankMenu extends AbstractContainerMenu {
             if (stack.isEmpty()) {
                 return false;
             }
-            // Check if item has energy capability
-            // For now, simplified check
-            return stack.getItem() == Items.REDSTONE || stack.getItem() == Items.GLOWSTONE_DUST;
+            return SolarPanelBankBlockEntity.isChargeable(stack);
         }
 
         @Override
         public int getMaxStackSize() {
             return 1;
         }
+    }
+
+    public long getEnergyStored() {
+        return energyStored;
+    }
+
+    public long getMaxEnergyCapacity() {
+        return maxEnergyCapacity;
+    }
+
+    public long getCurrentGeneration() {
+        return currentGeneration;
+    }
+
+    public long getPeakGeneration() {
+        return peakGeneration;
+    }
+
+    public int getPanelCount() {
+        return panelCount;
+    }
+
+    public boolean isSkyVisible() {
+        return skyVisible;
     }
 }

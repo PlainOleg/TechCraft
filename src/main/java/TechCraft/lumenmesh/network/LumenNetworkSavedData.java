@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class LumenNetworkSavedData extends SavedData {
     private static final String DATA_NAME = "lumen_mesh_networks";
+    private static final Factory<LumenNetworkSavedData> FACTORY =
+        new Factory<>(LumenNetworkSavedData::new, LumenNetworkSavedData::load);
     
     private List<LumenNetwork> networks;
     private List<LumenNode> nodes;
@@ -64,8 +66,6 @@ public class LumenNetworkSavedData extends SavedData {
     public static LumenNetworkSavedData load(CompoundTag tag, HolderLookup.Provider registries) {
         LumenNetworkSavedData data = new LumenNetworkSavedData();
         
-        int version = tag.getInt("version");
-        
         CompoundTag networksTag = tag.getCompound("networks");
         for (String key : networksTag.getAllKeys()) {
             data.networks.add(LumenNetwork.load(networksTag.getCompound(key), registries));
@@ -84,9 +84,6 @@ public class LumenNetworkSavedData extends SavedData {
      */
     public static LumenNetworkSavedData get(MinecraftServer server) {
         DimensionDataStorage storage = server.overworld().getDataStorage();
-        // Временное упрощение - будет доработано при интеграции с SavedData
-        LumenNetworkSavedData data = new LumenNetworkSavedData();
-        // TODO: Реализовать правильную загрузку/сохранение через SavedData API
-        return data;
+        return storage.computeIfAbsent(FACTORY, DATA_NAME);
     }
 }

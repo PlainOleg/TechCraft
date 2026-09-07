@@ -5,27 +5,31 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Пыли - это измельчённые материалы, создаваемые с помощью молота кузнеца на различных предметах. Они используются в крафте и могут быть объединены для создания стальных слитков.$(br)$(br)Доступные пыли:$(br)• Угольная пыль$(br)• Железная пыль$(br)• Стальная пыль"
+      "text": "Пыли - это измельчённые материалы, создаваемые с помощью молота кузнеца на различных предметах. Они используются в крафте и могут быть объединены для создания стальных слитков.$(br)$(br)Доступные пыли:$(br)• Угольная пыль$(br)• Железная пыль$(br)• Никелевая пыль$(br)• Стальная пыль"
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:coal_dust",
-      "title": "Угольная пыль"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:coal_dust",
+      "title": "Угольная пыль",
+      "text": "Создается дроблением угля. Используется в производстве стали."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:iron_dust",
-      "title": "Железная пыль"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_dust",
+      "title": "Железная пыль",
+      "text": "Создается дроблением железных предметов. Используется в производстве стали."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_dust",
-      "title": "Стальная пыль"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:nickel_dust",
+      "title": "Никелевая пыль",
+      "text": "Создается дроблением никелевых предметов. Используется в продвинутых сплавах."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "techcraft:steel_ingot_from_dusts",
-      "title": "Сталь из пыли"
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_dust",
+      "title": "Стальная пыль",
+      "text": "Создается дроблением стальных предметов. Может быть переплавлена обратно в стальные слитки."
     }
   ]
 }

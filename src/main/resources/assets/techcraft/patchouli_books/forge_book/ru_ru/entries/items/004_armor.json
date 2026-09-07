@@ -1,59 +1,10 @@
 {
-  "name": "Броня",
-  "icon": "techcraft:prismite_helmet",
+  "name": "Боевая броня",
+  "icon": "techcraft:quantum_chestplate",
   "category": "techcraft:items",
   "pages": [
-    {
-      "type": "patchouli:text",
-      "text": "TechCraft добавляет продвинутые наборы брони с уникальными свойствами. Каждый набор обеспечивает разный уровень защиты и специальные способности:$(br)• Броня призмита$(br)• Квантовая броня"
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_helmet",
-      "title": "Шлем призмита",
-      "text": "Шлем из призмита, обеспечивающий защиту уровня алмаза с уникальными преломляющими свойствами."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_chestplate",
-      "title": "Нагрудник призмита",
-      "text": "Нагрудник из призмита, предлагающий отличную защиту."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_pants",
-      "title": "Поножи призмита",
-      "text": "Поножи из призмита, обеспечивающие хорошую защиту ног."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_boots",
-      "title": "Ботинки призмита",
-      "text": "Ботинки из призмита, предлагающие надежную защиту ног."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_helmet",
-      "title": "Квантовый шлем",
-      "text": "Эндгейм шлем с защитой уровня незерита и квантовыми свойствами."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_chestplate",
-      "title": "Квантовый нагрудник",
-      "text": "Эндгейм нагрудник с защитой уровня незерита."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_pants",
-      "title": "Квантовые поножи",
-      "text": "Эндгейм поножи с защитой уровня незерита."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_boots",
-      "title": "Квантовые ботинки",
-      "text": "Эндгейм ботинки с защитой уровня незерита."
-    }
+    {"type":"patchouli:text","text":"$(l)Призмитовая броня$() — обычный защитный комплект: 17 единиц брони за полный набор.$(br2)$(d)Квантовая броня$() даёт 28 единиц брони и использует FE для квантового щита."},
+    {"type":"patchouli:spotlight","item":"techcraft:quantum_chestplate","title":"Квантовый щит","text":"Атаки с исходным уроном $(l)меньше 1000$() поглощаются полностью, пока в надетых частях хватает энергии.$(br2)$(6)Расход: 100 FE за 1 ед. поглощённого урона.$()"},
+    {"type":"patchouli:text","title":"Модули частей","text":"$(b)Шлем:$() ночное зрение.$(br)$(b)Нагрудник:$() скорость II и полёт. Полёт тратит 10 FE/т.$(br)$(b)Поножи:$() прыгучесть III.$(br)$(b)Ботинки:$() медленное падение.$(br2)$(8)При нулевом заряде щит и энергозатратный полёт не работают.$()"}
   ]
 }

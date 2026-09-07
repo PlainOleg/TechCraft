@@ -5,7 +5,7 @@
 """
 
 import json
-import os
+import argparse
 from pathlib import Path
 from typing import Dict, Any, List
 
@@ -32,7 +32,8 @@ class OreGenerator:
             self.ores_dir.mkdir(parents=True, exist_ok=True)
             return
             
-        for json_file in self.ores_dir.glob("*.json"):
+        self.ores.clear()
+        for json_file in sorted(self.ores_dir.glob("*.json")):
             if json_file.name == "schema.json":
                 continue
             try:
@@ -40,8 +41,8 @@ class OreGenerator:
                     ore_data = json.load(f)
                     self.ores.append(ore_data)
                     print(f"Загружен: {json_file.name}")
-            except Exception as e:
-                print(f"Ошибка при загрузке {json_file.name}: {e}")
+            except (OSError, ValueError) as e:
+                raise ValueError(f"Ошибка при загрузке {json_file}: {e}") from e
     
     def generate_mod_blocks(self) -> str:
         """Генерирует код для ModBlocks.java"""
@@ -631,14 +632,18 @@ class OreGenerator:
                     json.dump(raw_loot, f, indent=2)
                 print(f"Сгенерирован: {raw_loot_path}")
         
-        print(f"\nГенерация завершена! Файлы сохранены в src/main/java и src/main/resources")
+        print(f"\nГенерация завершена! Файлы сохранены в {self.output_dir.resolve()}")
 
 
 def main():
-    # Определяем пути
-    script_dir = Path(__file__).parent
-    ores_dir = script_dir / "ores"
-    output_dir = script_dir
+    script_dir = Path(__file__).resolve().parent
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--ores-dir", type=Path, default=script_dir / "ores")
+    parser.add_argument("--output-dir", type=Path, default=script_dir / "build/generated/ores",
+                        help="Review generated snippets here before integrating them into source files")
+    args = parser.parse_args()
+    ores_dir = args.ores_dir
+    output_dir = args.output_dir
     
     generator = OreGenerator(str(ores_dir), str(output_dir))
     generator.generate_all()

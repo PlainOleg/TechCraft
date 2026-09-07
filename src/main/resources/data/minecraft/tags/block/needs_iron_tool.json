@@ -1,6 +1,24 @@
 {
   "replace": false,
   "values": [
-    "techcraft:tin_block"
+    "techcraft:tin_block",
+    "techcraft:cobalt_ore",
+    "techcraft:deepslate_cobalt_ore",
+    "techcraft:titanium_ore",
+    "techcraft:deepslate_titanium_ore",
+    "techcraft:uranium_ore",
+    "techcraft:deepslate_uranium_ore",
+    "techcraft:aetherium_ore",
+    "techcraft:solarite_ore",
+    "techcraft:cobalt_block",
+    "techcraft:titanium_block",
+    "techcraft:nickel_block",
+    "techcraft:enriched_uranium_block",
+    "techcraft:aetherium_block",
+    "techcraft:solarite_block",
+    "techcraft:cryogenic_casing",
+    "techcraft:orichalcum_ore",
+    "techcraft:deepslate_orichalcum_ore",
+    "techcraft:orichalcum_block"
   ]
 }

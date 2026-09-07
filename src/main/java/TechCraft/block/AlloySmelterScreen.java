@@ -104,8 +104,8 @@ public class AlloySmelterScreen extends AbstractContainerScreen<AlloySmelterMenu
         if (mouseX >= heatIconScreenX && mouseX <= heatIconScreenX + HEAT_ICON_WIDTH &&
             mouseY >= heatIconScreenY && mouseY <= heatIconScreenY + HEAT_ICON_HEIGHT) {
             if (blockEntity != null) {
-                float currentTemp = blockEntity.getCurrentTemperature();
-                int maxTemp = blockEntity.getMaxTemperature();
+                float currentTemp = menu.getCurrentTemperature();
+                int maxTemp = menu.getMaxTemperature();
 
                 // Градиент цвета от желтого к красно-оранжевому для текущей температуры
                 float ratio = maxTemp > 0 ? Math.min(1.0f, currentTemp / maxTemp) : 0;

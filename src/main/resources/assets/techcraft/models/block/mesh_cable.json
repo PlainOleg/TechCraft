@@ -1,12 +1,95 @@
 {
-  "parent": "minecraft:block/cube",
-  "textures": {
-    "particle": "techcraft:block/mesh_cable_side",
-    "north": "techcraft:block/mesh_cable_front",
-    "south": "techcraft:block/mesh_cable_side",
-    "east": "techcraft:block/mesh_cable_side",
-    "west": "techcraft:block/mesh_cable_side",
-    "up": "techcraft:block/mesh_cable_top",
-    "down": "techcraft:block/mesh_cable_side"
-  }
+  "ambientocclusion": false,
+  "display": {
+    "gui": { "rotation": [30, 225, 0], "translation": [0, 0, 0], "scale": [0.75, 0.75, 0.75] },
+    "ground": { "translation": [0, 3, 0], "scale": [0.35, 0.35, 0.35] },
+    "fixed": { "rotation": [0, 180, 0], "scale": [0.6, 0.6, 0.6] }
+  },
+  "textures": { "cable": "techcraft:block/lumen_mesh/mesh_cable_side", "particle": "techcraft:block/lumen_mesh/mesh_cable_side" },
+  "elements": [
+    {
+      "from": [6, 6, 6],
+      "to": [10, 10, 10],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [6, 6, 0],
+      "to": [10, 10, 6],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [6, 6, 10],
+      "to": [10, 10, 16],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [0, 6, 6],
+      "to": [6, 10, 10],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [10, 6, 6],
+      "to": [16, 10, 10],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [6, 0, 6],
+      "to": [10, 6, 10],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    },
+    {
+      "from": [6, 10, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "down": { "texture": "#cable" },
+        "up": { "texture": "#cable" },
+        "north": { "texture": "#cable" },
+        "south": { "texture": "#cable" },
+        "west": { "texture": "#cable" },
+        "east": { "texture": "#cable" }
+      }
+    }
+  ]
 }

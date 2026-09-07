@@ -1,59 +1,7 @@
 {
-  "name": "Armor",
-  "icon": "techcraft:prismite_helmet",
-  "category": "techcraft:items",
-  "pages": [
-    {
-      "type": "patchouli:text",
-      "text": "TechCraft adds advanced armor sets with unique properties. Each set provides different levels of protection and special abilities:$(br)• Prismite Armor$(br)• Quantum Armor"
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_helmet",
-      "title": "Prismite Helmet",
-      "text": "Helmet made from prismite, providing diamond-level protection with unique refractive properties."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_chestplate",
-      "title": "Prismite Chestplate",
-      "text": "Chestplate made from prismite, offering excellent protection."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_pants",
-      "title": "Prismite Leggings",
-      "text": "Leggings made from prismite, providing good leg protection."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:prismite_boots",
-      "title": "Prismite Boots",
-      "text": "Boots made from prismite, offering solid foot protection."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_helmet",
-      "title": "Quantum Helmet",
-      "text": "End-game helmet with netherite-level protection and quantum properties."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_chestplate",
-      "title": "Quantum Chestplate",
-      "text": "End-game chestplate with netherite-level protection."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_pants",
-      "title": "Quantum Leggings",
-      "text": "End-game leggings with netherite-level protection."
-    },
-    {
-      "type": "patchouli:spotlight",
-      "item": "techcraft:quantum_boots",
-      "title": "Quantum Boots",
-      "text": "End-game boots with netherite-level protection."
-    }
+  "name":"Combat Armor","icon":"techcraft:quantum_chestplate","category":"techcraft:items","pages":[
+    {"type":"patchouli:text","text":"$(l)Prismite armor$() is a conventional set providing 17 armor points when complete.$(br2)$(d)Quantum armor$() provides 28 armor points and powers a quantum shield with FE."},
+    {"type":"patchouli:spotlight","item":"techcraft:quantum_chestplate","title":"Quantum Shield","text":"Attacks with original damage $(l)below 1000$() are fully absorbed while the equipped pieces have enough energy.$(br2)$(6)Cost: 100 FE per absorbed damage point.$()"},
+    {"type":"patchouli:text","title":"Armor Modules","text":"$(b)Helmet:$() Night Vision.$(br)$(b)Chestplate:$() Speed II and flight; flight costs 10 FE/t.$(br)$(b)Leggings:$() Jump Boost III.$(br)$(b)Boots:$() Slow Falling.$(br2)$(8)At zero charge the shield and energy-powered flight stop working.$()"}
   ]
 }

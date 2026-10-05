@@ -20,6 +20,8 @@ public class LumenNode {
     private final BlockPos position;
     private final ResourceKey<Level> dimension;
     private final Set<Direction> connectionSides;
+    /** Те же стороны битовой маской (бит = Direction.ordinal()): обход графа проверяет их без итераторов. */
+    private final int connectionMask;
     private final LumenNetworkNode.NodeType nodeType;
     private UUID networkId;
     private boolean enabled;
@@ -35,6 +37,9 @@ public class LumenNode {
         this.position = position.immutable();
         this.dimension = dimension;
         this.connectionSides = Set.copyOf(connectionSides);
+        int mask = 0;
+        for (Direction direction : this.connectionSides) mask |= 1 << direction.ordinal();
+        this.connectionMask = mask;
         this.nodeType = nodeType;
         this.networkId = null;
         this.enabled = true;
@@ -54,6 +59,14 @@ public class LumenNode {
 
     public Set<Direction> getConnectionSides() {
         return connectionSides;
+    }
+
+    public int getConnectionMask() {
+        return connectionMask;
+    }
+
+    public boolean connectsTo(Direction side) {
+        return (connectionMask & (1 << side.ordinal())) != 0;
     }
 
     public LumenNetworkNode.NodeType getNodeType() {
@@ -87,9 +100,7 @@ public class LumenNode {
         tag.putInt("z", position.getZ());
         tag.putString("dimension", dimension.location().toString());
         tag.putInt("node_type", nodeType.ordinal());
-        int sideMask = 0;
-        for (Direction direction : connectionSides) sideMask |= 1 << direction.ordinal();
-        tag.putInt("connection_sides", sideMask);
+        tag.putInt("connection_sides", connectionMask);
         if (networkId != null) {
             tag.putUUID("network_id", networkId);
         }

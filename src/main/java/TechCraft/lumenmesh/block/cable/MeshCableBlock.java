@@ -18,6 +18,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 /**
  * Базовый класс для кабелей Lumen Mesh.
  * Поддерживает соединение с соседними блоками.
@@ -40,12 +43,20 @@ public class MeshCableBlock extends BaseEntityBlock {
     private static final VoxelShape UP_SHAPE = box(6, 10, 6, 10, 16, 10);
     private static final VoxelShape DOWN_SHAPE = box(6, 0, 6, 10, 6, 10);
 
+    /** Форма для каждой комбинации подключений: getShape вызывается очень часто, склеивать её каждый раз дорого. */
+    private final Map<BlockState, VoxelShape> shapeByState;
+
     public MeshCableBlock(Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any()
             .setValue(NORTH, false).setValue(SOUTH, false)
             .setValue(EAST, false).setValue(WEST, false)
             .setValue(UP, false).setValue(DOWN, false).setValue(ACTIVE, false));
+        Map<BlockState, VoxelShape> shapes = new IdentityHashMap<>();
+        for (BlockState state : stateDefinition.getPossibleStates()) {
+            shapes.put(state, buildShape(state));
+        }
+        this.shapeByState = shapes;
     }
 
     @Override
@@ -76,8 +87,13 @@ public class MeshCableBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        VoxelShape shape = shapeByState.get(state);
+        return shape != null ? shape : buildShape(state);
+    }
+
+    private static VoxelShape buildShape(BlockState state) {
         VoxelShape shape = CENTER;
-        
+
         if (state.getValue(NORTH)) shape = Shapes.or(shape, NORTH_SHAPE);
         if (state.getValue(SOUTH)) shape = Shapes.or(shape, SOUTH_SHAPE);
         if (state.getValue(EAST)) shape = Shapes.or(shape, EAST_SHAPE);

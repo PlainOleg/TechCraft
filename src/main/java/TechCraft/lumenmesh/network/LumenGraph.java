@@ -1,5 +1,6 @@
 package TechCraft.lumenmesh.network;
 
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -10,16 +11,19 @@ import java.util.*;
 /**
  * Граф сети Lumen Mesh.
  * Отвечает за топологию сети, поиск путей и определение компонентов связности.
+ * <p>
+ * Узлы индексируются по измерению и упакованной позиции ({@link BlockPos#asLong()}),
+ * поэтому поиск соседа — это один lookup без создания объектов.
  */
 public class LumenGraph {
+    private static final Direction[] DIRECTIONS = Direction.values();
+
     private final Map<UUID, LumenNode> nodes;
-    private final Map<NodePosition, UUID> positionToNodeId;
-    private final Map<ResourceKey<Level>, Set<UUID>> dimensionToNodes;
+    private final Map<ResourceKey<Level>, Long2ObjectOpenHashMap<LumenNode>> nodesByPosition;
 
     public LumenGraph() {
         this.nodes = new HashMap<>();
-        this.positionToNodeId = new HashMap<>();
-        this.dimensionToNodes = new HashMap<>();
+        this.nodesByPosition = new HashMap<>();
     }
 
     /**
@@ -32,14 +36,11 @@ public class LumenGraph {
         }
         LumenNode previous = nodes.put(node.getNodeId(), node);
         if (previous != null) {
-            positionToNodeId.remove(new NodePosition(previous.getDimension(), previous.getPosition()));
-            Set<UUID> oldDimension = dimensionToNodes.get(previous.getDimension());
-            if (oldDimension != null) oldDimension.remove(previous.getNodeId());
+            unindex(previous);
         }
-        positionToNodeId.put(new NodePosition(node.getDimension(), node.getPosition()), node.getNodeId());
-        dimensionToNodes
-                .computeIfAbsent(node.getDimension(), k -> new HashSet<>())
-                .add(node.getNodeId());
+        nodesByPosition
+                .computeIfAbsent(node.getDimension(), k -> new Long2ObjectOpenHashMap<>())
+                .put(node.getPosition().asLong(), node);
     }
 
     /**
@@ -48,14 +49,16 @@ public class LumenGraph {
     public void removeNode(UUID nodeId) {
         LumenNode node = nodes.remove(nodeId);
         if (node != null) {
-            positionToNodeId.remove(new NodePosition(node.getDimension(), node.getPosition()));
-            Set<UUID> dimNodes = dimensionToNodes.get(node.getDimension());
-            if (dimNodes != null) {
-                dimNodes.remove(nodeId);
-                if (dimNodes.isEmpty()) {
-                    dimensionToNodes.remove(node.getDimension());
-                }
-            }
+            unindex(node);
+        }
+    }
+
+    private void unindex(LumenNode node) {
+        Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(node.getDimension());
+        if (dimensionNodes == null) return;
+        dimensionNodes.remove(node.getPosition().asLong(), node);
+        if (dimensionNodes.isEmpty()) {
+            nodesByPosition.remove(node.getDimension());
         }
     }
 
@@ -70,15 +73,19 @@ public class LumenGraph {
      * Получает узел по позиции.
      */
     public LumenNode getNodeAt(ResourceKey<Level> dimension, BlockPos position) {
-        UUID nodeId = positionToNodeId.get(new NodePosition(dimension, position));
-        return nodeId != null ? nodes.get(nodeId) : null;
+        Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(dimension);
+        return dimensionNodes != null ? dimensionNodes.get(position.asLong()) : null;
     }
 
     /**
      * Получает все узлы в измерении.
      */
     public Set<UUID> getNodesInDimension(ResourceKey<Level> dimension) {
-        return Collections.unmodifiableSet(dimensionToNodes.getOrDefault(dimension, Set.of()));
+        Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(dimension);
+        if (dimensionNodes == null) return Set.of();
+        Set<UUID> ids = new HashSet<>();
+        for (LumenNode node : dimensionNodes.values()) ids.add(node.getNodeId());
+        return Collections.unmodifiableSet(ids);
     }
 
     /**
@@ -98,19 +105,30 @@ public class LumenGraph {
             return List.of();
         }
 
+        Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(node.getDimension());
         List<UUID> neighbors = new ArrayList<>();
-        for (Direction side : node.getConnectionSides()) {
-            BlockPos neighborPos = node.getPosition().relative(side);
-            LumenNode neighbor = getNodeAt(node.getDimension(), neighborPos);
-            if (neighbor != null && neighbor.isEnabled()) {
-                // Проверяем, может ли сосед соединиться с этой стороны
-                Direction oppositeSide = side.getOpposite();
-                if (neighbor.getConnectionSides().contains(oppositeSide)) {
-                    neighbors.add(neighbor.getNodeId());
-                }
-            }
+        long origin = node.getPosition().asLong();
+        for (Direction side : DIRECTIONS) {
+            LumenNode neighbor = connectedNeighbor(dimensionNodes, node, origin, side);
+            if (neighbor != null) neighbors.add(neighbor.getNodeId());
         }
         return neighbors;
+    }
+
+    /**
+     * Узлы в шести соседних позициях — без учёта сторон подключения и включённости.
+     * Нужны при изменении узла: связь с ними могла как появиться, так и пропасть.
+     */
+    List<UUID> getAdjacentNodeIds(ResourceKey<Level> dimension, BlockPos position) {
+        Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(dimension);
+        if (dimensionNodes == null) return List.of();
+        List<UUID> adjacent = new ArrayList<>(DIRECTIONS.length);
+        long origin = position.asLong();
+        for (Direction side : DIRECTIONS) {
+            LumenNode neighbor = dimensionNodes.get(BlockPos.offset(origin, side));
+            if (neighbor != null) adjacent.add(neighbor.getNodeId());
+        }
+        return adjacent;
     }
 
     /**
@@ -118,26 +136,8 @@ public class LumenGraph {
      * Возвращает все достижимые узлы.
      */
     public Set<UUID> findConnectedComponent(UUID startNodeId) {
-        Set<UUID> visited = new HashSet<>();
-        Queue<UUID> queue = new ArrayDeque<>();
-
-        if (!nodes.containsKey(startNodeId)) {
-            return visited;
-        }
-
-        queue.add(startNodeId);
-        visited.add(startNodeId);
-
-        while (!queue.isEmpty()) {
-            UUID current = queue.poll();
-            for (UUID neighbor : getNeighbors(current)) {
-                if (visited.add(neighbor)) {
-                    queue.add(neighbor);
-                }
-            }
-        }
-
-        return visited;
+        LumenNode start = nodes.get(startNodeId);
+        return start == null ? new HashSet<>() : collectComponent(start, new HashSet<>());
     }
 
     /**
@@ -146,16 +146,49 @@ public class LumenGraph {
      */
     public List<Set<UUID>> findConnectedComponents() {
         List<Set<UUID>> components = new ArrayList<>();
-        Set<UUID> unvisited = new HashSet<>(nodes.keySet());
-
-        while (!unvisited.isEmpty()) {
-            UUID start = unvisited.iterator().next();
-            Set<UUID> component = findConnectedComponent(start);
-            components.add(component);
-            unvisited.removeAll(component);
+        Set<UUID> visited = new HashSet<>();
+        for (LumenNode node : nodes.values()) {
+            if (!visited.contains(node.getNodeId())) {
+                components.add(collectComponent(node, visited));
+            }
         }
-
         return components;
+    }
+
+    /**
+     * BFS от {@code start}. Все найденные узлы добавляются и в результат, и в {@code visited}:
+     * компоненты не пересекаются, поэтому общий {@code visited} позволяет обходить граф по частям.
+     */
+    Set<UUID> collectComponent(LumenNode start, Set<UUID> visited) {
+        Set<UUID> component = new HashSet<>();
+        ArrayDeque<LumenNode> queue = new ArrayDeque<>();
+        visited.add(start.getNodeId());
+        component.add(start.getNodeId());
+        queue.add(start);
+
+        LumenNode current;
+        while ((current = queue.poll()) != null) {
+            if (!current.isEnabled()) continue;
+            Long2ObjectOpenHashMap<LumenNode> dimensionNodes = nodesByPosition.get(current.getDimension());
+            long origin = current.getPosition().asLong();
+            for (Direction side : DIRECTIONS) {
+                LumenNode neighbor = connectedNeighbor(dimensionNodes, current, origin, side);
+                if (neighbor != null && visited.add(neighbor.getNodeId())) {
+                    component.add(neighbor.getNodeId());
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return component;
+    }
+
+    /** Сосед со стороны {@code side}, если оба узла включены и смотрят друг на друга. */
+    private static LumenNode connectedNeighbor(Long2ObjectOpenHashMap<LumenNode> dimensionNodes,
+                                               LumenNode node, long origin, Direction side) {
+        if (dimensionNodes == null || !node.connectsTo(side)) return null;
+        LumenNode neighbor = dimensionNodes.get(BlockPos.offset(origin, side));
+        if (neighbor == null || !neighbor.isEnabled() || !neighbor.connectsTo(side.getOpposite())) return null;
+        return neighbor;
     }
 
     /**
@@ -163,8 +196,7 @@ public class LumenGraph {
      */
     public void clear() {
         nodes.clear();
-        positionToNodeId.clear();
-        dimensionToNodes.clear();
+        nodesByPosition.clear();
     }
 
     /**
@@ -172,8 +204,5 @@ public class LumenGraph {
      */
     public int size() {
         return nodes.size();
-    }
-
-    private record NodePosition(ResourceKey<Level> dimension, BlockPos position) {
     }
 }

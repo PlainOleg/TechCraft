@@ -2,6 +2,7 @@ package TechCraft.lumenmesh.network;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 
 import java.util.*;
 
@@ -22,6 +23,8 @@ public class LumenNetwork {
     private long storageIndexVersion;
     private final List<CraftingJob> craftingJobs;
     private final Map<UUID, Set<Permission>> permissions;
+    /** Изменилось ли состояние с последнего сохранения; читает {@link LumenNetworkManager}. */
+    private boolean dirty = true;
 
     public LumenNetwork(UUID networkId) {
         this.networkId = networkId;
@@ -47,6 +50,7 @@ public class LumenNetwork {
 
     public void setOwnerId(UUID ownerId) {
         this.ownerId = ownerId;
+        dirty = true;
     }
 
     public SecurityMode getSecurityMode() {
@@ -55,6 +59,7 @@ public class LumenNetwork {
 
     public void setSecurityMode(SecurityMode securityMode) {
         this.securityMode = securityMode;
+        dirty = true;
     }
 
     public Set<UUID> getNodeIds() {
@@ -62,14 +67,15 @@ public class LumenNetwork {
     }
 
     public void addNode(UUID nodeId) {
-        nodeIds.add(nodeId);
+        if (nodeIds.add(nodeId)) dirty = true;
     }
 
     public void removeNode(UUID nodeId) {
-        nodeIds.remove(nodeId);
+        if (nodeIds.remove(nodeId)) dirty = true;
     }
 
     void clearNodes() {
+        if (!nodeIds.isEmpty()) dirty = true;
         nodeIds.clear();
     }
 
@@ -78,7 +84,11 @@ public class LumenNetwork {
     }
 
     public void setEnergyStored(long energyStored) {
-        this.energyStored = Math.clamp(energyStored, 0, energyCapacity);
+        long clamped = Math.clamp(energyStored, 0, energyCapacity);
+        if (clamped != this.energyStored) {
+            this.energyStored = clamped;
+            dirty = true;
+        }
     }
 
     public long getEnergyCapacity() {
@@ -88,6 +98,7 @@ public class LumenNetwork {
     public void setEnergyCapacity(long energyCapacity) {
         this.energyCapacity = Math.max(0, energyCapacity);
         this.energyStored = Math.min(energyStored, this.energyCapacity);
+        dirty = true;
     }
 
     public int getBaseBandwidth() {
@@ -96,6 +107,7 @@ public class LumenNetwork {
 
     public void setBaseBandwidth(int baseBandwidth) {
         this.baseBandwidth = Math.max(0, baseBandwidth);
+        dirty = true;
     }
 
     public int getUsedBandwidth() {
@@ -103,7 +115,11 @@ public class LumenNetwork {
     }
 
     public void setUsedBandwidth(int usedBandwidth) {
-        this.usedBandwidth = Math.max(0, usedBandwidth);
+        int clamped = Math.max(0, usedBandwidth);
+        if (clamped != this.usedBandwidth) {
+            this.usedBandwidth = clamped;
+            dirty = true;
+        }
     }
 
     public double getCoherence() {
@@ -111,7 +127,11 @@ public class LumenNetwork {
     }
 
     public void setCoherence(double coherence) {
-        this.coherence = Math.clamp(coherence, 0.0, 1.0);
+        double clamped = Math.clamp(coherence, 0.0, 1.0);
+        if (clamped != this.coherence) {
+            this.coherence = clamped;
+            dirty = true;
+        }
     }
 
     public long getStorageIndexVersion() {
@@ -120,6 +140,7 @@ public class LumenNetwork {
 
     public void incrementStorageIndexVersion() {
         storageIndexVersion++;
+        dirty = true;
     }
 
     public List<CraftingJob> getCraftingJobs() {
@@ -128,10 +149,12 @@ public class LumenNetwork {
 
     public void addCraftingJob(CraftingJob job) {
         craftingJobs.add(job);
+        job.owner = this;
+        dirty = true;
     }
 
     public void removeCraftingJob(UUID jobId) {
-        craftingJobs.removeIf(job -> job.getJobId().equals(jobId));
+        if (craftingJobs.removeIf(job -> job.getJobId().equals(jobId))) dirty = true;
     }
 
     public Set<Permission> getPermissions(UUID playerId) {
@@ -140,6 +163,14 @@ public class LumenNetwork {
 
     public void setPermissions(UUID playerId, Set<Permission> permissions) {
         this.permissions.put(playerId, new HashSet<>(permissions));
+        dirty = true;
+    }
+
+    /** Возвращает признак изменения и сбрасывает его. */
+    boolean consumeDirty() {
+        boolean wasDirty = dirty;
+        dirty = false;
+        return wasDirty;
     }
 
     public boolean hasPermission(UUID playerId, Permission permission) {
@@ -160,13 +191,7 @@ public class LumenNetwork {
         }
         tag.putInt("security_mode", securityMode.ordinal());
 
-        CompoundTag nodesTag = new CompoundTag();
-        int i = 0;
-        for (UUID nodeId : nodeIds) {
-            nodesTag.putUUID("node_" + i, nodeId);
-            i++;
-        }
-        tag.put("nodes", nodesTag);
+        tag.put("nodes", NbtCompat.writeUuids(nodeIds));
 
         tag.putLong("energy_stored", energyStored);
         tag.putLong("energy_capacity", energyCapacity);
@@ -175,18 +200,19 @@ public class LumenNetwork {
         tag.putDouble("coherence", coherence);
         tag.putLong("storage_index_version", storageIndexVersion);
 
-        CompoundTag jobsTag = new CompoundTag();
-        for (int j = 0; j < craftingJobs.size(); j++) {
-            jobsTag.put("job_" + j, craftingJobs.get(j).save(registries));
+        ListTag jobsTag = new ListTag();
+        for (CraftingJob job : craftingJobs) {
+            jobsTag.add(job.save(registries));
         }
         tag.put("crafting_jobs", jobsTag);
 
         // Сохранение разрешений
-        CompoundTag permissionsTag = new CompoundTag();
+        ListTag permissionsTag = new ListTag();
         for (Map.Entry<UUID, Set<Permission>> entry : permissions.entrySet()) {
-            permissionsTag.putUUID(entry.getKey().toString(), entry.getKey());
-            int[] permOrdinals = entry.getValue().stream().mapToInt(Permission::ordinal).toArray();
-            permissionsTag.putIntArray("perms_" + entry.getKey(), permOrdinals);
+            CompoundTag permissionTag = new CompoundTag();
+            permissionTag.putUUID("player", entry.getKey());
+            permissionTag.putIntArray("perms", entry.getValue().stream().mapToInt(Permission::ordinal).toArray());
+            permissionsTag.add(permissionTag);
         }
         tag.put("permissions", permissionsTag);
 
@@ -206,9 +232,8 @@ public class LumenNetwork {
         SecurityMode[] modes = SecurityMode.values();
         network.setSecurityMode(modes[Math.clamp(tag.getInt("security_mode"), 0, modes.length - 1)]);
 
-        CompoundTag nodesTag = tag.getCompound("nodes");
-        for (String key : nodesTag.getAllKeys()) {
-            network.addNode(nodesTag.getUUID(key));
+        for (UUID nodeId : NbtCompat.readUuids(tag, "nodes")) {
+            network.addNode(nodeId);
         }
 
         network.setEnergyCapacity(tag.getLong("energy_capacity"));
@@ -218,25 +243,39 @@ public class LumenNetwork {
         network.setCoherence(tag.getDouble("coherence"));
         network.storageIndexVersion = tag.getLong("storage_index_version");
 
-        CompoundTag jobsTag = tag.getCompound("crafting_jobs");
-        for (String key : jobsTag.getAllKeys()) {
-            network.addCraftingJob(CraftingJob.load(jobsTag.getCompound(key), registries));
+        for (CompoundTag jobTag : NbtCompat.readCompounds(tag, "crafting_jobs")) {
+            network.addCraftingJob(CraftingJob.load(jobTag, registries));
         }
 
-        CompoundTag permissionsTag = tag.getCompound("permissions");
-        for (String key : permissionsTag.getAllKeys()) {
-            if (key.startsWith("perms_")) {
-                UUID playerId = UUID.fromString(key.substring(6));
-                int[] permOrdinals = permissionsTag.getIntArray(key);
-                Set<Permission> perms = new HashSet<>();
-                for (int ordinal : permOrdinals) {
-                    if (ordinal >= 0 && ordinal < Permission.values().length) perms.add(Permission.values()[ordinal]);
+        if (tag.get("permissions") instanceof ListTag permissionsTag) {
+            for (int index = 0; index < permissionsTag.size(); index++) {
+                CompoundTag permissionTag = permissionsTag.getCompound(index);
+                if (permissionTag.hasUUID("player")) {
+                    network.setPermissions(permissionTag.getUUID("player"), readPermissions(permissionTag.getIntArray("perms")));
                 }
-                network.setPermissions(playerId, perms);
+            }
+        } else {
+            // Формат до версии 2: ключи "perms_<uuid>" внутри CompoundTag.
+            CompoundTag legacyPermissions = tag.getCompound("permissions");
+            for (String key : legacyPermissions.getAllKeys()) {
+                if (key.startsWith("perms_")) {
+                    UUID playerId = UUID.fromString(key.substring(6));
+                    network.setPermissions(playerId, readPermissions(legacyPermissions.getIntArray(key)));
+                }
             }
         }
 
+        network.dirty = false;
         return network;
+    }
+
+    private static Set<Permission> readPermissions(int[] ordinals) {
+        Permission[] values = Permission.values();
+        Set<Permission> perms = EnumSet.noneOf(Permission.class);
+        for (int ordinal : ordinals) {
+            if (ordinal >= 0 && ordinal < values.length) perms.add(values[ordinal]);
+        }
+        return perms;
     }
 
     /**
@@ -266,6 +305,8 @@ public class LumenNetwork {
      * Задание автокрафта.
      */
     public static class CraftingJob {
+        /** Сеть, которой принадлежит задание; её помечаем изменённой при правках задания. */
+        private LumenNetwork owner;
         private final UUID jobId;
         private JobState state;
         private final UUID recipeId;
@@ -300,6 +341,7 @@ public class LumenNetwork {
 
         public void setState(JobState state) {
             this.state = state;
+            markOwnerDirty();
         }
 
         public UUID getRecipeId() {
@@ -312,6 +354,7 @@ public class LumenNetwork {
 
         public void setTargetAmount(long targetAmount) {
             this.targetAmount = targetAmount;
+            markOwnerDirty();
         }
 
         public long getCraftedAmount() {
@@ -320,6 +363,11 @@ public class LumenNetwork {
 
         public void setCraftedAmount(long craftedAmount) {
             this.craftedAmount = craftedAmount;
+            markOwnerDirty();
+        }
+
+        private void markOwnerDirty() {
+            if (owner != null) owner.dirty = true;
         }
 
         public long getStartTime() {

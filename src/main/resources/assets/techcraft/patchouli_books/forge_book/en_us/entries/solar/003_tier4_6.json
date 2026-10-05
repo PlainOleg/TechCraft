@@ -1,0 +1,25 @@
+{
+  "name": "Tiers 4-6 Solar Panels",
+  "icon": "techcraft:prismatic_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismatic_solar_panel",
+      "title": "Prismatic Solar Panel",
+      "text": "Tier 4 solar panel. Generates 80 FE/t with 400,000 FE capacity. High-tier energy generation."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:resonant_solar_panel",
+      "title": "Resonant Solar Panel",
+      "text": "Tier 5 solar panel. Generates 192 FE/t with 960,000 FE capacity. Advanced energy generation."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:flux_solar_panel",
+      "title": "Flux Solar Panel",
+      "text": "Tier 6 solar panel. Generates 448 FE/t with 2,240,000 FE capacity. High-end energy generation."
+    }
+  ]
+}

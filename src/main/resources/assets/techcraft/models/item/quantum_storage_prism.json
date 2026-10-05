@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "techcraft:item/storage_prism/storage_prism_infinite"
+  }
+}

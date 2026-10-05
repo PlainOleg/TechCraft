@@ -1,0 +1,35 @@
+{
+  "name": "Drills",
+  "icon": "techcraft:iron_drill",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Drills mine a plane facing the player. $(l)Sneak$() to switch to 1×1 mode.$(br2)They consume internal energy; the tooltip value is charge, not durability. Mining is cancelled when the drill has insufficient energy."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_drill",
+      "title": "Iron Drill",
+      "text": "3×3 area, 1,700 FE capacity and 10 FE consumed per block."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:diamond_drill",
+      "title": "Diamond Drill",
+      "text": "3×3 area, 5,000 FE capacity and 8 FE consumed per block."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:netherite_drill",
+      "title": "Netherite Drill",
+      "text": "5×5 area, 10,000 FE capacity and 6 FE consumed per block."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_drill",
+      "title": "Quantum Drill",
+      "text": "7×7 area, 35,000 FE capacity and 4 FE consumed per block."
+    }
+  ]
+}

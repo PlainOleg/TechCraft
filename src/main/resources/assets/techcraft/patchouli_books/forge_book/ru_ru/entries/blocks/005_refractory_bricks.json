@@ -1,0 +1,23 @@
+{
+  "name": "Огнеупорные кирпичи",
+  "icon": "techcraft:refractory_brick",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Огнеупорные кирпичи - это жаростойкие блоки, используемые в высокотемпературных приложениях, таких как печи и плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_refractory_brick",
+      "title": "Сырой огнеупорный кирпич",
+      "text": "Незаконченный огнеупорный кирпич. Может быть создан в готовые кирпичи."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:refractory_brick",
+      "title": "Огнеупорный кирпич",
+      "text": "Готовый жаростойкий кирпич с повышенной взрывоустойчивостью."
+    }
+  ]
+}

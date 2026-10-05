@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/lumen_mesh/wireless_relay_side",
+    "north": "techcraft:block/lumen_mesh/wireless_relay_front",
+    "south": "techcraft:block/lumen_mesh/wireless_relay_side",
+    "east": "techcraft:block/lumen_mesh/wireless_relay_side",
+    "west": "techcraft:block/lumen_mesh/wireless_relay_side",
+    "up": "techcraft:block/lumen_mesh/wireless_relay_top",
+    "down": "techcraft:block/lumen_mesh/wireless_relay_side"
+  }
+}

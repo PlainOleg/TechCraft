@@ -1,0 +1,23 @@
+{
+  "name": "Refractory Bricks",
+  "icon": "techcraft:refractory_brick",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Refractory bricks are heat-resistant blocks used in high-temperature applications like furnaces and smelters."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:raw_refractory_brick",
+      "title": "Raw Refractory Brick",
+      "text": "Unfinished refractory brick. Can be crafted into finished bricks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:refractory_brick",
+      "title": "Refractory Brick",
+      "text": "Finished heat-resistant brick with increased blast resistance."
+    }
+  ]
+}

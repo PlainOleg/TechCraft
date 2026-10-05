@@ -1,0 +1,47 @@
+{
+  "name": "Улучшения плавильни",
+  "icon": "techcraft:capacity_upgrade_t2",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Улучшения сплавной плавильни повышают возможности машины. Существует три типа улучшений, каждый доступен в версиях 2 и 3 уровня."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:capacity_upgrade_t2",
+      "title": "Улучшение ёмкости Т2",
+      "text": "Увеличивает внутреннее хранилище энергии плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:capacity_upgrade_t3",
+      "title": "Улучшение ёмкости Т3",
+      "text": "Значительно увеличивает хранилище энергии плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:heat_upgrade_t2",
+      "title": "Улучшение температуры Т2",
+      "text": "Увеличивает максимальную рабочую температуру плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:heat_upgrade_t3",
+      "title": "Улучшение температуры Т3",
+      "text": "Значительно увеличивает максимальную рабочую температуру плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:efficiency_upgrade_t2",
+      "title": "Улучшение эффективности Т2",
+      "text": "Улучшает энергоэффективность плавильни."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:efficiency_upgrade_t3",
+      "title": "Улучшение эффективности Т3",
+      "text": "Значительно улучшает энергоэффективность плавильни."
+    }
+  ]
+}

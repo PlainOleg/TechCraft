@@ -1,0 +1,7 @@
+{
+  "name":"Storage and Access","icon":"techcraft:prism_drive","category":"techcraft:lumen","pages":[
+    {"type":"patchouli:spotlight","item":"techcraft:prism_drive","title":"Prism Drive","text":"Provides $(l)4 slots$() for storage prisms. Capacity, type limit and speed are shown on each prism's tooltip. Connect the drive to the network."},
+    {"type":"patchouli:spotlight","item":"techcraft:item_terminal","title":"Item Terminal","text":"Displays the combined contents of all network prisms. Left-click to take a stack; items from the player inventory can be inserted into the network."},
+    {"type":"patchouli:spotlight","item":"techcraft:storage_link","title":"Storage Link","text":"Place an external inventory behind the block. It provides five filters, whitelist/blacklist modes and one-way automatic transfer once per second."}
+  ]
+}

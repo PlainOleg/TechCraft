@@ -7,6 +7,7 @@ import com.plainoleg.techcraft.lumenmesh.network.LumenNetwork;
 import com.plainoleg.techcraft.lumenmesh.network.LumenNetworkManager;
 import com.plainoleg.techcraft.lumenmesh.network.LumenNetworkNode;
 import com.plainoleg.techcraft.lumenmesh.registry.LumenBlockEntities;
+import com.plainoleg.techcraft.lumenmesh.registry.LumenItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,9 +19,11 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.slf4j.Logger;
 
 import java.util.Set;
@@ -38,6 +41,13 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
     private UUID networkId;
     private boolean enabled;
     private boolean registered;
+    private final ItemStackHandler craftingUpgrades = new ItemStackHandler(2) {
+        @Override public int getSlotLimit(int slot) { return 1; }
+        @Override public boolean isItemValid(int slot, ItemStack stack) {
+            return slot == 0 ? stack.is(LumenItems.PROCESSOR_64.get()) : stack.is(LumenItems.PROCESSOR_256.get());
+        }
+        @Override protected void onContentsChanged(int slot) { setChanged(); }
+    };
 
     public MeshCoreBlockEntity(BlockPos pos, BlockState state) {
         super(LumenBlockEntities.MESH_CORE.get(), pos, state);
@@ -61,6 +71,14 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
         if (level == null || networkId == null) return null;
         LumenNetworkManager manager = LumenMeshIntegration.getNetworkManager(level);
         return manager == null ? null : manager.getNetwork(networkId);
+    }
+
+    public ItemStackHandler getCraftingUpgrades() { return craftingUpgrades; }
+
+    public int getCraftingGridSize() {
+        if (!craftingUpgrades.getStackInSlot(1).isEmpty()) return 9;
+        if (!craftingUpgrades.getStackInSlot(0).isEmpty()) return 6;
+        return 3;
     }
 
     @Override
@@ -167,6 +185,7 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
             tag.putUUID("network_id", networkId);
         }
         tag.putBoolean("enabled", enabled);
+        tag.put("crafting_upgrades", craftingUpgrades.serializeNBT(registries));
     }
 
     @Override
@@ -179,6 +198,8 @@ public class MeshCoreBlockEntity extends BlockEntity implements LumenNetworkNode
             networkId = tag.getUUID("network_id");
         }
         enabled = !tag.contains("enabled") || tag.getBoolean("enabled");
+        if (tag.contains("crafting_upgrades"))
+            craftingUpgrades.deserializeNBT(registries, tag.getCompound("crafting_upgrades"));
     }
 
     /**

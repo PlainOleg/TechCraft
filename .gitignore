@@ -29,3 +29,7 @@ repo
 .DS_Store
 __pycache__/
 *.pyc
+
+# Local logs and tool settings
+logs/
+.codex/

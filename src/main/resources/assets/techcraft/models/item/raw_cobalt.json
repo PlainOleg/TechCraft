@@ -1,0 +1,1 @@
+{ "parent": "minecraft:item/generated", "textures": { "layer0": "techcraft:item/raw/raw_cobalt" } }

@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "techcraft:block/blueprint_encoder" },
+    "facing=east,active=false": { "model": "techcraft:block/blueprint_encoder", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/blueprint_encoder", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/blueprint_encoder", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/blueprint_encoder_active" },
+    "facing=east,active=true": { "model": "techcraft:block/blueprint_encoder_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/blueprint_encoder_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/blueprint_encoder_active", "y": 270 }
+  }
+}

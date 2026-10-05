@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "techcraft:block/storage_link" },
+    "facing=east,active=false": { "model": "techcraft:block/storage_link", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/storage_link", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/storage_link", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/storage_link_active" },
+    "facing=east,active=true": { "model": "techcraft:block/storage_link_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/storage_link_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/storage_link_active", "y": 270 }
+  }
+}

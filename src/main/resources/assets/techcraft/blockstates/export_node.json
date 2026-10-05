@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "techcraft:block/export_node" },
+    "facing=east,active=false": { "model": "techcraft:block/export_node", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/export_node", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/export_node", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/export_node_active" },
+    "facing=east,active=true": { "model": "techcraft:block/export_node_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/export_node_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/export_node_active", "y": 270 }
+  }
+}

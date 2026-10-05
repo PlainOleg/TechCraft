@@ -1,0 +1,47 @@
+{
+  "name": "Metal Blocks",
+  "icon": "techcraft:bronze_block",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Metal blocks are decorative and storage blocks for various metals. They can be crafted from ingots and smelted back down."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_block",
+      "title": "Bronze Block",
+      "text": "Storage block for Bronze Ingots."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_block",
+      "title": "Silver Block",
+      "text": "Storage block for Silver Ingots with magical properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_block",
+      "title": "Steel Block",
+      "text": "Storage block for Steel Ingots."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_block",
+      "title": "Prismite Block",
+      "text": "Storage block for Prismite Ingots with refractive properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_block",
+      "title": "Quantum Block",
+      "text": "Storage block for Quantum Ingots with quantum properties."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:ruby_block",
+      "title": "Ruby Block",
+      "text": "Decorative block made from rubies."
+    }
+  ]
+}

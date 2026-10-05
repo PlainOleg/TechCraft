@@ -23,7 +23,8 @@
 - `block/` — блоки и их блок-сущности; у устройства из нескольких классов своя подпапка.
 - `menu/` — контейнеры; `client/` — экраны и любой клиентский код; `item/` — предметы (`item/tool`, `item/armor`).
 - Корень модуля — точка входа и сервисы: `LumenMesh`, `LumenMeshIntegration`, `SolarGenerationService`.
-- `tools/` — скрипты разработки: `migrate_packages.py` (перенос из старого пакета `TechCraft`), `oregen/` (генератор руд).
+- `tools/` — скрипты разработки: `migrate_packages.py` (перенос из старого пакета `TechCraft`), `oregen/` (генератор руд), `verify_resources.py` (проверка JSON, входит в `build`), генераторы GUI и моделей Lumen.
+- `src/regression` — детерминированные сценарии сети, хранилища и генерации (`./gradlew regressionTest`); `src/test` — JUnit.
 
 Подробно — в README, раздел «Структура».
 
@@ -40,10 +41,9 @@
 
 ## Известные проблемы
 
-- В Git-репозитории не было ~25 классов и ~130 текстур, которые есть только у автора локально (хранилище и терминалы Lumen Mesh, `LumenCapabilities`, `LumenFacingBlock`, `LumenActiveState`, `MiningArea`, `NonNegativeMath`, `MenuAccess`, часть экранов и меню, `src/regression`, `tools/verify_resources.py`). Пока их нет в репозитории, сборка на GitHub падает.
-- Нет blockstate и моделей для ~40 блоков (большинство устройств Lumen Mesh, часть руд и блоков металлов).
+- Нет моделей и текстур для улучшений плавильни `heat/efficiency/capacity_upgrade_t2/t3` (в игре — фиолетово-чёрный куб).
+- В `lang/*.json` есть ключи для незарегистрированных предметов `blank_prism` и `network_processor`.
 - Призмитовые и квантовые инструменты, луки и мечи — пока обычные `Item` без поведения.
 - Плавильня (`block/alloysmelter`) сжигает топливо, но ничего не плавит: `getMeltResult` возвращает пустой результат, рецепты закомментированы.
-- Копание по площади для дрели и молота не подключено (`getBlocksToBeDestroyed` нигде не вызывается), поэтому дрель не тратит энергию.
-- `LumenCapabilities` должен регистрировать `Capabilities.EnergyStorage.ITEM` для дрелей через `DrillItem.getEnergyStorage(stack)` — иначе зарядники других модов их не видят.
-- Энергия при слиянии сетей Lumen Mesh: ёмкость = большая из двух, энергия сверх неё теряется.
+- `LumenCapabilities` регистрирует `Capabilities.EnergyStorage.ITEM` только для квантовой брони; дрели нужно добавить через `DrillItem.getEnergyStorage(stack)` — иначе зарядники других модов их не видят.
+- Энергия при слиянии сетей Lumen Mesh: ёмкость = большая из двух (так решил автор: сумма давала рост ёмкости при каждом разрыве и починке кабеля), энергия сверх неё теряется.

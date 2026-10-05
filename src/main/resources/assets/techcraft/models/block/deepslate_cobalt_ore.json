@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "techcraft:block/ore/deepslate_cobalt_ore"
+  }
+}

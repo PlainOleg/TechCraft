@@ -1,0 +1,1 @@
+{ "parent": "minecraft:item/generated", "textures": { "layer0": "techcraft:item/ingot/titanium_ingot" } }

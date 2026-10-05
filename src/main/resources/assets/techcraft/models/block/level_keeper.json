@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/lumen_mesh/level_keeper_side",
+    "north": "techcraft:block/lumen_mesh/level_keeper_front",
+    "south": "techcraft:block/lumen_mesh/level_keeper_side",
+    "east": "techcraft:block/lumen_mesh/level_keeper_side",
+    "west": "techcraft:block/lumen_mesh/level_keeper_side",
+    "up": "techcraft:block/lumen_mesh/level_keeper_top",
+    "down": "techcraft:block/lumen_mesh/level_keeper_side"
+  }
+}

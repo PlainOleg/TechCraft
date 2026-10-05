@@ -1,0 +1,25 @@
+{
+  "name": "Солнечные панели уровней 1-3",
+  "icon": "techcraft:copper_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_solar_panel",
+      "title": "Медная солнечная панель",
+      "text": "Солнечная панель 1 уровня. Генерирует 4 ФЕ/т с ёмкостью 20,000 ФЕ. Базовая генерация энергии для ранней игры."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silicon_solar_panel",
+      "title": "Кремниевая солнечная панель",
+      "text": "Солнечная панель 2 уровня. Генерирует 12 ФЕ/т с ёмкостью 60,000 ФЕ. Улучшенная эффективность."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:reinforced_solar_panel",
+      "title": "Усиленная солнечная панель",
+      "text": "Солнечная панель 3 уровня. Генерирует 32 ФЕ/т с ёмкостью 160,000 ФЕ. Генерация энергии среднего уровня."
+    }
+  ]
+}

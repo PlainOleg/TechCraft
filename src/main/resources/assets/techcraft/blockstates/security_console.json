@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "techcraft:block/security_console" },
+    "facing=east,active=false": { "model": "techcraft:block/security_console", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/security_console", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/security_console", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/security_console_active" },
+    "facing=east,active=true": { "model": "techcraft:block/security_console_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/security_console_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/security_console_active", "y": 270 }
+  }
+}

@@ -46,6 +46,9 @@ neoForge {
     runs {
         client {
             client()
+            // Keep the IDE-generated Minecraft Client configuration responsive
+            // without competing with the 3 GiB Gradle daemon on a 16 GiB system.
+            jvmArgument '-Xmx4G'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
@@ -137,6 +140,23 @@ tasks.register('verifyResources', Exec) {
 tasks.named('check') { dependsOn tasks.named('verifyResources') }
 
 tasks.named('processResources') { exclude '**/.DS_Store', '**/Thumbs.db' }
+
+// Gradle's incremental Copy task does not remove outputs whose source file was
+// deleted. Finder-style copies such as "recipe 2.json" then remain on the dev
+// classpath and Minecraft spends significant time rejecting every one of them.
+tasks.register('cleanStaleResourceCopies') {
+    group = 'build setup'
+    description = 'Remove stale Finder-style resource copies from the build output'
+    doLast {
+        def output = layout.buildDirectory.dir('resources/main').get().asFile
+        if (!output.exists()) return
+        fileTree(output).matching { include '**/* *.*' }.files.each { file ->
+            if (file.name ==~ /.* \d+\.(json|png|mcmeta)/) delete file
+        }
+    }
+}
+
+tasks.named('processResources') { dependsOn tasks.named('cleanStaleResourceCopies') }
 
 // Sets up a dependency configuration called 'localRuntime'.
 // This configuration should be used instead of 'runtimeOnly' to declare

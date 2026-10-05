@@ -1,11 +1,13 @@
 package com.plainoleg.techcraft.client;
 
 import com.plainoleg.techcraft.TechCraft;
+import com.plainoleg.techcraft.lumenmesh.client.CraftingTerminalScreen;
 import com.plainoleg.techcraft.lumenmesh.client.EnergyBridgeScreen;
 import com.plainoleg.techcraft.lumenmesh.client.ItemTerminalScreen;
 import com.plainoleg.techcraft.lumenmesh.client.MeshCoreScreen;
 import com.plainoleg.techcraft.lumenmesh.client.PrismDriveScreen;
 import com.plainoleg.techcraft.lumenmesh.client.StorageLinkScreen;
+import com.plainoleg.techcraft.lumenmesh.menu.ItemTerminalMenu;
 import com.plainoleg.techcraft.lumenmesh.registry.LumenMenuTypes;
 import com.plainoleg.techcraft.registry.ModMenuTypes;
 import com.plainoleg.techcraft.solar.client.SolarPanelBankScreen;
@@ -36,7 +38,9 @@ public class TechCraftClient {
         event.register(LumenMenuTypes.MESH_CORE.get(), MeshCoreScreen::new);
         event.register(LumenMenuTypes.ENERGY_BRIDGE.get(), EnergyBridgeScreen::new);
         event.register(LumenMenuTypes.PRISM_DRIVE.get(), PrismDriveScreen::new);
-        event.register(LumenMenuTypes.ITEM_TERMINAL.get(), ItemTerminalScreen::new);
+        event.<ItemTerminalMenu, ItemTerminalScreen<ItemTerminalMenu>>register(
+                LumenMenuTypes.ITEM_TERMINAL.get(), ItemTerminalScreen::new);
+        event.register(LumenMenuTypes.CRAFTING_TERMINAL.get(), CraftingTerminalScreen::new);
         event.register(LumenMenuTypes.STORAGE_LINK.get(), StorageLinkScreen::new);
     }
 }

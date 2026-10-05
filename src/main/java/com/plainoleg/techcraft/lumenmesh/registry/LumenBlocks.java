@@ -7,6 +7,7 @@ import com.plainoleg.techcraft.lumenmesh.block.core.MeshCoreBlock;
 import com.plainoleg.techcraft.lumenmesh.block.energy.EnergyBridgeBlock;
 import com.plainoleg.techcraft.lumenmesh.block.storage.PrismDriveBlock;
 import com.plainoleg.techcraft.lumenmesh.block.storage.StorageLinkBlock;
+import com.plainoleg.techcraft.lumenmesh.block.terminal.CraftingTerminalBlock;
 import com.plainoleg.techcraft.lumenmesh.block.terminal.ItemTerminalBlock;
 import com.plainoleg.techcraft.lumenmesh.item.LumenBlockItem;
 
@@ -80,7 +81,7 @@ public class LumenBlocks {
         // Хранение и терминалы
         PRISM_DRIVE = registerBlock("prism_drive", () -> new PrismDriveBlock(machineProperties()));
         ITEM_TERMINAL = registerBlock("item_terminal", () -> new ItemTerminalBlock(machineProperties()));
-        CRAFTING_TERMINAL = registerBlock("crafting_terminal", () -> new LumenFacingBlock(machineProperties()));
+        CRAFTING_TERMINAL = registerBlock("crafting_terminal", () -> new CraftingTerminalBlock(machineProperties()));
 
         // Автокрафт
         BLUEPRINT_ENCODER = registerBlock("blueprint_encoder", () -> new LumenFacingBlock(machineProperties()));

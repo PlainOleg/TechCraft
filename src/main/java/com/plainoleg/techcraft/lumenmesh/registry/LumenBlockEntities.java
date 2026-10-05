@@ -6,6 +6,7 @@ import com.plainoleg.techcraft.lumenmesh.block.core.MeshCoreBlockEntity;
 import com.plainoleg.techcraft.lumenmesh.block.energy.EnergyBridgeBlockEntity;
 import com.plainoleg.techcraft.lumenmesh.block.storage.PrismDriveBlockEntity;
 import com.plainoleg.techcraft.lumenmesh.block.storage.StorageLinkBlockEntity;
+import com.plainoleg.techcraft.lumenmesh.block.terminal.CraftingTerminalBlockEntity;
 import com.plainoleg.techcraft.lumenmesh.block.terminal.ItemTerminalBlockEntity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -46,6 +47,10 @@ public class LumenBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemTerminalBlockEntity>> ITEM_TERMINAL =
         BLOCK_ENTITIES.register("item_terminal", () ->
             BlockEntityType.Builder.of(ItemTerminalBlockEntity::new, LumenBlocks.ITEM_TERMINAL.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CraftingTerminalBlockEntity>> CRAFTING_TERMINAL =
+        BLOCK_ENTITIES.register("crafting_terminal", () ->
+            BlockEntityType.Builder.of(CraftingTerminalBlockEntity::new, LumenBlocks.CRAFTING_TERMINAL.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StorageLinkBlockEntity>> STORAGE_LINK =
         BLOCK_ENTITIES.register("storage_link", () -> BlockEntityType.Builder.of(StorageLinkBlockEntity::new, LumenBlocks.STORAGE_LINK.get()).build(null));

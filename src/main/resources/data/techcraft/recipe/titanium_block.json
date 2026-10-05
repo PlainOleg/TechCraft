@@ -1,0 +1,1 @@
+{ "type": "minecraft:crafting_shaped", "category": "building", "pattern": ["XXX","XXX","XXX"], "key": { "X": { "item": "techcraft:titanium_ingot" } }, "result": { "id": "techcraft:titanium_block", "count": 1 } }

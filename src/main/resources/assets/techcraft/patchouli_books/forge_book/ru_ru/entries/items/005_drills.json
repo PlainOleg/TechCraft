@@ -1,0 +1,35 @@
+{
+  "name": "Дрели",
+  "icon": "techcraft:iron_drill",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Дрели ломают область в плоскости, на которую смотрит игрок. $(l)Приседание$() включает режим 1×1.$(br2)Дрели работают от внутренней энергии. Число в тултипе — заряд, а не прочность. Без энергии добыча отменяется."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:iron_drill",
+      "title": "Железная дрель",
+      "text": "Область 3×3, запас 1 700 FE, расход 10 FE за блок."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:diamond_drill",
+      "title": "Алмазная дрель",
+      "text": "Область 3×3, запас 5 000 FE, расход 8 FE за блок."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:netherite_drill",
+      "title": "Незеритовая дрель",
+      "text": "Область 5×5, запас 10 000 FE, расход 6 FE за блок."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_drill",
+      "title": "Квантовая дрель",
+      "text": "Область 7×7, запас 35 000 FE, расход 4 FE за блок."
+    }
+  ]
+}

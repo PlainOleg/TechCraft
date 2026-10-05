@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": { "layer0": "techcraft:item/uranium/raw_uranium" }
+}

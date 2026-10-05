@@ -1,0 +1,6 @@
+{
+  "name":"Solar Panel Bank","icon":"techcraft:solar_panel_bank","category":"techcraft:solar","pages":[
+    {"type":"patchouli:spotlight","item":"techcraft:solar_panel_bank","title":"Compact Generation","text":"This is a $(l)single block$(), not a multiblock. Open it and place panels into its 36 internal slots. Their peak output and capacities are combined."},
+    {"type":"patchouli:text","title":"Connections","text":"The bank needs open sky. Output varies smoothly over the day; rain gives 55% and thunder 25%.$(br2)FE is output $(l)downward$(). Six charging slots accept compatible items and charge each at up to 1000 FE/t."}
+  ]
+}

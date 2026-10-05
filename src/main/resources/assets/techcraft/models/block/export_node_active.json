@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/lumen_mesh/export_node_side",
+    "north": "techcraft:block/lumen_mesh/export_node_front_active",
+    "south": "techcraft:block/lumen_mesh/export_node_side",
+    "east": "techcraft:block/lumen_mesh/export_node_side",
+    "west": "techcraft:block/lumen_mesh/export_node_side",
+    "up": "techcraft:block/lumen_mesh/export_node_top",
+    "down": "techcraft:block/lumen_mesh/export_node_side"
+  }
+}

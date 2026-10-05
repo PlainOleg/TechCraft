@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class MeshCoreMenu extends AbstractContainerMenu {
     private final MeshCoreBlockEntity blockEntity;
@@ -24,6 +25,8 @@ public class MeshCoreMenu extends AbstractContainerMenu {
     public MeshCoreMenu(int containerId, Inventory playerInventory, MeshCoreBlockEntity blockEntity) {
         super(LumenMenuTypes.MESH_CORE.get(), containerId);
         this.blockEntity = blockEntity;
+        addSlot(new SlotItemHandler(blockEntity.getCraftingUpgrades(), 0, 18, 44));
+        addSlot(new SlotItemHandler(blockEntity.getCraftingUpgrades(), 1, 18, 62));
         addPlayerSlots(playerInventory);
         addDataSlots(createData());
     }
@@ -40,8 +43,16 @@ public class MeshCoreMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        // No inventory slots exposed by this menu yet
-        return ItemStack.EMPTY;
+        if (index < 0 || index >= slots.size()) return ItemStack.EMPTY;
+        var slot = slots.get(index);
+        if (!slot.hasItem()) return ItemStack.EMPTY;
+        ItemStack stack = slot.getItem();
+        ItemStack original = stack.copy();
+        if (index < 2) {
+            if (!moveItemStackTo(stack, 2, slots.size(), true)) return ItemStack.EMPTY;
+        } else if (!moveItemStackTo(stack, 0, 2, false)) return ItemStack.EMPTY;
+        if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY); else slot.setChanged();
+        return original;
     }
 
     private void addPlayerSlots(Inventory inventory) {

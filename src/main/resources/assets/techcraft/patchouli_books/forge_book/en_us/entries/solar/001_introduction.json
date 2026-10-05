@@ -1,0 +1,15 @@
+{
+  "name": "Solar Panels Introduction",
+  "icon": "techcraft:copper_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A panel needs open sky in a dimension with skylight. Output rises smoothly toward noon and falls toward night.$(br2)Rain reduces output to 55%, thunder to 25%. Stored FE is sent to the block $(l)below the panel$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Solar Panel Tiers:$(br)• Tier 1: Copper (4 FE/t, 20k capacity)$(br)• Tier 2: Silicon (12 FE/t, 60k capacity)$(br)• Tier 3: Reinforced (32 FE/t, 160k capacity)$(br)• Tier 4: Prismatic (80 FE/t, 400k capacity)$(br)• Tier 5: Resonant (192 FE/t, 960k capacity)$(br)• Tier 6: Flux (448 FE/t, 2.24M capacity)$(br)• Tier 7: Stellar (1,024 FE/t, 5.12M capacity)$(br)• Tier 8: Helios (2,304 FE/t, 11.52M capacity)"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name":"Lumen Mesh Quick Start","icon":"techcraft:mesh_core","category":"techcraft:lumen","priority":true,"pages":[
+    {"type":"patchouli:text","text":"$(l)Lumen Mesh$() is a network for FE and item storage.$(br2)$(l)1.$() Place a Mesh Core.$(br)$(l)2.$() Connect devices with Mesh Cable.$(br)$(l)3.$() Feed FE into an Energy Bridge.$(br)$(l)4.$() Install storage prisms in a Prism Drive.$(br)$(l)5.$() Open an Item Terminal."},
+    {"type":"patchouli:text","title":"Available Now","text":"$(a)Network topology$(), FE buffering, prism storage, the Item Terminal and external-inventory linking are functional.$(br2)$(8)Autocrafting, wireless access and other prototype blocks are not documented as working features.$()"}
+  ]
+}

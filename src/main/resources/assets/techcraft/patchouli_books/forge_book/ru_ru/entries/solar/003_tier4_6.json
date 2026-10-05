@@ -1,0 +1,25 @@
+{
+  "name": "Солнечные панели уровней 4-6",
+  "icon": "techcraft:prismatic_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismatic_solar_panel",
+      "title": "Призматическая солнечная панель",
+      "text": "Солнечная панель 4 уровня. Генерирует 80 ФЕ/т с ёмкостью 400,000 ФЕ. Генерация энергии высокого уровня."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:resonant_solar_panel",
+      "title": "Резонансная солнечная панель",
+      "text": "Солнечная панель 5 уровня. Генерирует 192 ФЕ/т с ёмкостью 960,000 ФЕ. Продвинутая генерация энергии."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:flux_solar_panel",
+      "title": "Потоковая солнечная панель",
+      "text": "Солнечная панель 6 уровня. Генерирует 448 ФЕ/т с ёмкостью 2,240,000 ФЕ. Генерация энергии высокого класса."
+    }
+  ]
+}

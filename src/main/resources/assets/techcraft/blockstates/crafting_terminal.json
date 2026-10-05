@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "techcraft:block/crafting_terminal" },
+    "facing=east,active=false": { "model": "techcraft:block/crafting_terminal", "y": 90 },
+    "facing=south,active=false": { "model": "techcraft:block/crafting_terminal", "y": 180 },
+    "facing=west,active=false": { "model": "techcraft:block/crafting_terminal", "y": 270 },
+    "facing=north,active=true": { "model": "techcraft:block/crafting_terminal_active" },
+    "facing=east,active=true": { "model": "techcraft:block/crafting_terminal_active", "y": 90 },
+    "facing=south,active=true": { "model": "techcraft:block/crafting_terminal_active", "y": 180 },
+    "facing=west,active=true": { "model": "techcraft:block/crafting_terminal_active", "y": 270 }
+  }
+}

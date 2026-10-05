@@ -1,0 +1,25 @@
+{
+  "name": "Tiers 1-3 Solar Panels",
+  "icon": "techcraft:copper_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:copper_solar_panel",
+      "title": "Copper Solar Panel",
+      "text": "Tier 1 solar panel. Generates 4 FE/t with 20,000 FE capacity. Basic early-game energy generation."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silicon_solar_panel",
+      "title": "Silicon Solar Panel",
+      "text": "Tier 2 solar panel. Generates 12 FE/t with 60,000 FE capacity. Improved efficiency."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:reinforced_solar_panel",
+      "title": "Reinforced Solar Panel",
+      "text": "Tier 3 solar panel. Generates 32 FE/t with 160,000 FE capacity. Mid-tier energy generation."
+    }
+  ]
+}

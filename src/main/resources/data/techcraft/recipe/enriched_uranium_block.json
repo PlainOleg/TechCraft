@@ -1,0 +1,1 @@
+{ "type": "minecraft:crafting_shaped", "category": "building", "pattern": ["XXX","XXX","XXX"], "key": { "X": { "item": "techcraft:enriched_uranium_ingot" } }, "result": { "id": "techcraft:enriched_uranium_block", "count": 1 } }

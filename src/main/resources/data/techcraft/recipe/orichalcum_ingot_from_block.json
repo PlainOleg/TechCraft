@@ -1,0 +1,1 @@
+{ "type": "minecraft:crafting_shapeless", "category": "misc", "ingredients": [{ "item": "techcraft:orichalcum_block" }], "result": { "id": "techcraft:orichalcum_ingot", "count": 9 } }

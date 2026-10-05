@@ -1,0 +1,1 @@
+{ "type": "minecraft:smelting", "category": "misc", "ingredient": { "item": "techcraft:aetherium_ore" }, "result": { "id": "techcraft:aetherium_ingot", "count": 1 }, "experience": 1.0, "cookingtime": 200 }

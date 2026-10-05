@@ -1,0 +1,19 @@
+{
+  "name": "Tiers 7-8 Solar Panels",
+  "icon": "techcraft:stellar_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:stellar_solar_panel",
+      "title": "Stellar Solar Panel",
+      "text": "Tier 7 solar panel. Generates 1,024 FE/t with 5,120,000 FE capacity. Near-end-game energy generation."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:helios_solar_panel",
+      "title": "Helios Solar Panel",
+      "text": "Tier 8 solar panel. Generates 2,304 FE/t with 11,520,000 FE capacity. The ultimate solar panel."
+    }
+  ]
+}

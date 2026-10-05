@@ -1,0 +1,21 @@
+{
+  "name": "Alloy Smelter",
+  "icon": "techcraft:alloy_smelter",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Alloy Smelter is a machine used to smelt ores and create alloys. It can be upgraded with various upgrades to improve its performance."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:alloy_smelter",
+      "title": "Alloy Smelter",
+      "text": "A multi-purpose smelting machine that can process ores and create advanced alloys like Steel."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Alloy Smelter accepts upgrades to enhance its capabilities:$(br)• Capacity Upgrades: Increase energy storage$(br)• Temperature Upgrades: Increase max temperature$(br)• Efficiency Upgrades: Improve energy efficiency$(br2)Each upgrade type is available in Tier 2 and Tier 3 versions."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/lumen_mesh/matter_condenser_side",
+    "north": "techcraft:block/lumen_mesh/matter_condenser_front",
+    "south": "techcraft:block/lumen_mesh/matter_condenser_side",
+    "east": "techcraft:block/lumen_mesh/matter_condenser_side",
+    "west": "techcraft:block/lumen_mesh/matter_condenser_side",
+    "up": "techcraft:block/lumen_mesh/matter_condenser_top",
+    "down": "techcraft:block/lumen_mesh/matter_condenser_side"
+  }
+}

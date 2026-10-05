@@ -1,0 +1,47 @@
+{
+  "name": "Металлические блоки",
+  "icon": "techcraft:bronze_block",
+  "category": "techcraft:blocks",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Металлические блоки - это декоративные и складские блоки для различных металлов. Они могут быть созданы из слитков и переплавлены обратно."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:bronze_block",
+      "title": "Бронзовый блок",
+      "text": "Складской блок для бронзовых слитков."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:silver_block",
+      "title": "Серебряный блок",
+      "text": "Складской блок для серебряных слитков с магическими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:steel_block",
+      "title": "Стальной блок",
+      "text": "Складской блок для стальных слитков."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:prismite_block",
+      "title": "Блок призмита",
+      "text": "Складской блок для слитков призмита с преломляющими свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:quantum_block",
+      "title": "Квантовый блок",
+      "text": "Складской блок для квантовых слитков с квантовыми свойствами."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:ruby_block",
+      "title": "Рубиновый блок",
+      "text": "Декоративный блок из рубинов."
+    }
+  ]
+}

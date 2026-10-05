@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "techcraft:block/lumen_mesh/mesh_core_side",
+    "north": "techcraft:block/lumen_mesh/mesh_core_front_active",
+    "south": "techcraft:block/lumen_mesh/mesh_core_side",
+    "east": "techcraft:block/lumen_mesh/mesh_core_side",
+    "west": "techcraft:block/lumen_mesh/mesh_core_side",
+    "up": "techcraft:block/lumen_mesh/mesh_core_top",
+    "down": "techcraft:block/lumen_mesh/mesh_core_side"
+  }
+}

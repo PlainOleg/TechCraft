@@ -1,0 +1,19 @@
+{
+  "name": "Солнечные панели уровней 7-8",
+  "icon": "techcraft:stellar_solar_panel",
+  "category": "techcraft:solar",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:stellar_solar_panel",
+      "title": "Звёздная солнечная панель",
+      "text": "Солнечная панель 7 уровня. Генерирует 1,024 ФЕ/т с ёмкостью 5,120,000 ФЕ. Генерация энергии почти конца игры."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:helios_solar_panel",
+      "title": "Солнечная панель Гелиос",
+      "text": "Солнечная панель 8 уровня. Генерирует 2,304 ФЕ/т с ёмкостью 11,520,000 ФЕ. Идеальная солнечная панель."
+    }
+  ]
+}

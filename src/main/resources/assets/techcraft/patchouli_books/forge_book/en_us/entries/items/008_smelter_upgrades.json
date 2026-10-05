@@ -1,0 +1,47 @@
+{
+  "name": "Smelter Upgrades",
+  "icon": "techcraft:capacity_upgrade_t2",
+  "category": "techcraft:items",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Alloy Smelter upgrades enhance the machine's capabilities. There are three types of upgrades, each available in Tier 2 and Tier 3 versions."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:capacity_upgrade_t2",
+      "title": "Capacity Upgrade T2",
+      "text": "Increases the smelter's internal energy storage capacity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:capacity_upgrade_t3",
+      "title": "Capacity Upgrade T3",
+      "text": "Greatly increases the smelter's energy storage capacity."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:heat_upgrade_t2",
+      "title": "Temperature Upgrade T2",
+      "text": "Increases the smelter's maximum operating temperature."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:heat_upgrade_t3",
+      "title": "Temperature Upgrade T3",
+      "text": "Greatly increases the smelter's maximum operating temperature."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:efficiency_upgrade_t2",
+      "title": "Efficiency Upgrade T2",
+      "text": "Improves the smelter's energy efficiency."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "techcraft:efficiency_upgrade_t3",
+      "title": "Efficiency Upgrade T3",
+      "text": "Greatly improves the smelter's energy efficiency."
+    }
+  ]
+}

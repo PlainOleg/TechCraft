@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": { "item": "techcraft:enriched_uranium" },
+  "result": { "id": "techcraft:enriched_uranium_ingot", "count": 1 },
+  "experience": 1.5,
+  "cookingtime": 200
+}

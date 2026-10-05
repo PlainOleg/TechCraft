@@ -1,6 +1,7 @@
 package com.plainoleg.techcraft.lumenmesh.registry;
 
 import com.plainoleg.techcraft.TechCraft;
+import com.plainoleg.techcraft.lumenmesh.menu.CraftingTerminalMenu;
 import com.plainoleg.techcraft.lumenmesh.menu.EnergyBridgeMenu;
 import com.plainoleg.techcraft.lumenmesh.menu.ItemTerminalMenu;
 import com.plainoleg.techcraft.lumenmesh.menu.MeshCoreMenu;
@@ -30,6 +31,9 @@ public class LumenMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<ItemTerminalMenu>> ITEM_TERMINAL =
         MENU_TYPES.register("item_terminal", () -> IMenuTypeExtension.create(ItemTerminalMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<CraftingTerminalMenu>> CRAFTING_TERMINAL =
+        MENU_TYPES.register("crafting_terminal", () -> IMenuTypeExtension.create(CraftingTerminalMenu::new));
 
     public static final DeferredHolder<MenuType<?>, MenuType<StorageLinkMenu>> STORAGE_LINK =
         MENU_TYPES.register("storage_link", () -> IMenuTypeExtension.create(StorageLinkMenu::new));

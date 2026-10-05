@@ -7,6 +7,7 @@ import TechCraft.item.custom.QuantumArmorItem;
 import TechCraft.item.custom.DrillItem;
 import TechCraft.item.custom.HammerItem;
 import TechCraft.item.custom.PlateItem;
+import TechCraft.lumenmesh.item.LumenItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -32,7 +33,13 @@ public class ModItems {
         return ITEMS.register(material.getName() + "_plate", () -> new PlateItem(new Item.Properties()));
     }
 
-    private static DeferredItem<Item> registerSimpleItem(String name) {
+    /** Обычный стакающийся материал (до 64 в стаке). */
+    private static DeferredItem<Item> registerMaterial(String name) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties()));
+    }
+
+    /** Предмет, который не стакается (батареи, инструменты-заглушки). */
+    private static DeferredItem<Item> registerUnstackable(String name) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().stacksTo(1)));
     }
 
@@ -119,7 +126,9 @@ public class ModItems {
     public static final DeferredItem<Item> RAW_BLUE_CORE;
     public static final DeferredItem<Item> RAW_VIOLET_CORE;
 
-    public static final DeferredItem<Item> REFINED_PHASE_QUARTZ;
+    /** @deprecated предмет регистрируется в {@link LumenItems}; оставлено для совместимости. */
+    @Deprecated
+    public static final DeferredItem<Item> REFINED_PHASE_QUARTZ = LumenItems.REFINED_PHASE_QUARTZ;
 
     public static final DeferredItem<Item> FORGE_BOOK;
     public static final DeferredItem<HammerItem> FORGE_HAMMER;
@@ -141,13 +150,13 @@ public class ModItems {
     public static final DeferredItem<Item> PRISMITE_BOW;
     public static final DeferredItem<Item> PRISMITE_HOE;
     public static final DeferredItem<Item> PRISMITE_PICKAXE;
-    public static final DeferredItem<Item> PRISMITE_SHOWER;
+    public static final DeferredItem<Item> PRISMITE_SHOVEL;
     public static final DeferredItem<Item> PRISMITE_SWORD;
     public static final DeferredItem<Item> QUANTUM_AXE;
     public static final DeferredItem<Item> QUANTUM_BOW;
     public static final DeferredItem<Item> QUANTUM_HOE;
     public static final DeferredItem<Item> QUANTUM_PICKAXE;
-    public static final DeferredItem<Item> QUANTUM_SHOWER;
+    public static final DeferredItem<Item> QUANTUM_SHOVEL;
     public static final DeferredItem<Item> QUANTUM_SWORD;
     public static final DeferredItem<Item> QUANTUM_TRUE_SWORD;
 
@@ -162,16 +171,16 @@ public class ModItems {
     public static final DeferredItem<Item> QUANTUM_BOOTS;
 
     static {
-        RAW_TIN = registerMaterialItem(MaterialType.TIN, "raw");
+        RAW_TIN = registerMaterial("raw_tin");
         TIN_INGOT = registerMaterialItem(MaterialType.TIN, "ingot");
         TIN_PLATE = registerPlate(MaterialType.TIN);
-        RAW_URANIUM = ITEMS.register("raw_uranium", () -> new Item(new Item.Properties()));
-        ENRICHED_URANIUM = ITEMS.register("enriched_uranium", () -> new Item(new Item.Properties()));
-        ENRICHED_URANIUM_INGOT = ITEMS.register("enriched_uranium_ingot", () -> new Item(new Item.Properties()));
-        RAW_COBALT = ITEMS.register("raw_cobalt", () -> new Item(new Item.Properties()));
-        COBALT_INGOT = ITEMS.register("cobalt_ingot", () -> new Item(new Item.Properties()));
-        RAW_TITANIUM = ITEMS.register("raw_titanium", () -> new Item(new Item.Properties()));
-        TITANIUM_INGOT = ITEMS.register("titanium_ingot", () -> new Item(new Item.Properties()));
+        RAW_URANIUM = registerMaterial("raw_uranium");
+        ENRICHED_URANIUM = registerMaterial("enriched_uranium");
+        ENRICHED_URANIUM_INGOT = registerMaterial("enriched_uranium_ingot");
+        RAW_COBALT = registerMaterial("raw_cobalt");
+        COBALT_INGOT = registerMaterial("cobalt_ingot");
+        RAW_TITANIUM = registerMaterial("raw_titanium");
+        TITANIUM_INGOT = registerMaterial("titanium_ingot");
         AETHERIUM_INGOT = ITEMS.register("aetherium_ingot", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
         SOLARITE_INGOT = ITEMS.register("solarite_ingot", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
         RAW_ORICHALCUM = ITEMS.register("raw_orichalcum", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
@@ -189,56 +198,52 @@ public class ModItems {
         STEEL_INGOT = registerMaterialItem(MaterialType.STEEL, "ingot");
         STEEL_PLATE = registerPlate(MaterialType.STEEL);
 
-        COAL_DUST = registerSimpleItem("coal_dust");
-        IRON_DUST = registerSimpleItem("iron_dust");
-        NICKEL_DUST = registerSimpleItem("nickel_dust");
-        STEEL_DUST = registerSimpleItem("steel_dust");
+        COAL_DUST = registerMaterial("coal_dust");
+        IRON_DUST = registerMaterial("iron_dust");
+        NICKEL_DUST = registerMaterial("nickel_dust");
+        STEEL_DUST = registerMaterial("steel_dust");
 
-        RAW_RUBBER = registerSimpleItem("raw_rubber");
-        RUBBER = registerSimpleItem("rubber");
+        RAW_RUBBER = registerMaterial("raw_rubber");
+        RUBBER = registerMaterial("rubber");
 
-        BRONZE_INGOT = registerSimpleItem("bronze_ingot");
-        NICKEL_INGOT = registerSimpleItem("nickel_ingot");
-        SILVER_INGOT = registerSimpleItem("silver_ingot");
-        PRISMITE_INGOT = registerSimpleItem("prismite_ingot");
-        QUANTUM_INGOT = registerSimpleItem("quantum_ingot");
+        BRONZE_INGOT = registerMaterial("bronze_ingot");
+        NICKEL_INGOT = registerMaterial("nickel_ingot");
+        SILVER_INGOT = registerMaterial("silver_ingot");
+        PRISMITE_INGOT = registerMaterial("prismite_ingot");
+        QUANTUM_INGOT = registerMaterial("quantum_ingot");
 
-        BRONZE_CABLE = registerSimpleItem("bronze_cable");
-        COPPER_CABLE = registerSimpleItem("copper_cable");
-        GOLD_CABLE = registerSimpleItem("gold_cable");
-        IRON_CABLE = registerSimpleItem("iron_cable");
-        NICKEL_CABLE = registerSimpleItem("nickel_cable");
-        SILVER_CABLE = registerSimpleItem("silver_cable");
-        STEEL_CABLE = registerSimpleItem("steel_cable");
-        TIN_CABLE = registerSimpleItem("tin_cable");
-        PRISMITE_CABLE = registerSimpleItem("prismite_cable");
-        QUANTUM_CABLE = registerSimpleItem("quantum_cable");
+        BRONZE_CABLE = registerMaterial("bronze_cable");
+        COPPER_CABLE = registerMaterial("copper_cable");
+        GOLD_CABLE = registerMaterial("gold_cable");
+        IRON_CABLE = registerMaterial("iron_cable");
+        NICKEL_CABLE = registerMaterial("nickel_cable");
+        SILVER_CABLE = registerMaterial("silver_cable");
+        STEEL_CABLE = registerMaterial("steel_cable");
+        TIN_CABLE = registerMaterial("tin_cable");
+        PRISMITE_CABLE = registerMaterial("prismite_cable");
+        QUANTUM_CABLE = registerMaterial("quantum_cable");
 
-        CIRCUIT = registerSimpleItem("circuit");
-        RESISTOR = registerSimpleItem("resistor");
-        TRANSISTOR = registerSimpleItem("transistor");
-        MAGNET = registerSimpleItem("magnet");
-        MOTOR = registerSimpleItem("motor");
+        CIRCUIT = registerMaterial("circuit");
+        RESISTOR = registerMaterial("resistor");
+        TRANSISTOR = registerMaterial("transistor");
+        MAGNET = registerMaterial("magnet");
+        MOTOR = registerMaterial("motor");
 
-        BATTERY = registerSimpleItem("battery");
-        ACCUMULATOR = registerSimpleItem("accumulator");
-        QUANTUM_BATTERY = registerSimpleItem("quantum_battery");
-        ENERGY_CRYSTAL = registerSimpleItem("energy_crystal");
+        BATTERY = registerUnstackable("battery");
+        ACCUMULATOR = registerUnstackable("accumulator");
+        QUANTUM_BATTERY = registerUnstackable("quantum_battery");
+        ENERGY_CRYSTAL = registerUnstackable("energy_crystal");
 
-        CUT_RUBY = registerSimpleItem("cut_ruby");
-        FLAWLESS_RUBY = registerSimpleItem("flawless_ruby");
-        PERFECT_RUBY = registerSimpleItem("perfect_ruby");
-        POLISHED_RUBY = registerSimpleItem("polished_ruby");
-        RUBY_SHARD = registerSimpleItem("ruby_shard");
+        CUT_RUBY = registerMaterial("cut_ruby");
+        FLAWLESS_RUBY = registerMaterial("flawless_ruby");
+        PERFECT_RUBY = registerMaterial("perfect_ruby");
+        POLISHED_RUBY = registerMaterial("polished_ruby");
+        RUBY_SHARD = registerMaterial("ruby_shard");
 
-        BLUE_PLASMA_CORE = registerSimpleItem("blue_plasma_core");
-        VIOLET_PLASMA_CORE = registerSimpleItem("violet_plasma_core");
-        RAW_BLUE_CORE = registerSimpleItem("raw_blue_core");
-        RAW_VIOLET_CORE = registerSimpleItem("raw_violet_core");
-
-        REFINED_PHASE_QUARTZ = registerSimpleItem("refined_phase_quartz");
-
-        ITEMS.register("raw_tin", () -> new Item(new Item.Properties()));
+        BLUE_PLASMA_CORE = registerMaterial("blue_plasma_core");
+        VIOLET_PLASMA_CORE = registerMaterial("violet_plasma_core");
+        RAW_BLUE_CORE = registerMaterial("raw_blue_core");
+        RAW_VIOLET_CORE = registerMaterial("raw_violet_core");
 
         FORGE_BOOK = ITEMS.register("forge_book", () -> new ForgeBook(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).setNoRepair()));
 
@@ -250,19 +255,19 @@ public class ModItems {
             )
         );
 
-        PRISMITE_AXE = ITEMS.register("prismite_axe", () -> new Item(new Item.Properties().stacksTo(1)));
-        PRISMITE_BOW = ITEMS.register("prismite_bow", () -> new Item(new Item.Properties().stacksTo(1)));
-        PRISMITE_HOE = ITEMS.register("prismite_hoe", () -> new Item(new Item.Properties().stacksTo(1)));
-        PRISMITE_PICKAXE = ITEMS.register("prismite_pickaxe", () -> new Item(new Item.Properties().stacksTo(1)));
-        PRISMITE_SHOWER = ITEMS.register("prismite_shower", () -> new Item(new Item.Properties().stacksTo(1)));
-        PRISMITE_SWORD = ITEMS.register("prismite_sword", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_AXE = ITEMS.register("quantum_axe", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_BOW = ITEMS.register("quantum_bow", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_HOE = ITEMS.register("quantum_hoe", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_PICKAXE = ITEMS.register("quantum_pickaxe", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_SHOWER = ITEMS.register("quantum_shower", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_SWORD = ITEMS.register("quantum_sword", () -> new Item(new Item.Properties().stacksTo(1)));
-        QUANTUM_TRUE_SWORD = ITEMS.register("quantum_true_sword", () -> new Item(new Item.Properties().stacksTo(1)));
+        PRISMITE_AXE = registerUnstackable("prismite_axe");
+        PRISMITE_BOW = registerUnstackable("prismite_bow");
+        PRISMITE_HOE = registerUnstackable("prismite_hoe");
+        PRISMITE_PICKAXE = registerUnstackable("prismite_pickaxe");
+        PRISMITE_SHOVEL = registerUnstackable("prismite_shovel");
+        PRISMITE_SWORD = registerUnstackable("prismite_sword");
+        QUANTUM_AXE = registerUnstackable("quantum_axe");
+        QUANTUM_BOW = registerUnstackable("quantum_bow");
+        QUANTUM_HOE = registerUnstackable("quantum_hoe");
+        QUANTUM_PICKAXE = registerUnstackable("quantum_pickaxe");
+        QUANTUM_SHOVEL = registerUnstackable("quantum_shovel");
+        QUANTUM_SWORD = registerUnstackable("quantum_sword");
+        QUANTUM_TRUE_SWORD = registerUnstackable("quantum_true_sword");
 
         CUTTER = ITEMS.register("cutter", () ->
             new DamageOnCraftUseItem(new Item.Properties().stacksTo(1).component(DataComponents.MAX_DAMAGE, CUTTER_DURABILITY)) {

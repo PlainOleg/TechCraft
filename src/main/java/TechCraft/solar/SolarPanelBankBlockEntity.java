@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -331,6 +332,13 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
 
     public net.neoforged.neoforge.items.IItemHandler getItemHandler() {
         return itemHandler;
+    }
+
+    /** Выбрасывает панели и заряжаемые предметы в мир при разрушении блока. */
+    public void dropContents(Level level, BlockPos pos) {
+        for (int slot = 0; slot < TOTAL_SLOTS; slot++) {
+            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemHandler.getStackInSlot(slot));
+        }
     }
 
     public long getEnergyStored() {

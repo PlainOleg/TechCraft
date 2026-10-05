@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -120,6 +121,13 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
 
     public IItemHandler getItemHandler() {
         return itemHandler;
+    }
+
+    /** Выбрасывает содержимое слотов в мир при разрушении блока. */
+    public void dropContents(Level level, BlockPos pos) {
+        for (int slot = 0; slot < itemHandler.getSlots(); slot++) {
+            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), itemHandler.getStackInSlot(slot));
+        }
     }
 
     public IFluidHandler getFluidHandler() {

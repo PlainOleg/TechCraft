@@ -123,7 +123,7 @@ tasks.register('regressionTest', JavaExec) {
     description = 'Run deterministic network, storage and generation regression checks'
     dependsOn tasks.named('regressionClasses')
     classpath = sourceSets.regression.runtimeClasspath
-    mainClass = 'TechCraft.RegressionSuite'
+    mainClass = 'com.plainoleg.techcraft.RegressionSuite'
 }
 
 tasks.named('check') { dependsOn tasks.named('regressionTest') }
@@ -235,10 +235,10 @@ tasks.register('generateOres', Exec) {
     group = 'generation'
     
     workingDir project.projectDir
-    commandLine 'python3', 'generate_ores.py'
-    
+    commandLine 'python3', 'tools/oregen/generate_ores.py'
+
     // Only run if the script exists
     onlyIf {
-        file('generate_ores.py').exists()
+        file('tools/oregen/generate_ores.py').exists()
     }
 }

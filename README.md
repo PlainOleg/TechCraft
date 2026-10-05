@@ -19,31 +19,75 @@
 
 ## Структура
 
+Весь код лежит в пакете `com.plainoleg.techcraft` (`src/main/java/com/plainoleg/techcraft/`).
+Мод разделён на **основную часть** (корневые пакеты) и **модули** `solar` и `lumenmesh`.
+Внутри каждого из них одинаковые папки:
+
+| Папка | Что в ней лежит |
+| --- | --- |
+| `registry/` | Все `DeferredRegister`: блоки, предметы, блок-сущности, меню, вкладки. Здесь видно, что добавляет мод или модуль |
+| `block/` | Классы блоков и их блок-сущности; у устройства с несколькими классами — своя подпапка (`block/alloysmelter`, `lumenmesh/block/core`) |
+| `menu/` | Серверные контейнеры (`AbstractContainerMenu`) |
+| `client/` | Только клиентский код: экраны, отрисовка, клиентские утилиты. Из остального кода сюда не ссылаются — иначе выделенный сервер упадёт |
+| `item/` | Классы предметов с поведением (`item/tool`, `item/armor` — инструменты и броня) |
+| корень модуля | Точка входа модуля и его сервисы/API (`LumenMesh`, `LumenMeshIntegration`, `SolarGenerationService`) |
+
+```
+com/plainoleg/techcraft/
+├── TechCraft.java          точка входа @Mod: вызывает регистрации
+├── Config.java             общий конфиг
+├── registry/               ModBlocks, ModItems, ModBlockEntities, ModMenuTypes, ModCreativeModTabs, ...
+├── block/alloysmelter/     плавильня: блок и блок-сущность
+├── menu/                   AlloySmelterMenu
+├── recipe/                 рецепты плавильни
+├── item/                   ForgeBook, ItemEnergy, улучшения; tool/ — молот, дрели, резак; armor/ — квантовая броня
+├── client/                 TechCraftClient (регистрация экранов), экраны основной части
+├── event/                  игровые события (поглощение урона бронёй)
+├── worldgen/, datagen/     генерация мира и данных
+├── util/                   общие утилиты
+├── solar/                  солнечные панели: registry/, block/, menu/, client/ + SolarGenerationService
+└── lumenmesh/              цифровая сеть: registry/, block/, item/, menu/, client/, network/, energy/, config/
+```
+
+Остальное в репозитории:
+
 | Папка | Ответственность |
 | --- | --- |
-| `src/main/java/TechCraft/block` | Регистрация блоков, плавильня и её интерфейс |
-| `src/main/java/TechCraft/item` | Регистрация предметов и поведение инструментов/брони |
-| `src/main/java/TechCraft/event` | События добычи, боя, полёта; клиентские подсказки отдельно |
-| `src/main/java/TechCraft/solar` | Солнечная генерация, накопитель панелей и зарядка |
-| `src/main/java/TechCraft/lumenmesh/network` | Топология, принадлежность узлов, состояние и сохранение сетей |
-| `src/main/java/TechCraft/lumenmesh/storage` | Хранение предметов, агрегация и операции над сетью |
-| `src/main/java/TechCraft/lumenmesh/block` | Игровые устройства и их жизненный цикл |
-| `src/main/java/TechCraft/lumenmesh/menu`, `client` | Серверные контейнеры и клиентские экраны |
-| `src/main/java/TechCraft/worldgen`, `datagen` | Генерация мира и данных |
 | `src/main/resources` | Рецепты, модели, текстуры, локализация и книга |
+| `src/generated/resources` | Результат datagen (генерация руд); перезаписывается `./gradlew runData` |
 | `src/regression/java`, `src/test/java` | Регрессионные и интеграционные проверки |
-| `tools/` | Валидация ресурсов и вспомогательные генераторы |
+| `tools/` | Скрипты разработки: валидация ресурсов, генератор руд (`tools/oregen`), перенос пакетов |
+
+### Соглашения
+
+- Классы регистрации называются по модулю: `Mod*` в основной части, `Solar*` и `Lumen*` в модулях (`SolarBlocks`, `LumenBlockEntities`).
+- Новый блок с блок-сущностью: класс блока и сущности — в `block/<устройство>/`, регистрация — в `registry/`, меню — в `menu/`, экран — в `client/` и регистрация экрана в `TechCraftClient`.
+- Клиентские классы — только в папках `client/`.
+- Для аддонов: зависеть стоит от `registry/` (что добавлено), `item/ItemEnergy` и сервисов в корне модулей; всё остальное — детали реализации.
 
 Менеджер Lumen Mesh работает на серверном потоке. Выгрузка чанка освобождает живой объект устройства, сохраняя топологию; разрушение блока удаляет узел. Внешние инвентари и интерфейсы обращаются к хранилищу через `NetworkStorageService`.
+
+### Переход со старой структуры (пакет `TechCraft`)
+
+Если у вас есть локальные файлы в старых пакетах (`src/main/java/TechCraft/...`), перенесите их скриптом —
+он переносит файлы, переписывает `package`, импорты и полные имена классов по той же таблице, что использовалась для репозитория:
+
+```sh
+python3 tools/migrate_packages.py --dry-run   # посмотреть план
+python3 tools/migrate_packages.py             # перенести
+./gradlew compileJava
+```
+
+Скрипт обрабатывает `src/main/java`, `src/test/java` и `src/regression/java`; повторный запуск ничего не ломает.
 
 ## Генерация руд
 
 ```sh
 ./gradlew generateOres
 # или:
-python3 generate_ores.py --output-dir build/generated/ores
+python3 tools/oregen/generate_ores.py --output-dir build/generated/ores
 ```
 
-Результат сохраняется в `build/generated/ores/` и не подключается автоматически к сборке. Сравните заготовки с исходниками и перенесите необходимые регистрации. В `ores/` сейчас описана только часть зарегистрированных руд; полная замена `ModBlocks.java` результатом генерации удалит ручные регистрации.
+Результат сохраняется в `build/generated/ores/` и не подключается автоматически к сборке. Сравните заготовки с исходниками и перенесите необходимые регистрации. В `tools/oregen/ores/` сейчас описана только часть зарегистрированных руд; полная замена `ModBlocks.java` результатом генерации удалит ручные регистрации.
 
-Подробности: [JSON_ORES_README.md](JSON_ORES_README.md). Результат аудита и ограничения: [docs/PROJECT_AUDIT.md](docs/PROJECT_AUDIT.md).
+Подробности: [tools/oregen/README.md](tools/oregen/README.md). Результат аудита и ограничения: [docs/PROJECT_AUDIT.md](docs/PROJECT_AUDIT.md).

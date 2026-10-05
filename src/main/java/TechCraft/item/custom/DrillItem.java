@@ -1,13 +1,11 @@
 package TechCraft.item.custom;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.component.CustomData;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -18,8 +16,6 @@ import java.util.List;
  * При приседании разрушает только один блок.
  */
 public class DrillItem extends DiggerItem {
-
-    private static final String ENERGY_KEY = "Energy";
 
     private final int maxEnergy;
     private final int miningSize;
@@ -105,58 +101,33 @@ public class DrillItem extends DiggerItem {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        int currentEnergy = getEnergy(stack);
-        // Маппим энергию на полосу прочности (0-13)
-        // Полная энергия = полная полоса, пустая энергия = пустая полоса
-        return (int) ((currentEnergy / (float) maxEnergy) * 13);
+        return ItemEnergy.barWidth(stack, maxEnergy);
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
-        int currentEnergy = getEnergy(stack);
-        float ratio = currentEnergy / (float) maxEnergy;
-
-        // Цвет меняется от красного (низкая энергия) к зеленому (высокая энергия)
-        // Как в IC2Classic
-        if (ratio > 0.5f) {
-            return 0x00FF00; // Зеленый
-        } else if (ratio > 0.25f) {
-            return 0xFFFF00; // Желтый
-        } else {
-            return 0xFF0000; // Красный
-        }
-    }
-
-    @Override
-    @Nonnull
-    public ItemStack getDefaultInstance() {
-        ItemStack stack = super.getDefaultInstance();
-        CompoundTag tag = new CompoundTag();
-        tag.putInt(ENERGY_KEY, maxEnergy);
-        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
-        return stack;
+        return ItemEnergy.barColor(stack, maxEnergy);
     }
 
     /**
      * Получает текущую энергию дрели.
      */
     public int getEnergy(ItemStack stack) {
-        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
-        if (customData == null) {
-            return maxEnergy; // Если NBT нет - считаем что полная энергия (новый предмет)
-        }
-        CompoundTag tag = customData.copyTag();
-        return tag.contains(ENERGY_KEY) ? Math.clamp(tag.getInt(ENERGY_KEY), 0, maxEnergy) : maxEnergy;
+        return ItemEnergy.get(stack, maxEnergy);
     }
 
     /**
      * Устанавливает энергию дрели.
      */
     public void setEnergy(ItemStack stack, int energy) {
-        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
-        CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
-        tag.putInt(ENERGY_KEY, Math.clamp(energy, 0, maxEnergy));
-        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+        ItemEnergy.set(stack, energy, maxEnergy);
+    }
+
+    /**
+     * Хранилище для зарядки дрели (для регистрации capability {@code Capabilities.EnergyStorage.ITEM}).
+     */
+    public IEnergyStorage getEnergyStorage(ItemStack stack) {
+        return ItemEnergy.receiveOnlyStorage(stack, maxEnergy);
     }
 
     /**
@@ -172,19 +143,14 @@ public class DrillItem extends DiggerItem {
      * @return true если энергии хватило, false если нет
      */
     public boolean consumeEnergy(ItemStack stack) {
-        int currentEnergy = getEnergy(stack);
-        if (currentEnergy < energyCostPerBlock) {
-            return false;
-        }
-        setEnergy(stack, currentEnergy - energyCostPerBlock);
-        return true;
+        return ItemEnergy.consume(stack, energyCostPerBlock, maxEnergy);
     }
 
     /**
      * Добавляет энергию в дрель.
      */
     public void addEnergy(ItemStack stack, int amount) {
-        if (amount > 0) setEnergy(stack, (int) Math.min(maxEnergy, (long) getEnergy(stack) + amount));
+        ItemEnergy.add(stack, amount, maxEnergy);
     }
 
 

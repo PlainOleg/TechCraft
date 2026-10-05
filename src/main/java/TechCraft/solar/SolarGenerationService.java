@@ -2,6 +2,8 @@ package TechCraft.solar;
 
 import net.minecraft.world.level.Level;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Service for calculating solar generation based on environmental conditions.
  * Used by both individual solar panels and the solar panel bank.
@@ -14,6 +16,26 @@ public class SolarGenerationService {
 
     // Check interval in ticks (20 ticks = 1 second)
     private static final int SKY_CHECK_INTERVAL = 20;
+
+    // Solar factor of the current tick: identical for every panel in a level.
+    // Accessed from the server thread only.
+    private static WeakReference<Level> cachedLevel = new WeakReference<>(null);
+    private static long cachedGameTime = Long.MIN_VALUE;
+    private static double cachedFactor;
+
+    /**
+     * Same as {@link #calculateSolarFactor(Level)}, but computed once per level per tick:
+     * time of day and weather are the same for all panels.
+     */
+    public static double getSolarFactor(Level level) {
+        long gameTime = level.getGameTime();
+        if (cachedGameTime != gameTime || cachedLevel.get() != level) {
+            cachedFactor = calculateSolarFactor(level);
+            cachedGameTime = gameTime;
+            cachedLevel = new WeakReference<>(level);
+        }
+        return cachedFactor;
+    }
 
     /**
      * Calculates the solar factor based on time of day and weather.

@@ -4,11 +4,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Block entity for solar panels.
@@ -22,6 +25,11 @@ public class SolarPanelBlockEntity extends BlockEntity {
     private boolean active;
     private int skyCheckTimer;
     private int dataVersion = 1;
+    /** Энергия изменилась, но чанк ещё не помечен для сохранения (помечаем раз в секунду, а не каждый тик). */
+    private boolean unsavedChanges;
+    /** Приёмник энергии снизу; NeoForge сам сбрасывает кэш при изменении соседа. */
+    @Nullable
+    private BlockCapabilityCache<IEnergyStorage, Direction> outputCache;
     private final IEnergyStorage energyStorage = new IEnergyStorage() {
         @Override
         public int receiveEnergy(int amount, boolean simulate) {
@@ -33,7 +41,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
             int extracted = (int) Math.min(Math.max(amount, 0), energyStored);
             if (!simulate && extracted > 0) {
                 energyStored -= extracted;
-                setChanged();
+                unsavedChanges = true;
             }
             return extracted;
         }
@@ -72,7 +80,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
      * Server tick handler for solar panels.
      */
     public static void serverTick(Level level, BlockPos pos, BlockState state, SolarPanelBlockEntity entity) {
-        if (level.isClientSide) {
+        if (!(level instanceof ServerLevel serverLevel)) {
             return;
         }
 
@@ -101,7 +109,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
         }
 
         // Calculate generation
-        double solarFactor = entity.skyVisible ? SolarGenerationService.calculateSolarFactor(level) : 0.0;
+        double solarFactor = entity.skyVisible ? SolarGenerationService.getSolarFactor(level) : 0.0;
         double remainder = SolarGenerationService.unscaleRemainder(entity.scaledRemainder);
 
         long[] result = SolarGenerationService.calculateGeneration(
@@ -122,8 +130,7 @@ public class SolarPanelBlockEntity extends BlockEntity {
 
         // Output energy to block below
         if (entity.energyStored > 0) {
-            BlockPos belowPos = pos.below();
-            IEnergyStorage receiver = level.getCapability(Capabilities.EnergyStorage.BLOCK, belowPos, Direction.UP);
+            IEnergyStorage receiver = entity.getOutputTarget(serverLevel, pos);
             if (receiver != null && receiver.canReceive()) {
                 int offered = (int) Math.min(entity.energyStored, type.generationPerTick());
                 int accepted = receiver.receiveEnergy(offered, false);
@@ -132,10 +139,24 @@ public class SolarPanelBlockEntity extends BlockEntity {
         }
 
         entity.active = generated > 0 && entity.skyVisible;
-        if (entity.energyStored != previousEnergy || entity.scaledRemainder != previousRemainder
-                || entity.skyVisible != previousSky || entity.active != previousActive) {
+        if (entity.energyStored != previousEnergy || entity.scaledRemainder != previousRemainder) {
+            entity.unsavedChanges = true;
+        }
+        // setChanged() помечает чанк и оповещает компараторы — днём это был бы каждый тик.
+        // Энергию сохраняем раз в секунду, смену состояния — сразу.
+        if (entity.skyVisible != previousSky || entity.active != previousActive
+                || (shouldCheckSky && entity.unsavedChanges)) {
+            entity.unsavedChanges = false;
             entity.setChanged();
         }
+    }
+
+    private IEnergyStorage getOutputTarget(ServerLevel level, BlockPos pos) {
+        if (outputCache == null) {
+            outputCache = BlockCapabilityCache.create(Capabilities.EnergyStorage.BLOCK, level, pos.below(), Direction.UP,
+                    () -> !isRemoved(), () -> {});
+        }
+        return outputCache.getCapability();
     }
 
     public long getEnergyStored() {

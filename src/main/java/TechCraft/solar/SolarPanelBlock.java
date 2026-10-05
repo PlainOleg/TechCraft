@@ -62,6 +62,9 @@ public class SolarPanelBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        if (level.isClientSide) {
+            return null;
+        }
         return createTickerHelper(type, ModSolarBlockEntities.SOLAR_PANEL.get(), SolarPanelBlockEntity::serverTick);
     }
 }

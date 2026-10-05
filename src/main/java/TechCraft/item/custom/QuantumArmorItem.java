@@ -1,17 +1,12 @@
 package TechCraft.item.custom;
 
 import TechCraft.item.ModArmorMaterials;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.energy.IEnergyStorage;
-
-import javax.annotation.Nonnull;
 
 /**
  * Квантовая броня — каждый предмет даёт отдельный бонус:
@@ -23,7 +18,6 @@ import javax.annotation.Nonnull;
  * Все части брони используют энергию для защиты от урона и специальных функций.
  */
 public class QuantumArmorItem extends ArmorItem {
-    private static final String ENERGY_KEY = "Energy";
     private final int maxEnergy;
     private final int energyPerDamagePoint;
     private final int flightEnergyCostPerTick;
@@ -52,32 +46,12 @@ public class QuantumArmorItem extends ArmorItem {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        int currentEnergy = getEnergy(stack);
-        return (int) ((currentEnergy / (float) maxEnergy) * 13);
+        return ItemEnergy.barWidth(stack, maxEnergy);
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
-        int currentEnergy = getEnergy(stack);
-        float ratio = currentEnergy / (float) maxEnergy;
-
-        if (ratio > 0.5f) {
-            return 0x00FF00; // Зеленый
-        } else if (ratio > 0.25f) {
-            return 0xFFFF00; // Желтый
-        } else {
-            return 0xFF0000; // Красный
-        }
-    }
-
-    @Override
-    @Nonnull
-    public ItemStack getDefaultInstance() {
-        ItemStack stack = super.getDefaultInstance();
-        CompoundTag tag = new CompoundTag();
-        tag.putInt(ENERGY_KEY, maxEnergy);
-        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
-        return stack;
+        return ItemEnergy.barColor(stack, maxEnergy);
     }
 
     @Override
@@ -113,22 +87,14 @@ public class QuantumArmorItem extends ArmorItem {
      * Получает текущую энергию брони.
      */
     public int getEnergy(ItemStack stack) {
-        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
-        if (customData == null) {
-            return maxEnergy; // Если NBT нет - считаем что полная энергия (новый предмет)
-        }
-        CompoundTag tag = customData.copyTag();
-        return tag.contains(ENERGY_KEY) ? Math.clamp(tag.getInt(ENERGY_KEY), 0, maxEnergy) : maxEnergy;
+        return ItemEnergy.get(stack, maxEnergy);
     }
 
     /**
      * Устанавливает энергию брони.
      */
     public void setEnergy(ItemStack stack, int energy) {
-        CustomData customData = stack.get(DataComponents.CUSTOM_DATA);
-        CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
-        tag.putInt(ENERGY_KEY, Math.clamp(energy, 0, maxEnergy));
-        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+        ItemEnergy.set(stack, energy, maxEnergy);
     }
 
     /**
@@ -144,19 +110,14 @@ public class QuantumArmorItem extends ArmorItem {
      * @return true если энергии хватило, false если нет
      */
     public boolean consumeEnergy(ItemStack stack, int amount) {
-        int currentEnergy = getEnergy(stack);
-        if (amount < 0 || currentEnergy < amount) {
-            return false;
-        }
-        setEnergy(stack, currentEnergy - amount);
-        return true;
+        return ItemEnergy.consume(stack, amount, maxEnergy);
     }
 
     /**
      * Добавляет энергию в броню.
      */
     public void addEnergy(ItemStack stack, int amount) {
-        if (amount > 0) setEnergy(stack, (int) Math.min(maxEnergy, (long) getEnergy(stack) + amount));
+        ItemEnergy.add(stack, amount, maxEnergy);
     }
 
     /**
@@ -189,42 +150,6 @@ public class QuantumArmorItem extends ArmorItem {
      * Создаёт IEnergyStorage для зарядки брони.
      */
     public IEnergyStorage getEnergyStorage(ItemStack stack) {
-        return new IEnergyStorage() {
-            @Override
-            public int receiveEnergy(int amount, boolean simulate) {
-                int currentEnergy = getEnergy(stack);
-                int space = maxEnergy - currentEnergy;
-                int accepted = Math.min(Math.max(0, amount), space);
-                if (!simulate && accepted > 0) {
-                    setEnergy(stack, currentEnergy + accepted);
-                }
-                return accepted;
-            }
-
-            @Override
-            public int extractEnergy(int amount, boolean simulate) {
-                return 0; // Броня не отдаёт энергию
-            }
-
-            @Override
-            public int getEnergyStored() {
-                return getEnergy(stack);
-            }
-
-            @Override
-            public int getMaxEnergyStored() {
-                return maxEnergy;
-            }
-
-            @Override
-            public boolean canExtract() {
-                return false;
-            }
-
-            @Override
-            public boolean canReceive() {
-                return true;
-            }
-        };
+        return ItemEnergy.receiveOnlyStorage(stack, maxEnergy);
     }
 }

@@ -14,9 +14,10 @@ public record SolarPanelType(
 ) {
     /**
      * Creates a supplier for this solar panel type.
-     * Used for deferred registration to avoid circular dependencies.
+     * The record is created once: panels read their type every tick.
      */
     public static Supplier<SolarPanelType> supplier(int tier, long generation, long capacity, String frameColor) {
-        return () -> new SolarPanelType(tier, generation, capacity, frameColor);
+        SolarPanelType type = new SolarPanelType(tier, generation, capacity, frameColor);
+        return () -> type;
     }
 }

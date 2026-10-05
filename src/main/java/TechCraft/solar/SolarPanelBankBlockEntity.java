@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
@@ -72,7 +74,7 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
             int extracted = (int) Math.min(Math.max(amount, 0), energyStored);
             if (!simulate && extracted > 0) {
                 energyStored -= extracted;
-                setChanged();
+                unsavedChanges = true;
             }
             return extracted;
         }
@@ -107,6 +109,11 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
     private boolean active;
     private int totalPanelCount;
     private boolean inventoryStatsDirty = true;
+    /** Энергия или заряд предметов изменились, но чанк ещё не помечен (помечаем раз в секунду). */
+    private boolean unsavedChanges;
+    /** Приёмник энергии снизу; NeoForge сам сбрасывает кэш при изменении соседа. */
+    @Nullable
+    private BlockCapabilityCache<IEnergyStorage, Direction> outputCache;
 
     // Configuration
     private static final int SLOT_STACK_LIMIT = 64;
@@ -131,7 +138,7 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
      * Server tick handler for solar panel bank.
      */
     public static void serverTick(Level level, BlockPos pos, BlockState state, SolarPanelBankBlockEntity entity) {
-        if (level.isClientSide) {
+        if (!(level instanceof ServerLevel serverLevel)) {
             return;
         }
 
@@ -155,7 +162,7 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
         }
 
         // Calculate generation
-        double solarFactor = entity.skyVisible ? SolarGenerationService.calculateSolarFactor(level) : 0.0;
+        double solarFactor = entity.skyVisible ? SolarGenerationService.getSolarFactor(level) : 0.0;
         double remainder = entity.scaledRemainder / 1000.0;
 
         long[] result = SolarGenerationService.calculateGeneration(
@@ -179,8 +186,7 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
 
         // Output energy to block below
         if (entity.energyStored > 0) {
-            BlockPos belowPos = pos.below();
-            IEnergyStorage receiver = level.getCapability(Capabilities.EnergyStorage.BLOCK, belowPos, Direction.UP);
+            IEnergyStorage receiver = entity.getOutputTarget(serverLevel, pos);
             if (receiver != null && receiver.canReceive()) {
                 int offered = (int) Math.min(entity.energyStored, entity.peakGeneration);
                 int accepted = receiver.receiveEnergy(offered, false);
@@ -189,10 +195,23 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
         }
 
         entity.active = generated > 0 && entity.skyVisible && entity.peakGeneration > 0;
-        if (entity.energyStored != previousEnergy || entity.scaledRemainder != previousRemainder
-                || entity.skyVisible != previousSky || entity.active != previousActive) {
+        if (entity.energyStored != previousEnergy || entity.scaledRemainder != previousRemainder) {
+            entity.unsavedChanges = true;
+        }
+        // Энергию сохраняем раз в секунду, смену состояния — сразу (см. SolarPanelBlockEntity).
+        if (entity.skyVisible != previousSky || entity.active != previousActive
+                || (shouldCheckSky && entity.unsavedChanges)) {
+            entity.unsavedChanges = false;
             entity.setChanged();
         }
+    }
+
+    private IEnergyStorage getOutputTarget(ServerLevel level, BlockPos pos) {
+        if (outputCache == null) {
+            outputCache = BlockCapabilityCache.create(Capabilities.EnergyStorage.BLOCK, level, pos.below(), Direction.UP,
+                    () -> !isRemoved(), () -> {});
+        }
+        return outputCache.getCapability();
     }
 
     private void chargeItems() {
@@ -216,8 +235,9 @@ public class SolarPanelBankBlockEntity extends BlockEntity implements MenuProvid
             }
 
             if (transferred > 0) {
+                // Заряд записан прямо в стак слота; меню синхронизирует его само.
                 energyStored -= transferred;
-                itemHandler.setStackInSlot(slot, stack);
+                unsavedChanges = true;
             }
         }
     }

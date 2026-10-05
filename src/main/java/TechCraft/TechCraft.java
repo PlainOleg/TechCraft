@@ -6,6 +6,7 @@ import TechCraft.block.ModMenuTypes;
 import TechCraft.block.ModRecipeTypes;
 import TechCraft.item.ModArmorMaterials;
 import TechCraft.item.ModCreativeModTabs;
+import TechCraft.item.ModDataComponents;
 import TechCraft.item.ModItems;
 import TechCraft.lumenmesh.LumenMesh;
 import TechCraft.lumenmesh.ModLumenMenuTypes;
@@ -47,6 +48,7 @@ public class TechCraft {
 
         NeoForge.EVENT_BUS.register(this);
 
+        ModDataComponents.register(modEventBus);
         ModItems.register(modEventBus);
         // Ensure Lumen Mesh items are registered before creative tabs use them
         LumenItems.register(modEventBus);

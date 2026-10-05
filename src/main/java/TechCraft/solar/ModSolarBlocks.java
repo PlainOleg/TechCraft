@@ -10,6 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -100,27 +101,16 @@ public class ModSolarBlocks {
      * This must be called after the DeferredRegister has been processed.
      */
     public static void populateTypeRegistry() {
-        registerType("copper_solar_panel", COPPER_SOLAR_PANEL, 1, 4, 20000, "copper");
-        registerType("silicon_solar_panel", SILICON_SOLAR_PANEL, 2, 12, 60000, "blue");
-        registerType("reinforced_solar_panel", REINFORCED_SOLAR_PANEL, 3, 32, 160000, "steel");
-        registerType("prismatic_solar_panel", PRISMATIC_SOLAR_PANEL, 4, 80, 400000, "cyan");
-        registerType("resonant_solar_panel", RESONANT_SOLAR_PANEL, 5, 192, 960000, "violet");
-        registerType("flux_solar_panel", FLUX_SOLAR_PANEL, 6, 448, 2240000, "green");
-        registerType("stellar_solar_panel", STELLAR_SOLAR_PANEL, 7, 1024, 5120000, "gold");
-        registerType("helios_solar_panel", HELIOS_SOLAR_PANEL, 8, 2304, 11520000, "cyan2");
+        for (DeferredBlock<Block> panel : List.of(COPPER_SOLAR_PANEL, SILICON_SOLAR_PANEL, REINFORCED_SOLAR_PANEL,
+                PRISMATIC_SOLAR_PANEL, RESONANT_SOLAR_PANEL, FLUX_SOLAR_PANEL, STELLAR_SOLAR_PANEL, HELIOS_SOLAR_PANEL)) {
+            registerType(panel);
+        }
     }
 
-    private static void registerType(String itemName, DeferredBlock<Block> block, int tier, long generation, long capacity, String frameColor) {
-        Block blockInstance = block.get();
-        // Get the item from the ITEMS register by name
-        try {
-            Item itemInstance = net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(TechCraft.MOD_ID, itemName));
-            if (itemInstance != null) {
-                SolarPanelType type = new SolarPanelType(tier, generation, capacity, frameColor);
-                SolarPanelRegistry.register(blockInstance, itemInstance, type);
-            }
-        } catch (Exception e) {
-            // Item not yet registered, will be handled later
+    /** Characteristics come from the block itself, so each tier is described in exactly one place. */
+    private static void registerType(DeferredBlock<Block> block) {
+        if (block.get() instanceof SolarPanelBlock panel) {
+            SolarPanelRegistry.register(panel, panel.asItem(), panel.getPanelType());
         }
     }
 
